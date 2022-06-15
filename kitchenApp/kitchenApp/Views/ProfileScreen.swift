@@ -4,7 +4,6 @@
 //
 //  Created by Olga Molenova on 14.06.22.
 //
-
 import SwiftUI
 import MapKit
 
