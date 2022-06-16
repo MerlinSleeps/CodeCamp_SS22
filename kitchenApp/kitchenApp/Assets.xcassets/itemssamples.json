@@ -1,0 +1,27 @@
+//  Temporary, will be replaced later
+[
+    {
+        "id": "011",
+        "name": "Coffee 1",
+        "amount": 10,
+        "price": 10.50
+    },
+    {
+        "id": "014",
+        "name": "Coffee 2",
+        "amount": 10,
+        "price": 12.50
+    },
+    {
+        "id": "012",
+        "name": "Coffee 3",
+        "amount": 10,
+        "price": 14.00
+    },
+    {
+        "id": "013",
+        "name": "Coffee 4",
+        "amount": 10,
+        "price": 18.50
+    }
+]
