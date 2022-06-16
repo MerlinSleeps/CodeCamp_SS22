@@ -15,6 +15,7 @@
 		77C5961B285939B60086C25E /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961A285939B60086C25E /* StartScreen.swift */; };
 		77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961C285939EE0086C25E /* ProfileScreen.swift */; };
 		77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961E28593A570086C25E /* TransactionsScreen.swift */; };
+		D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */; };
 		D7B8F605285950BE0056B38D /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B8F604285950BE0056B38D /* BookingView.swift */; };
 		F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D480228254C8E00A898D4 /* kitchenAppApp.swift */; };
 		F77D480528254C8E00A898D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D480428254C8E00A898D4 /* ContentView.swift */; };
@@ -51,6 +52,7 @@
 		77C5961A285939B60086C25E /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		77C5961C285939EE0086C25E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		77C5961E28593A570086C25E /* TransactionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsScreen.swift; sourceTree = "<group>"; };
+		D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " OrderScreen.swift"; sourceTree = "<group>"; };
 		D7B8F604285950BE0056B38D /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
 		F77D47FF28254C8E00A898D4 /* kitchenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kitchenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77D480228254C8E00A898D4 /* kitchenAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kitchenAppApp.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				77C5961E28593A570086C25E /* TransactionsScreen.swift */,
 				D7B8F604285950BE0056B38D /* BookingView.swift */,
 				77B54F2C285AAFD500217CD3 /* LoginScreen.swift */,
+				D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			files = (
 				D7B8F605285950BE0056B38D /* BookingView.swift in Sources */,
 				77B54F29285AA11D00217CD3 /* Coffee.swift in Sources */,
+				D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */,
 				F77D480528254C8E00A898D4 /* ContentView.swift in Sources */,
 				F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */,
 				776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */,

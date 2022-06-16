@@ -7,53 +7,68 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct BookingView: View {
-    
-    @State var showAlert = false
-    
     var body: some View {
-        
-        VStack(alignment: .leading) {
-            HStack() {
+        VStack {
+            HStack{
+                Spacer()
                 Text("Username:")
-                    .font(.title)
-                Text("40$")
-                    .font(.title)
+                Spacer()
+                Text("Budget $")
+                Spacer()
             }
+            
+            Spacer()
+            
+            Text("Choose your order:")
+            
+//TODO fill list dynamicly
             List{
-                HStack() {
-                    Text("Coffee")
-                        .position(x: 50, y: 15)
-                    Image(systemName: "circle.fill")
+                HStack{
+                    Text("Purchase 1")
+                    Spacer()
+                    Button("Add", action: addItem)
+                        .buttonStyle(.bordered)
                 }
-                HStack() {
-                    Text("Expresso")
-                        .position(x: 50, y: 15)
-                    Image(systemName: "circle.fill")
+                HStack{
+                    Text("Purchase 2")
+                    Spacer()
+                    Button("Add", action: addItem)
+                        .buttonStyle(.bordered)
                 }
-                HStack() {
-                    Text("Water")
-                        .position(x: 50, y: 15)
-                    Image(systemName: "circle.fill")
+                HStack{
+                    Text("Purchase 3")
+                    Spacer()
+                    Button("Add", action: addItem)
+                        .buttonStyle(.bordered)
                 }
-                HStack() {
-                    Text("Tea")
-                        .position(x: 50, y: 15)
-                    Image(systemName: "circle.fill")
+                HStack{
+                    Text("Purchase 4")
+                    Spacer()
+                    Button("Add", action: addItem)
+                        .buttonStyle(.bordered)
                 }
             }
-            .navigationTitle("Bookable Items")
-            Button("Buy") {
-                showAlert = true
+            
+            HStack{
+                Spacer()
+                Button("Back", action: addItem)
+                    .buttonStyle(.bordered)
+                Spacer()
+                Button("Continue", action: addItem)
+                    .buttonStyle(.bordered)
+                Spacer()
             }
-            .alert(isPresented: $showAlert) {
-                Alert (
-                    title: Text("You are signed off"),
-                    message: Text("")
-                )
-            }
+            Spacer()
         }
     }
+}
+
+//TODO save data and transfer it to order screen
+func addItem() {
+    print("addItem")
 }
 
 struct BookingView_Previews: PreviewProvider {
