@@ -19,7 +19,7 @@ enum NetworkError: Error {
 }
 
 struct LoginRequestBody: Codable {
-    let username: String
+    let id: String
     let password: String
 }
 
@@ -30,15 +30,15 @@ struct LoginResponse: Codable {
 }
 
 class Webservice {
+            
+    func login(id: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         
-    func login(username: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
-        
-        guard let url = URL(string: "https://strong-spangled-apartment.glitch.me/login") else {
+        guard let url = URL(string: "http://141.51.114.20:8080/login") else {
             completion(.failure(.custom(errorMessage: "URL is not correct")))
             return
         }
         
-        let body = LoginRequestBody(username: username, password: password)
+        let body = LoginRequestBody(id: id, password: password)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -51,8 +51,6 @@ class Webservice {
                 completion(.failure(.custom(errorMessage: "No data")))
                 return
             }
-            
-            try! JSONDecoder().decode(LoginResponse.self, from: data)
             
             guard let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data) else {
                 completion(.failure(.invalidCredentials))
@@ -67,7 +65,5 @@ class Webservice {
             completion(.success(token))
             
         }.resume()
-        
     }
-    
 }

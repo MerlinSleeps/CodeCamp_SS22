@@ -36,10 +36,8 @@ struct StartScreen: View {
         NavigationView {
             ZStack {
                 
-                //Here instead of ProfileScreen() call LoginScreen(),
-                //still test data.
-                //link ProfilScreen() in LoginScreen with test data
-                ProfileScreen(profile: Profile(name: "Peter", password: "peterchen13", customID: "12345", balance: "20$"))
+                LoginScreen()
+               
                 VStack {
                     Image("Image-2")
                         .resizable()

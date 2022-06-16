@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E602859E6D0009B6FE6 /* Webservice.swift */; };
-		776A4E632859ECB5009B6FE6 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E622859ECB5009B6FE6 /* Login.swift */; };
+		776A4E632859ECB5009B6FE6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E622859ECB5009B6FE6 /* User.swift */; };
 		776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */; };
-		77B54F28285AA11D00217CD3 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B54F26285AA11D00217CD3 /* LoginScreen.swift */; };
 		77B54F29285AA11D00217CD3 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B54F27285AA11D00217CD3 /* Coffee.swift */; };
+		77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B54F2C285AAFD500217CD3 /* LoginScreen.swift */; };
 		77C5961B285939B60086C25E /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961A285939B60086C25E /* StartScreen.swift */; };
 		77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961C285939EE0086C25E /* ProfileScreen.swift */; };
 		77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961E28593A570086C25E /* TransactionsScreen.swift */; };
@@ -44,10 +44,10 @@
 
 /* Begin PBXFileReference section */
 		776A4E602859E6D0009B6FE6 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
-		776A4E622859ECB5009B6FE6 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		776A4E622859ECB5009B6FE6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		77B54F26285AA11D00217CD3 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		77B54F27285AA11D00217CD3 /* Coffee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
+		77B54F2C285AAFD500217CD3 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		77C5961A285939B60086C25E /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		77C5961C285939EE0086C25E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		77C5961E28593A570086C25E /* TransactionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsScreen.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		776A4E5D2859DBD4009B6FE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				776A4E622859ECB5009B6FE6 /* Login.swift */,
+				776A4E622859ECB5009B6FE6 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -117,11 +117,11 @@
 			isa = PBXGroup;
 			children = (
 				77B54F27285AA11D00217CD3 /* Coffee.swift */,
-				77B54F26285AA11D00217CD3 /* LoginScreen.swift */,
 				77C5961A285939B60086C25E /* StartScreen.swift */,
 				77C5961C285939EE0086C25E /* ProfileScreen.swift */,
 				77C5961E28593A570086C25E /* TransactionsScreen.swift */,
 				D7B8F604285950BE0056B38D /* BookingView.swift */,
+				77B54F2C285AAFD500217CD3 /* LoginScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,8 +325,8 @@
 				776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */,
 				77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */,
 				77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */,
-				776A4E632859ECB5009B6FE6 /* Login.swift in Sources */,
-				77B54F28285AA11D00217CD3 /* LoginScreen.swift in Sources */,
+				77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */,
+				776A4E632859ECB5009B6FE6 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

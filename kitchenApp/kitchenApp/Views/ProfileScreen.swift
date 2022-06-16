@@ -10,7 +10,7 @@ import MapKit
 struct Profile {
     var name: String
     var password: String
-    var customID: String
+    var userID: String
     var balance: String
 }
 
@@ -54,7 +54,7 @@ struct ProfileScreen: View {
                     HStack {
                         Text("Custom ID")
                         Spacer()
-                        Text(profile.customID).foregroundColor(.secondary)
+                        Text(profile.userID).foregroundColor(.secondary)
                     }
                     
                     HStack {
@@ -101,8 +101,8 @@ struct ProfileScreen: View {
             Section(header:Text("Password")) {
                 TextField("Password", text: $profile.password)
             }
-            Section(header:Text("Custom ID")) {
-                TextField("Custom ID", text: $profile.customID)
+            Section(header:Text("User ID")) {
+                TextField("User ID", text: $profile.userID)
                     .disabled(edit == false)
                     .foregroundColor(.secondary)
             }
@@ -123,6 +123,6 @@ struct ProfileScreen: View {
 
 struct ProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileScreen(profile: Profile(name: "Peter", password: "peterchen13", customID: "12345", balance: "20$"))
+        ProfileScreen(profile: Profile(name: "Peter", password: "peterchen13", userID: "12345", balance: "20$"))
     }
 }
