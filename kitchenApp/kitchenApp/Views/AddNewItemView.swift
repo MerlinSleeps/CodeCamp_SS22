@@ -49,7 +49,7 @@ struct AddNewItem: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct AddNewItemView_Previews: PreviewProvider {
     static var previews: some View {
         AddNewItem()
     }

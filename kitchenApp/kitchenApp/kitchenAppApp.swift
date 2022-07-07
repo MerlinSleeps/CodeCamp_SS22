@@ -11,7 +11,7 @@ import SwiftUI
 struct kitchenAppApp: App {
     var body: some Scene {
         WindowGroup {
-            StartScreen()
+            BookingView()
         }
     }
 }

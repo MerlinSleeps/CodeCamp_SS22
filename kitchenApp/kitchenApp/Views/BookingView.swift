@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct BookingView: View {
+    
+    @State var items = [Item]()
+    
     var body: some View {
         VStack {
             HStack{
@@ -23,35 +24,22 @@ struct BookingView: View {
             Spacer()
             
             Text("Choose your order:")
-            
+                                     
 //TODO fill list dynamicly
-            List{
+            List (items) { (item) in
                 HStack{
-                    Text("Purchase 1")
-                    Spacer()
-                    Button("Add", action: addItem)
-                        .buttonStyle(.bordered)
-                }
-                HStack{
-                    Text("Purchase 2")
-                    Spacer()
-                    Button("Add", action: addItem)
-                        .buttonStyle(.bordered)
-                }
-                HStack{
-                    Text("Purchase 3")
-                    Spacer()
-                    Button("Add", action: addItem)
-                        .buttonStyle(.bordered)
-                }
-                HStack{
-                    Text("Purchase 4")
+                    Text(item.name + ": " + String(item.price))
                     Spacer()
                     Button("Add", action: addItem)
                         .buttonStyle(.bordered)
                 }
             }
-            
+            .onAppear() {
+                Webservice().getItems { (items) in
+                    self.items = items
+                }
+            }.navigationTitle("Item List")
+    
             HStack{
                 Spacer()
                 Button("Back", action: addItem)

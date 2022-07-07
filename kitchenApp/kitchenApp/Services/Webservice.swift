@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 enum AuthenticationError: Error {
     case invalidCredentials
     case custom(errorMessage: String)
@@ -29,11 +30,14 @@ struct LoginResponse: Codable {
     let success: Bool?
 }
 
-class Webservice {
-            
+class Webservice : ObservableObject{
+      
+let urlCC1 = "http://141.51.114.20:8080"
+var items = [Item]()
+    
     func login(id: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         
-        guard let url = URL(string: "http://141.51.114.20:8080/login") else {
+        guard let url = URL(string: urlCC1 + "/login") else {
             completion(.failure(.custom(errorMessage: "URL is not correct")))
             return
         }
@@ -64,6 +68,35 @@ class Webservice {
             
             completion(.success(token))
             
+        }.resume()
+    }
+    
+    
+    func getItems(completion: ([Item]) -> ()) {
+        
+        guard let url = URL(string: urlCC1 + "/items") else {
+            print("Invalid url...")
+            return
+        }
+        
+        print(url)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print("invalid respone")
+                return
+            }
+                    
+            do {
+                self.items = try JSONDecoder().decode([Item].self, from: data)
+            } catch {
+                print(error.localizedDescription)
+                print("yeetError")
+            }
         }.resume()
     }
 }

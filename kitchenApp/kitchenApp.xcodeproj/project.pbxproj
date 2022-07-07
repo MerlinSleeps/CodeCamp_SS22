@@ -16,6 +16,13 @@
 		77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961C285939EE0086C25E /* ProfileScreen.swift */; };
 		77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961E28593A570086C25E /* TransactionsScreen.swift */; };
 		D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */; };
+		D74C36EE28776AFC00510E18 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36ED28776AFC00510E18 /* ModelData.swift */; };
+		D74C36F028776B0A00510E18 /* UpdateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36EF28776B0A00510E18 /* UpdateItem.swift */; };
+		D74C36F228776B2000510E18 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36F128776B2000510E18 /* Item.swift */; };
+		D74C36F428776B2E00510E18 /* AddNewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36F328776B2E00510E18 /* AddNewItemView.swift */; };
+		D74C36F728776B4000510E18 /* EditItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36F528776B4000510E18 /* EditItemRow.swift */; };
+		D74C36F828776B4000510E18 /* EditItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36F628776B4000510E18 /* EditItemListView.swift */; };
+		D74C36FC28776BB100510E18 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36FB28776BB100510E18 /* EditItemView.swift */; };
 		D7B8F605285950BE0056B38D /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B8F604285950BE0056B38D /* BookingView.swift */; };
 		F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D480228254C8E00A898D4 /* kitchenAppApp.swift */; };
 		F77D480528254C8E00A898D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D480428254C8E00A898D4 /* ContentView.swift */; };
@@ -53,6 +60,13 @@
 		77C5961C285939EE0086C25E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		77C5961E28593A570086C25E /* TransactionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsScreen.swift; sourceTree = "<group>"; };
 		D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " OrderScreen.swift"; sourceTree = "<group>"; };
+		D74C36ED28776AFC00510E18 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		D74C36EF28776B0A00510E18 /* UpdateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateItem.swift; sourceTree = "<group>"; };
+		D74C36F128776B2000510E18 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D74C36F328776B2E00510E18 /* AddNewItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewItemView.swift; sourceTree = "<group>"; };
+		D74C36F528776B4000510E18 /* EditItemRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemRow.swift; sourceTree = "<group>"; };
+		D74C36F628776B4000510E18 /* EditItemListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemListView.swift; sourceTree = "<group>"; };
+		D74C36FB28776BB100510E18 /* EditItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		D7B8F604285950BE0056B38D /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
 		F77D47FF28254C8E00A898D4 /* kitchenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kitchenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77D480228254C8E00A898D4 /* kitchenAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kitchenAppApp.swift; sourceTree = "<group>"; };
@@ -94,6 +108,7 @@
 		776A4E5D2859DBD4009B6FE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D74C36F128776B2000510E18 /* Item.swift */,
 				776A4E622859ECB5009B6FE6 /* User.swift */,
 			);
 			path = Models;
@@ -110,6 +125,8 @@
 		776A4E5F2859E66F009B6FE6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D74C36EF28776B0A00510E18 /* UpdateItem.swift */,
+				D74C36ED28776AFC00510E18 /* ModelData.swift */,
 				776A4E602859E6D0009B6FE6 /* Webservice.swift */,
 			);
 			path = Services;
@@ -118,6 +135,10 @@
 		77C5962028593DBD0086C25E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D74C36FB28776BB100510E18 /* EditItemView.swift */,
+				D74C36F628776B4000510E18 /* EditItemListView.swift */,
+				D74C36F528776B4000510E18 /* EditItemRow.swift */,
+				D74C36F328776B2E00510E18 /* AddNewItemView.swift */,
 				77B54F27285AA11D00217CD3 /* Coffee.swift */,
 				77C5961A285939B60086C25E /* StartScreen.swift */,
 				77C5961C285939EE0086C25E /* ProfileScreen.swift */,
@@ -322,14 +343,21 @@
 				D7B8F605285950BE0056B38D /* BookingView.swift in Sources */,
 				77B54F29285AA11D00217CD3 /* Coffee.swift in Sources */,
 				D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */,
+				D74C36EE28776AFC00510E18 /* ModelData.swift in Sources */,
 				F77D480528254C8E00A898D4 /* ContentView.swift in Sources */,
+				D74C36FC28776BB100510E18 /* EditItemView.swift in Sources */,
 				F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */,
 				776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */,
+				D74C36F028776B0A00510E18 /* UpdateItem.swift in Sources */,
 				77C5961B285939B60086C25E /* StartScreen.swift in Sources */,
+				D74C36F828776B4000510E18 /* EditItemListView.swift in Sources */,
 				776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */,
+				D74C36F228776B2000510E18 /* Item.swift in Sources */,
 				77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */,
+				D74C36F428776B2E00510E18 /* AddNewItemView.swift in Sources */,
 				77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */,
 				77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */,
+				D74C36F728776B4000510E18 /* EditItemRow.swift in Sources */,
 				776A4E632859ECB5009B6FE6 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
