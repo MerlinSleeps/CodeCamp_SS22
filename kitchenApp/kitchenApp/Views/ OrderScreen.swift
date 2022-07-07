@@ -40,10 +40,10 @@ struct SwiftUIView: View {
             
             HStack{
                 Spacer()
-                Button("Cancel", action: addItem)
+                Button("Cancel", action: {})
                     .buttonStyle(.bordered)
                 Spacer()
-                Button("Buy", action: addItem)
+                Button("Buy", action: {})
                     .buttonStyle(.bordered)
                 Spacer()
             }

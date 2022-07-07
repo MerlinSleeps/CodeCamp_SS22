@@ -10,6 +10,7 @@ import SwiftUI
 struct BookingView: View {
     
     @State var items = [Item]()
+    var order = [Item]()
     
     var body: some View {
         VStack {
@@ -26,11 +27,11 @@ struct BookingView: View {
             Text("Choose your order:")
                                      
 //TODO fill list dynamicly
-            List (items) { (item) in
+            List (self.items) { (item) in
                 HStack{
-                    Text(item.name + ": " + String(item.price))
+                    Text(item.name + ": " + String(item.price) + "€")
                     Spacer()
-                    Button("Add", action: addItem)
+                    Button("Add", action: {})
                         .buttonStyle(.bordered)
                 }
             }
@@ -42,21 +43,16 @@ struct BookingView: View {
     
             HStack{
                 Spacer()
-                Button("Back", action: addItem)
+                Button("Back", action: {})
                     .buttonStyle(.bordered)
                 Spacer()
-                Button("Continue", action: addItem)
+                Button("Continue", action: {})
                     .buttonStyle(.bordered)
                 Spacer()
             }
             Spacer()
         }
     }
-}
-
-//TODO save data and transfer it to order screen
-func addItem() {
-    print("addItem")
 }
 
 struct BookingView_Previews: PreviewProvider {
