@@ -93,4 +93,48 @@ var items = [Item]()
         }.resume()
         
     }
+    
+    func getCurrentMillis()->Int{
+        return  Int(NSDate().timeIntervalSince1970)
+    }
+
+    
+    func getRefreshToken()->String?{
+
+        let defaults = UserDefaults.standard
+        
+        var needRefresh = false;
+        
+        let token = defaults.string(forKey: "jsonwebtoken")
+        
+        if(token == nil){
+            needRefresh = true
+        } else {
+            let millis : Int = defaults.integer(forKey: "tokenrefresh")
+            if(getCurrentMillis() - millis > 4*60){
+                needRefresh = true
+            }
+        }
+        
+        if(!needRefresh){
+            return token
+        }
+        
+       let id = defaults.string(forKey: "userID")!
+       let password = defaults.string(forKey: "userPassword")!
+
+        
+        Webservice().login(id: id, password: password) { result in
+            switch result {
+            case .success(let token):
+                defaults.setValue(token, forKey: "jsonwebtoken")
+                defaults.setValue(self.getCurrentMillis(), forKey: "tokenrefresh")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        
+        return defaults.string(forKey: "jsonwebtoken")
+    }
 }
