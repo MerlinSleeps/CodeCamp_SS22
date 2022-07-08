@@ -43,7 +43,7 @@ struct BookingView: View {
                     }
                 }
                 
-                NavigationLink(destination: OrderScreenView(), label: { Text("Continue")
+                NavigationLink(destination: OrderScreenView(orderModel: self.orderModel), label: { Text("Continue")
                             
                 })
                 Spacer()

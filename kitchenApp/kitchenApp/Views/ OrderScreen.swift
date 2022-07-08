@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct OrderScreenView: View {
+  
+    @State var orderItems = [String]()
+    var orderModel = OrderViewModel()
+    
+    
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -22,16 +28,25 @@ struct OrderScreenView: View {
                 
                 Spacer()
                 
-                List{
-
+                List (self.orderItems, id: \.self) { (item) in
+                    HStack{
+                        Text(item)
+                    }
+                }
+                .onAppear() {
+                    if orderItems.count > 0 {
+                            return
+                    }
+                    let order = orderModel.calculateOrder(items: orderModel.items)
+                    for (key, value) in order.counts {
+                        orderItems.append("\(value)€ \(key.name)")
+                    }
                 }
                 
-                Text("Total Amount")
+                
+                Text("Total Amount:" + String(orderModel.order.totalPrice))
                 
                 HStack{
-                    Spacer()
-                    Button("Cancel", action: {})
-                        .buttonStyle(.bordered)
                     Spacer()
                     Button("Buy", action: {})
                         .buttonStyle(.bordered)
@@ -39,6 +54,7 @@ struct OrderScreenView: View {
                 }
                 Spacer()
             }
+            .navigationTitle("Confirm your Order")
         }
     }
 }
