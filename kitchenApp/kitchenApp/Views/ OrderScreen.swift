@@ -7,53 +7,44 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct OrderScreenView: View {
     var body: some View {
-        VStack {
-            HStack{
-                Spacer()
-                Text("Username:")
-                Spacer()
-                Text("Budget $")
-                Spacer()
-            }
-            
-            Spacer()
-            
-            Text("Your order:")
-            
-//TODO fill list dynamicly
-            List{
+        NavigationView {
+            VStack {
                 HStack{
-                    Text("Purchase 1")
                     Spacer()
-                    Text("Amount")
+                    Text("")
+                        .onAppear {
+                        //TODO get Data for Username and Budget
+                        }
+                    Spacer()
                 }
+                
+                Spacer()
+                
+                List{
+
+                }
+                
+                Text("Total Amount")
+                
                 HStack{
-                    Text("Purchase 2")
                     Spacer()
-                    Text("Amount")
+                    Button("Cancel", action: {})
+                        .buttonStyle(.bordered)
+                    Spacer()
+                    Button("Buy", action: {})
+                        .buttonStyle(.bordered)
+                    Spacer()
                 }
-            }
-            
-            Text("Total Amount")
-            
-            HStack{
-                Spacer()
-                Button("Cancel", action: {})
-                    .buttonStyle(.bordered)
-                Spacer()
-                Button("Buy", action: {})
-                    .buttonStyle(.bordered)
                 Spacer()
             }
-            Spacer()
         }
     }
 }
 
 struct OrderScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        OrderScreenView()
     }
 }

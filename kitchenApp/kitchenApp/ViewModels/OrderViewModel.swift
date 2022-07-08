@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class OrderViewModel: ObservableObject {
+    
+    @Published var items = []
+    
+}

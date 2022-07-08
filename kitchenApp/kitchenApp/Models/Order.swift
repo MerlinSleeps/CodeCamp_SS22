@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Order: Hashable, Codable{
-    let items: [Item]
+struct Order: Hashable, Codable {
+    var items: [Item]
 }

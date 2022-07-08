@@ -10,49 +10,53 @@ import SwiftUI
 struct BookingView: View {
     
     @State var items = [Item]()
-    var order = [Item]()
+    
+    var orderModel = OrderViewModel()
     
     var body: some View {
-        VStack {
-            HStack{
-                Spacer()
-                Text("Username:")
-                Spacer()
-                Text("Budget $")
-                Spacer()
-            }
-            
-            Spacer()
-            
-            Text("Choose your order:")
-                                     
-//TODO fill list dynamicly
-            List (self.items) { (item) in
+        NavigationView {
+            VStack {
                 HStack{
-                    Text(item.name + ": " + String(item.price) + "€")
                     Spacer()
-                    Button("Add", action: {})
-                        .buttonStyle(.bordered)
+                    Text("")
+                        .onAppear {
+                        //TODO get Data for Username and Budget
+                        }
+                    Spacer()
                 }
-            }
-            .onAppear() {
-                Webservice().getItems { (items) in
-                    self.items = items
+                
+                Spacer()
+                                         
+                List (self.items) { (item) in
+                    HStack{
+                        Text(item.name + ": " + String(item.price) + "€")
+                        Spacer()
+                        Button("Add") {
+                            self.addItem(item: item)
+                        }
+                            .buttonStyle(.bordered)
+                    }
                 }
-            }.navigationTitle("Item List")
-    
-            HStack{
-                Spacer()
-                Button("Back", action: {})
-                    .buttonStyle(.bordered)
-                Spacer()
-                Button("Continue", action: {})
-                    .buttonStyle(.bordered)
+                .onAppear() {
+                    Webservice().getItems { (items) in
+                        self.items = items
+                    }
+                }
+                
+                NavigationLink(destination: OrderScreenView(), label: { Text("Continue")
+                            
+                })
                 Spacer()
             }
-            Spacer()
+            .navigationTitle("Choose your Items")
         }
     }
+    
+    func addItem(item: Item) {
+        orderModel.items.append(item)
+        print(orderModel.items)
+    }
+
 }
 
 struct BookingView_Previews: PreviewProvider {

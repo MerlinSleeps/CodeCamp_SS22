@@ -16,6 +16,8 @@
 		77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961C285939EE0086C25E /* ProfileScreen.swift */; };
 		77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961E28593A570086C25E /* TransactionsScreen.swift */; };
 		D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */; };
+		D745480828786C080074EC74 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745480728786C080074EC74 /* Order.swift */; };
+		D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745480928786D0B0074EC74 /* OrderViewModel.swift */; };
 		D74C36EE28776AFC00510E18 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36ED28776AFC00510E18 /* ModelData.swift */; };
 		D74C36F028776B0A00510E18 /* UpdateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36EF28776B0A00510E18 /* UpdateItem.swift */; };
 		D74C36F228776B2000510E18 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36F128776B2000510E18 /* Item.swift */; };
@@ -60,6 +62,8 @@
 		77C5961C285939EE0086C25E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		77C5961E28593A570086C25E /* TransactionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsScreen.swift; sourceTree = "<group>"; };
 		D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " OrderScreen.swift"; sourceTree = "<group>"; };
+		D745480728786C080074EC74 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		D745480928786D0B0074EC74 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		D74C36ED28776AFC00510E18 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		D74C36EF28776B0A00510E18 /* UpdateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateItem.swift; sourceTree = "<group>"; };
 		D74C36F128776B2000510E18 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 		776A4E5D2859DBD4009B6FE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D745480728786C080074EC74 /* Order.swift */,
 				D74C36F128776B2000510E18 /* Item.swift */,
 				776A4E622859ECB5009B6FE6 /* User.swift */,
 			);
@@ -118,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */,
+				D745480928786D0B0074EC74 /* OrderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 			files = (
 				D7B8F605285950BE0056B38D /* BookingView.swift in Sources */,
 				77B54F29285AA11D00217CD3 /* Coffee.swift in Sources */,
+				D745480828786C080074EC74 /* Order.swift in Sources */,
 				D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */,
 				D74C36EE28776AFC00510E18 /* ModelData.swift in Sources */,
 				F77D480528254C8E00A898D4 /* ContentView.swift in Sources */,
@@ -351,6 +358,7 @@
 				D74C36F028776B0A00510E18 /* UpdateItem.swift in Sources */,
 				77C5961B285939B60086C25E /* StartScreen.swift in Sources */,
 				D74C36F828776B4000510E18 /* EditItemListView.swift in Sources */,
+				D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */,
 				776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */,
 				D74C36F228776B2000510E18 /* Item.swift in Sources */,
 				77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */,
@@ -517,6 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kitchenApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 73SGGLVBN7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -545,6 +554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kitchenApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 73SGGLVBN7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
