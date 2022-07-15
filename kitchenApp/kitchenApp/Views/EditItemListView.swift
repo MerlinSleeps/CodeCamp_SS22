@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct EditItemListView: View {
+    @State var items = [Item]()
+    
+    
     var body: some View {
         NavigationView{
             VStack {
-                List(items) { item in
+                List(self.items) { item in
                     NavigationLink {
                         EditItemView(item: item)
                     } label: {
                         EditItemRow(item: item)
+                    }
+                }
+                .onAppear() {
+                    Webservice().getItems { (items) in
+                        self.items = items
+                        for i in items {
+                            items1.append(i)
+                            print(i)
+                        }
+                        if (items1.isEmpty) {
+                            items1.append(Item())
+                        }
                     }
                 }
                 .navigationTitle("UpdateItem")
@@ -23,35 +38,11 @@ struct EditItemListView: View {
                     AddNewItem()
                 } label: {
                     Text("Add Item")
-                        .font(.system(size: 30))
                 }
                 .navigationTitle("UpdateItem")
-                .foregroundColor(.white)
-                .font(.system(size: 30))
-                .frame(width: 150, height: 40)
-                .background(
-                    ZStack {
-                        
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .foregroundColor(.cyan)
-                            .blur(radius: 2)
-                    }
-                )
                 Divider()
                 Button("Back") {
-                    
                 }
-                .foregroundColor(.white)
-                .font(.system(size: 30))
-                .frame(width: 150, height: 40)
-                .background(
-                    ZStack {
-                        
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .foregroundColor(.cyan)
-                            .blur(radius: 2)
-                    }
-                )
                 
             }
         }

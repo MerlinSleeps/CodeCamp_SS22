@@ -28,6 +28,6 @@ struct EditItemRow: View {
 
 struct ItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        EditItemRow(item: items[0])
+        EditItemRow(item: items1[0])
     }
 }
