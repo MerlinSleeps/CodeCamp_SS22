@@ -20,7 +20,7 @@ struct BookingView: View {
                     Spacer()
                     Text("")
                         .onAppear {
-                        //TODO get Data for Username and Budget
+            //TODO get Data for Username and Budget
                         }
                     Spacer()
                 }
@@ -49,7 +49,15 @@ struct BookingView: View {
                 Spacer()
             }
             .navigationTitle("Choose your Items")
+            .onAppear() {
+                self.emptyOrder()
+            }
         }
+    }
+    
+    func emptyOrder() {
+        orderModel.items = [Item]()
+        orderModel.order.totalPrice = 0
     }
     
     func addItem(item: Item) {
