@@ -86,7 +86,7 @@ struct ProfileScreen: View {
         let defaults = UserDefaults.standard
         let pwd = defaults.string(forKey: "userPassword")!
         return  VStack {
-            Form{
+            Form {
                 Section(header: Text("My Info")) {
                     HStack {
                         Text("Name")
@@ -119,8 +119,9 @@ struct ProfileScreen: View {
                         NavigationLink(destination: TransactionsScreen()) {}
                     }
                 }
-                
             }
+                
+        
             
             Button("Sign off?") {
                 showAlert = true
@@ -180,8 +181,11 @@ struct ProfileScreen: View {
             Webservice().updateUser(id: id, name: name, password: password) { result in
                              switch result {
                              case .success():
-                                 profile.userProfile.name =  name
-                                 UserDefaults.standard.setValue(password, forKey: "userPassword")
+                                 DispatchQueue.main.async {
+                                     profile.userProfile.name =  name
+                                     UserDefaults.standard.setValue(password, forKey: "userPassword")
+                                 }
+                                
                              case .failure(let error):
                                  print(error.localizedDescription)
                              }
