@@ -9,14 +9,8 @@ import Foundation
 
 class ProfileViewModel: ObservableObject {
     
-    @Published var userProfile: UserProfile
-    @Published var isAuthorizated: Bool = false
+    @Published var userProfile = UserProfile(id: "", name: "", balance: 0.0)
 
-    init() {
-        self.userProfile = UserProfile(id: "xxxxxx  ", name: "n/a", balance: 0.0)
-        getUserData()
-    }
-    
     
     func getUserData() {
         
@@ -35,7 +29,6 @@ class ProfileViewModel: ObservableObject {
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
-                    self.isAuthorizated = true
                     self.userProfile.name = user.name;
                     self.userProfile.id = user.id;
                     self.userProfile.balance = user.balance;

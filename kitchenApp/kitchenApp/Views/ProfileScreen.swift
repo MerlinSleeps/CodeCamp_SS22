@@ -20,7 +20,7 @@ struct Profile : Equatable {
 
 struct ProfileScreen: View {
     
-    @StateObject var profile = ProfileViewModel()
+    @ObservedObject var profile = ProfileViewModel()
     
     @State var editProfile = Profile(name: "",password: "")
    
@@ -72,6 +72,9 @@ struct ProfileScreen: View {
                 editProfileView()
             } else {
                 ProfileView()
+                    .onAppear(perform: {
+                        profile.getUserData()
+                    })
             }
         }
     }
