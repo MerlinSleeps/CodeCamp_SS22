@@ -255,10 +255,6 @@ var items = [Item]()
                 return
             }
             
-            if let httpResponse = response as? HTTPURLResponse {
-                   print("statusCode: \(httpResponse.statusCode)")
-               }
-
             guard let userData = try? JSONDecoder().decode(UserProfile.self, from: data) else {
                 completion(.failure(.decodingError))
                 return
