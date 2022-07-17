@@ -24,10 +24,9 @@ struct LoginRequestBody: Codable {
     let password: String
 }
 
-struct LoginResponse: Codable {
-    let token: String?
-    let message: String?
-    let success: Bool?
+struct Token: Codable {
+    let token: String
+    let expiration: Int64
 }
 
 struct newItem: Codable {
@@ -36,12 +35,20 @@ struct newItem: Codable {
     var price: Double
 }
 
+
+struct UpdateUserRequestBody: Codable {
+    let name: String
+    let password: String
+}
+
+
 class Webservice : ObservableObject{
       
 let urlCC1 = "http://141.51.114.20:8080"
 var items = [Item]()
     
-    func login(id: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+    
+    func login(id: String, password: String, completion: @escaping (Result<Token, AuthenticationError>) -> Void) {
         
         guard let url = URL(string: urlCC1 + "/login") else {
             completion(.failure(.custom(errorMessage: "URL is not correct")))
@@ -62,17 +69,12 @@ var items = [Item]()
                 return
             }
             
-            guard let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data) else {
+            guard let token = try? JSONDecoder().decode(Token.self, from: data) else {
                 completion(.failure(.invalidCredentials))
                 return
             }
             
-            guard let token = loginResponse.token else {
-                completion(.failure(.invalidCredentials))
-                return
-            }
-            
-            completion(.success(token))
+           completion(.success(token))
             
         }.resume()
     }
@@ -116,8 +118,8 @@ var items = [Item]()
         if(token == nil){
             needRefresh = true
         } else {
-            let millis : Int = defaults.integer(forKey: "tokenrefresh")
-            if(getCurrentMillis() - millis > 4*60){
+            let expiration : Int = defaults.integer(forKey: "expiration")
+            if(getCurrentMillis() > expiration){
                 needRefresh = true
             }
         }
@@ -133,8 +135,8 @@ var items = [Item]()
         Webservice().login(id: id, password: password) { result in
             switch result {
             case .success(let token):
-                defaults.setValue(token, forKey: "jsonwebtoken")
-                defaults.setValue(self.getCurrentMillis(), forKey: "tokenrefresh")
+                defaults.setValue(token.token, forKey: "jsonwebtoken")
+                defaults.setValue(token.expiration/1000, forKey: "tokenrefresh")
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -192,5 +194,80 @@ var items = [Item]()
         URLSession.shared.dataTask(with: request) {
             data, response, error in
         }.resume()
+    }
+    
+    func updateUser(id: String, name: String, password: String, completion: @escaping (Result<Void, NetworkError>) -> Void){
+        
+        
+        guard let url = URL(string: urlCC1 + "/users/"+id) else {
+            print("Invalid url...")
+            return
+        }
+        
+        
+       guard let token = getRefreshToken() else {
+                    completion(.failure(.noData))
+                    return
+                }
+
+        
+        let body = UpdateUserRequestBody(name: name, password: password)
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(body)
+        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            
+            let httpResponse = response as? HTTPURLResponse
+                
+            if(httpResponse?.statusCode != 200){
+                completion(.failure(.decodingError))
+            }
+            
+            completion(.success(()))
+            
+        }.resume()
+        
+        
+    }
+    
+    
+    func getUserData(id: String, token: String, completion: @escaping (Result<UserProfile, NetworkError>) -> Void){
+
+        guard let url = URL(string: urlCC1 + "/users/"+id) else {
+            print("Invalid url...")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        
+        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                   print("statusCode: \(httpResponse.statusCode)")
+               }
+
+            guard let userData = try? JSONDecoder().decode(UserProfile.self, from: data) else {
+                completion(.failure(.decodingError))
+                return
+            }
+            
+            completion(.success(userData))
+            
+        }.resume()
+        
+        
     }
 }

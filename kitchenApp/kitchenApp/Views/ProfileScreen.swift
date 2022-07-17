@@ -7,17 +7,59 @@
 import SwiftUI
 import MapKit
 
-struct Profile {
+struct Profile : Equatable {
     var name: String
     var password: String
-    var userID: String
-    var balance: String
+    
+    static func == (lhs: Profile, rhs: Profile) -> Bool {
+        return lhs.name == rhs.name && lhs.password == rhs.password
+        }
 }
+
+
 
 struct ProfileScreen: View {
     
-    @State var profile: Profile
+    @StateObject var profile = ProfileViewModel()
+    
+    @State var editProfile = Profile(name: "",password: "")
+   
+    var sName: Binding<String> {
+           .init(get: {
+               return editProfile.name
+           }, set: {
+               editProfile.name = $0
+           })
+       }
+    var sPass: Binding<String> {
+           .init(get: {
+               return editProfile.password
+           }, set: {
+               editProfile.password = $0
+           })
+       }
+    
+    var sId: Binding<String> {
+        .init(get: {
+            return profile.userProfile.id
+        }, set: {
+            print ($0)
+        })
+    }
+    
+    
+    var sBalance: Binding<String> {
+        .init(get: {
+            let b: String = String(format: "%f", profile.userProfile.balance)
+            return b
+        }, set: {
+            print ($0)
+        })
+    }
+    
+
     @State var mode: EditMode = .inactive
+
     @State var isCancelled = false
     
     @State var edit = false
@@ -36,31 +78,35 @@ struct ProfileScreen: View {
     
     
     fileprivate func ProfileView() -> some View {
+        @Environment(\.editMode) var editMode
+
+        let defaults = UserDefaults.standard
+        let pwd = defaults.string(forKey: "userPassword")!
         return  VStack {
             Form{
                 Section(header: Text("My Info")) {
                     HStack {
                         Text("Name")
                         Spacer()
-                        Text(profile.name).foregroundColor(.secondary)
+                        Text(self.profile.userProfile.name).foregroundColor(.secondary)
                     }
                     
                     HStack {
                         Text("Password")
                         Spacer()
-                        Text(profile.password).foregroundColor(.secondary)
+                        Text(pwd).foregroundColor(.secondary)
                     }
                     
                     HStack {
                         Text("Custom ID")
                         Spacer()
-                        Text(profile.userID).foregroundColor(.secondary)
+                        Text(self.profile.userProfile.id).foregroundColor(.secondary)
                     }
                     
                     HStack {
                         Text("Balance")
                         Spacer()
-                        Text(profile.balance).foregroundColor(.secondary)
+                        Text(self.profile.userProfile.balance, format: .number).foregroundColor(.secondary)
                     }
                     
                     HStack {
@@ -85,44 +131,95 @@ struct ProfileScreen: View {
         }
         
         .navigationBarTitle(Text("Profile"))
-        .navigationBarItems(trailing: EditButton())
-        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(trailing: CustomEditButton(inactive: {
+     
+            
+        },active:{
+            editProfile.name = profile.userProfile.name
+            editProfile.password = UserDefaults.standard.string(forKey: "userPassword")!
+        }))
+ //       .navigationBarBackButtonHidden(true)
         .environment(\.editMode, self.$mode)
+
     }
-    
+
     
     fileprivate func editProfileView() -> some View {
+        @Environment(\.editMode) var editMode
         return Form {
-            
             Section(header:Text("Name")) {
-                TextField("Name", text: $profile.name)
+                TextField("Name", text: sName)
             }
             
             Section(header:Text("Password")) {
-                TextField("Password", text: $profile.password)
+                TextField("Password", text: sPass)
             }
             Section(header:Text("User ID")) {
-                TextField("User ID", text: $profile.userID)
-                    .disabled(edit == false)
+                TextField("User ID", text: sId)
+                    .disabled(true)
                     .foregroundColor(.secondary)
             }
             Section(header:Text("Balance")) {
-                TextField("Balance", text: $profile.balance)
-                    .disabled(edit == false)
+                TextField("Balance", text: sBalance)
+                    .disabled(true)
                     .foregroundColor(.secondary)
             }
         }
         
         //"Cancel" still is not working very well
         .navigationBarTitle(Text("Edit Profile"))
-        .navigationBarItems(leading: Button(action: {}) {NavigationLink(destination: ProfileView()) {Text("Cancel")}}, trailing: EditButton())
+        .navigationBarItems(trailing: CustomEditButton(
+       
+            inactive: {
+            let id   =   UserDefaults.standard.string(forKey: "userID")!
+            let name =  editProfile.name
+            let password = editProfile.password
+            Webservice().updateUser(id: id, name: name, password: password) { result in
+                             switch result {
+                             case .success():
+                                 profile.userProfile.name =  name
+                                 UserDefaults.standard.setValue(password, forKey: "userPassword")
+                             case .failure(let error):
+                                 print(error.localizedDescription)
+                             }
+                         }
+        },
+            active: {
+              
+            }
+        ))
+//        .navigationBarItems(leading: Button(action: {}) {NavigationLink(destination: ProfileView()) {Button("Cancel")}}, trailing: EditButton())
+        .navigationBarBackButtonHidden(true)
         .environment(\.editMode, self.$mode)
-    }
-    
+     
 }
-
-struct ProfileScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileScreen(profile: Profile(name: "Peter", password: "peterchen13", userID: "12345", balance: "20$"))
+    
+    struct CustomEditButton: View {
+        @Environment(\.editMode) var editMode
+        
+        var inactive: () -> Void
+        var active: () -> Void
+        private var isEditing: Bool {
+            editMode?.wrappedValue.isEditing ?? false
+        }
+        
+        var body: some View {
+            Button(action: {
+                withAnimation {
+                    editMode?.wrappedValue = isEditing ? .inactive : .active
+                }
+                if(editMode?.wrappedValue == .active){
+                    self.active()
+                } else if(editMode?.wrappedValue == .inactive){
+                    self.inactive()
+                }
+            }, label: {
+                Image(systemName: isEditing ? "pencil.circle.fill" : "pencil.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 24)
+            })
+        }
     }
+
 }

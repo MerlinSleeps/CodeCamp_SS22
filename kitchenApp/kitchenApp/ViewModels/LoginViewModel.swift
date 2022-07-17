@@ -23,15 +23,27 @@ class LoginViewModel: ObservableObject {
         
         Webservice().login(id: id, password: password) { result in
             switch result {
-                case .success(let token):
-                defaults.setValue(token, forKey: "jsonwebtoken")
+            case .success(let token):
+                defaults.setValue(token.token, forKey: "jsonwebtoken")
+                defaults.setValue(token.expiration/1000, forKey: "expiration")
+
                 DispatchQueue.main.async {
                     self.isAuthenticated = true
                     print(token)
                 }
-                case .failure(let error):
-                    print(error.localizedDescription)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
+        }
+    }
+
+    
+    func signout() {
+        
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "jsonwebtoken")
+        DispatchQueue.main.async {
+            self.isAuthenticated = false
         }
     }
 }
