@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct OrderScreenView: View {
-  
+    
     @State var orderItems = [String]()
+    @State private var showingOrderCancelAlert = false
     var orderModel = OrderViewModel()
-    
-    
     
     var body: some View {
         NavigationView {
@@ -57,6 +56,7 @@ struct OrderScreenView: View {
             .navigationTitle("Confirm your Order")
         }
     }
+    
 }
 
 struct OrderScreenView_Previews: PreviewProvider {
