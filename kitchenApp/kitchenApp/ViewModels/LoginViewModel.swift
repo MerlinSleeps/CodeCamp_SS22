@@ -9,8 +9,8 @@ import Foundation
 
 class LoginViewModel: ObservableObject {
     
-    @Published var id: String = "abacuscus"
-    @Published var password: String = "babuscus"
+    @Published var id: String = "a3620095-0598-415f-89d6-f382a6e9d9c8"
+    @Published var password: String = "iOSGroupA"
     @Published var isAuthenticated: Bool = false
 
         
