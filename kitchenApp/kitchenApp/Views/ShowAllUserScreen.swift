@@ -14,19 +14,19 @@ struct ShowAllUserScreen: View {
     var body: some View {
         VStack {
             List (self.users) { (user) in
-                HStack{
-                    Button(user.name) {
-                        
-                    }
-                }
+                NavigationLink(destination: ChargeMoneyScreen(userID: user.id), label: { Text(user.name)
+                            
+                })
             }
             .onAppear() {
-                Webservice().getAllUser { (user) in
+                Webservice().getAllUser { (users) in
                     self.users = users
                 }
             }
         }
+        .navigationTitle("Choose a user")
     }
+
 }
 
 struct ShowAllUserScreen_Previews: PreviewProvider {

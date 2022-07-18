@@ -41,6 +41,9 @@ struct UpdateUserRequestBody: Codable {
     let password: String
 }
 
+struct newFunding: Codable {
+    let amount: Double
+}
 
 class Webservice : ObservableObject{
       
@@ -283,6 +286,42 @@ var items = [Item]()
             }
             
             completion(.success(userData))
+            
+        }.resume()
+    }
+    
+    func fundUser(id: String, amount: Double) {
+        
+        
+        guard let url = URL(string: urlCC1 + "/users/" + id + "/funding") else {
+            print("Invalid url...")
+            return
+        }
+        
+        
+       guard let token = getRefreshToken() else {
+                    return
+                }
+
+        
+        let body = newFunding(amount: amount)
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(body)
+        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            
+            let httpResponse = response as? HTTPURLResponse
+                
+            if(httpResponse?.statusCode != 200){
+                //completion(.failure(.decodingError))
+            }
+            
+            //completion(.success(()))
             
         }.resume()
         
