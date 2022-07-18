@@ -14,19 +14,7 @@ struct BookingView: View {
     var orderModel = OrderViewModel()
     
     var body: some View {
-        NavigationView {
             VStack {
-                HStack{
-                    Spacer()
-                    Text("")
-                        .onAppear {
-            //TODO get Data for Username and Budget
-                        }
-                    Spacer()
-                }
-                
-                Spacer()
-                                         
                 List (self.items) { (item) in
                     HStack{
                         Text(item.name + ": " + String(item.price) + "€")
@@ -53,7 +41,6 @@ struct BookingView: View {
                 self.emptyOrder()
             }
         }
-    }
     
     func emptyOrder() {
         orderModel.items = [Item]()

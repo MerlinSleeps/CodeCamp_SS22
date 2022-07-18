@@ -196,6 +196,28 @@ var items = [Item]()
         }.resume()
     }
     
+    func getAllUser(completion:@escaping ([User]) -> ()) {
+        
+        guard let url = URL(string: urlCC1 + "/users") else {
+            print("Invalid url...")
+            return
+        }
+        
+        print(url)
+    
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+
+            let users = try! JSONDecoder().decode([User].self, from: data!)
+            
+            print(users)
+            DispatchQueue.main.async {
+                completion(users)
+            }
+        }.resume()
+        
+    }
+    
     func updateUser(id: String, name: String, password: String, completion: @escaping (Result<Void, NetworkError>) -> Void){
         
         

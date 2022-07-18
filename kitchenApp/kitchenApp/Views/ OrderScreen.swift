@@ -14,19 +14,7 @@ struct OrderScreenView: View {
     var orderModel = OrderViewModel()
     
     var body: some View {
-        NavigationView {
             VStack {
-                HStack{
-                    Spacer()
-                    Text("")
-                        .onAppear {
-                        //TODO get Data for Username and Budget
-                        }
-                    Spacer()
-                }
-                
-                Spacer()
-                
                 List (self.orderItems, id: \.self) { (item) in
                     HStack{
                         Text(item)
@@ -55,7 +43,6 @@ struct OrderScreenView: View {
             }
             .navigationTitle("Confirm your Order")
         }
-    }
     
 }
 
