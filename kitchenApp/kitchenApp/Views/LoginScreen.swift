@@ -30,7 +30,7 @@ struct LoginScreen : View {
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 70)
-            NavigationLink(destination: BookingView(), isActive: $loginVM.isAuthenticated) {
+            NavigationLink(destination: ProfileScreen(), isActive: $loginVM.isAuthenticated) {
                 Button(action: {
                     loginVM.login()
                 }) {
