@@ -15,6 +15,8 @@ struct ChargeMoneyScreen: View {
     
     @State var showAlert = false
     
+    var userID: String
+    
     var body: some View {
         VStack {
             Form {
@@ -40,19 +42,21 @@ struct ChargeMoneyScreen: View {
             }
             Button("Recharge Balance") {
                 showAlert = true
+                Webservice().fundUser(id: userID, amount: rechargeAmount)
             }
             .alert(isPresented: $showAlert) {
                 Alert (
-                    title: Text("Your balance got recharged by " + String(rechargeAmount)),
+                    title: Text("The balance got recharged by " + String(rechargeAmount)),
                     message: Text("")
                 )
             }
         }
+        .navigationTitle("Fund user")
     }
 }
 
 struct ChargeMoneyScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ChargeMoneyScreen()
+        ChargeMoneyScreen(userID: "")
     }
 }

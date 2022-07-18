@@ -18,6 +18,7 @@
 		77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961C285939EE0086C25E /* ProfileScreen.swift */; };
 		77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961E28593A570086C25E /* TransactionsScreen.swift */; };
 		D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */; };
+		D731179C28855CEF00FD6997 /* ShowAllUserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */; };
 		D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */; };
 		D745480828786C080074EC74 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745480728786C080074EC74 /* Order.swift */; };
 		D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745480928786D0B0074EC74 /* OrderViewModel.swift */; };
@@ -67,6 +68,7 @@
 		77C5961C285939EE0086C25E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		77C5961E28593A570086C25E /* TransactionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsScreen.swift; sourceTree = "<group>"; };
 		D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeMoneyScreen.swift; sourceTree = "<group>"; };
+		D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllUserScreen.swift; sourceTree = "<group>"; };
 		D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " OrderScreen.swift"; sourceTree = "<group>"; };
 		D745480728786C080074EC74 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		D745480928786D0B0074EC74 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				77B54F2C285AAFD500217CD3 /* LoginScreen.swift */,
 				D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */,
 				D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */,
+				D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				F77D480528254C8E00A898D4 /* ContentView.swift in Sources */,
 				77AD4A53288459D500134BF7 /* UserProfile.swift in Sources */,
 				D74C36FC28776BB100510E18 /* EditItemView.swift in Sources */,
+				D731179C28855CEF00FD6997 /* ShowAllUserScreen.swift in Sources */,
 				F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */,
 				776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */,
 				D74C36F028776B0A00510E18 /* UpdateItem.swift in Sources */,
