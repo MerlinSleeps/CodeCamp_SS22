@@ -51,7 +51,7 @@ struct MainScreenAdmin: View {
                     }
                 }
                 
-                NavigationLink(destination: ProfileScreen()) {
+                NavigationLink(destination: ShowAllUserScreen()) {
                     Button(action: {
                         loginVM.login()
                     }) {
@@ -88,7 +88,7 @@ struct UpdateItemsButtonContent: View {
 
 struct ChargeMoneyButtonContent: View {
 var body: some View {
-    return Text("Charge Money")
+    return Text("Recharge Money")
         .font(.headline)
         .foregroundColor(.white)
         .padding()
