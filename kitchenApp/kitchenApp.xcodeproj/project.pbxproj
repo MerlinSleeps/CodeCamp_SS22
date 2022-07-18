@@ -17,6 +17,7 @@
 		77C5961B285939B60086C25E /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961A285939B60086C25E /* StartScreen.swift */; };
 		77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961C285939EE0086C25E /* ProfileScreen.swift */; };
 		77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961E28593A570086C25E /* TransactionsScreen.swift */; };
+		D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */; };
 		D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */; };
 		D745480828786C080074EC74 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745480728786C080074EC74 /* Order.swift */; };
 		D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745480928786D0B0074EC74 /* OrderViewModel.swift */; };
@@ -65,6 +66,7 @@
 		77C5961A285939B60086C25E /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		77C5961C285939EE0086C25E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		77C5961E28593A570086C25E /* TransactionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsScreen.swift; sourceTree = "<group>"; };
+		D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeMoneyScreen.swift; sourceTree = "<group>"; };
 		D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " OrderScreen.swift"; sourceTree = "<group>"; };
 		D745480728786C080074EC74 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		D745480928786D0B0074EC74 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				D7B8F604285950BE0056B38D /* BookingView.swift */,
 				77B54F2C285AAFD500217CD3 /* LoginScreen.swift */,
 				D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */,
+				D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				D74C36F428776B2E00510E18 /* AddNewItemView.swift in Sources */,
 				77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */,
 				77AD4A512884599F00134BF7 /* ProfileViewModel.swift in Sources */,
+				D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */,
 				77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */,
 				D74C36F728776B4000510E18 /* EditItemRow.swift in Sources */,
 				776A4E632859ECB5009B6FE6 /* User.swift in Sources */,
