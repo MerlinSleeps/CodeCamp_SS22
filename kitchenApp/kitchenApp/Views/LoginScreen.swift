@@ -30,7 +30,7 @@ struct LoginScreen : View {
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 70)
-            NavigationLink(destination: ProfileScreen(), isActive: $loginVM.isAuthenticated) {
+            NavigationLink(destination: MainScreenAdmin(), isActive: $loginVM.isAuthenticated) {
                 Button(action: {
                     loginVM.login()
                 }) {
