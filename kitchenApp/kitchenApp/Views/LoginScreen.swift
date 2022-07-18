@@ -30,17 +30,32 @@ struct LoginScreen : View {
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 70)
-            NavigationLink(destination: MainScreenAdmin(), isActive: $loginVM.isAuthenticated) {
+            
+               NavigationLink(destination: MainScreen(), isActive: $loginVM.isAuthenticated) {
                 Button(action: {
                     loginVM.login()
                 }) {
                    LoginButtonContent()
                 }
             }
+            
+                NavigationLink(destination: MainScreenAdmin(), isActive: $loginVM.isAdmin) {
+                    Button(action: {
+                        loginVM.loginIsAdmin()
+                    }) {
+                        LoginAsAdminButtonContent()
+                    }
+                }
+            
+            Spacer()
+            
+                NavigationLink(destination: SignUpScreen()) {
+                        Text("New user? Sign Up")
+                }
         }
         .padding()
     }
-}
+
 
 
 struct LoginScreen_Previews : PreviewProvider {
@@ -80,5 +95,17 @@ struct LoginButtonContent : View {
             .frame(width: 200, height: 50)
             .background(Color.blue)
             .cornerRadius(15.0)
+    }
+}
+    struct LoginAsAdminButtonContent : View {
+        var body: some View {
+            return Text("LOGIN AS ADMIN")
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+                .frame(width: 200, height: 50)
+                .background(Color.blue)
+                .cornerRadius(15.0)
+        }
     }
 }

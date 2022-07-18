@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
+		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
 		776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E602859E6D0009B6FE6 /* Webservice.swift */; };
 		776A4E632859ECB5009B6FE6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E622859ECB5009B6FE6 /* User.swift */; };
 		776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
+		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		776A4E602859E6D0009B6FE6 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		776A4E622859ECB5009B6FE6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */,
 				D745480928786D0B0074EC74 /* OrderViewModel.swift */,
 				77AD4A502884599F00134BF7 /* ProfileViewModel.swift */,
+				771880B1288616EC0061C3B1 /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 				D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */,
 				D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */,
 				D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */,
+				771880AF288605630061C3B1 /* SignUpScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				77C5961B285939B60086C25E /* StartScreen.swift in Sources */,
 				D74C36F828776B4000510E18 /* EditItemListView.swift in Sources */,
 				D731179F2885924800FD6997 /* MainScreenAdmin.swift in Sources */,
+				771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */,
 				D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */,
 				776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */,
 				D74C36F228776B2000510E18 /* Item.swift in Sources */,
@@ -387,6 +394,7 @@
 				D74C36F428776B2E00510E18 /* AddNewItemView.swift in Sources */,
 				77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */,
 				77AD4A512884599F00134BF7 /* ProfileViewModel.swift in Sources */,
+				771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */,
 				D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */,
 				77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */,
 				D74C36F728776B4000510E18 /* EditItemRow.swift in Sources */,
