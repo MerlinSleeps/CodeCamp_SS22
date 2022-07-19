@@ -51,6 +51,11 @@ struct newFunding: Codable {
     let amount: Double
 }
 
+struct pruchaseItemBody: Codable {
+    let itemId: String
+    let amount: Int
+}
+
 class Webservice : ObservableObject{
       
 let urlCC1 = "http://141.51.114.20:8080"
@@ -371,5 +376,43 @@ var items = [Item]()
         }.resume()
     }
     
-    
+    func purchaseItem(id: String, itemId: String, amount: Int){
+        
+        
+        guard let url = URL(string: urlCC1 + "/users/"+id+"/purchases") else {
+            print("Invalid url...")
+            return
+        }
+        
+        
+       guard let token = getRefreshToken() else {
+                    //completion(.failure(.noData))
+                    return
+                }
+
+        
+        let body = pruchaseItemBody(itemId: itemId, amount: amount)
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(body)
+        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            
+            let httpResponse = response as? HTTPURLResponse
+                
+            if(httpResponse?.statusCode != 200){
+                print(httpResponse?.statusCode)
+                //completion(.failure(.decodingError))
+            }
+            
+            //completion(.success(()))
+            
+        }.resume()
+        
+        
+    }
 }

@@ -17,17 +17,23 @@ class OrderViewModel: ObservableObject {
         order.counts = [:]
         
         for item in items {
-            order.counts[item] = (order.counts[item] ?? 0.0) + 1.0
+            order.counts[item] = (order.counts[item] ?? 0) + 1
         }
         
         order.totalPrice = 0
         
         for item in order.counts.keys {
-            order.counts[item]! *= item.price
-            order.totalPrice += order.counts[item]!
+            let price = Double(order.counts[item] ?? 0) * item.price
+            order.totalPrice += price
         }
         
         return order
     }
     
+    func purchaseOrder(userId: String) {
+
+        for item in order.counts.keys {
+            Webservice().purchaseItem(id: userId, itemId: item.id, amount: order.counts[item] ?? 0)
+        }
+    }
 }
