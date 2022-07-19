@@ -6,21 +6,84 @@
 //
 
 import Foundation
-var w = Webservice()
+
+let urlCC1 = "http://141.51.114.20:8080"
 
 func updateItem(id: String, name: String, amount: Int, price: Double) {
+    
+    guard let url = URL(string: urlCC1 + "/items") else {
+        print("Invalid url...")
+        return
+    }
+    let itembody = Item( id: id, name: name, amount: amount, price: price)
+    
+    guard let token = Webservice().getRefreshToken() else {
+        print("no token")
+                 return
+             }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "PUT"
+    request.httpBody = try? JSONEncoder().encode(itembody)
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+    
+    print(request)
+    
+    URLSession.shared.dataTask(with: request) {
+        data, response, error in
+        
+        let httpresponse = response as? HTTPURLResponse
+        print(httpresponse?.statusCode)
+        
+    }.resume()
+    
     print("Edited!")
-    w.editItemRequest(id: id, name: name, amount: amount, price: price)
 }
 
 func createItem(name: String, price: Double) {
     print("Created!")
-    w.addItemRequest(name: name, price: price)
+    
+    guard let url = URL(string: urlCC1 + "/items") else {
+        return
+    }
+    
+    let createItemId = String(items1.count + 1)
+    let itembody = Item(id: createItemId, name: name, amount: 9, price: price)
+
+    guard let token = Webservice().getRefreshToken() else {
+                 return
+             }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.httpBody = try? JSONEncoder().encode(itembody)
+    request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    URLSession.shared.dataTask(with: request) {
+        data, response, error in
+    }.resume()
 }
 
 func deleteItem(id: String) {
     print("Deleted!")
-    w.deleteItemRequest(id: id)
+    guard let url = URL(string: urlCC1 + "/items/" + id) else {
+        return
+    }
+    
+    guard let token = Webservice().getRefreshToken() else {
+                 return
+             }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "DELETE"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+    
+    URLSession.shared.dataTask(with: request) {
+        data, response, error in
+    }.resume()
 }
 
 func findItem(name: String) -> Item {
@@ -30,4 +93,17 @@ func findItem(name: String) -> Item {
         }
     }
     return Item(id: "Null", name: "Null", amount: 0, price: 0)
+}
+
+func initHistory() -> [History] {
+    histories.append(History(id: 1, action: "Bought", time: "18.07.2022", creditchange: -18.5, itemsBought: items1))
+    return histories
+}
+
+func getTime() -> String {
+    let now = Date()
+    let dformat = DateFormatter()
+    dformat.dateFormat = "dd.MM.yyyy HH:mm:ss"
+    print(dformat.string(from: now))
+    return dformat.string(from: now)
 }
