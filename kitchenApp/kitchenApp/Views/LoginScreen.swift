@@ -17,7 +17,7 @@ struct LoginScreen : View {
         
         VStack {
             WelcomeText()
-            UserImage()
+            CoffeeImageView()
             TextField("User ID", text: $loginVM.id)
                 .textInputAutocapitalization(.never)
                 .padding()
@@ -71,18 +71,6 @@ struct WelcomeText : View {
             .font(.largeTitle)
             .fontWeight(.semibold)
             .padding(.bottom, 20)
-    }
-}
-
-struct UserImage : View {
-    var body: some View {
-        return Image("Image-2")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 150)
-            .clipped()
-            .cornerRadius(150)
-            .padding(.bottom, 75)
     }
 }
 

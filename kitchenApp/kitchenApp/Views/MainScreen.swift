@@ -19,7 +19,7 @@ struct MainScreen: View {
     
     var body: some View {
         VStack {
-            CoffeeImage()
+            CoffeeImageView()
             HStack {
                 Text(self.profile.userProfile.name).frame(height: 30)
             }
@@ -62,15 +62,14 @@ struct MainScreen_Previews: PreviewProvider {
     }
 }
 
-struct CoffeeImage : View {
+struct HistoryButtonContent: View {
     var body: some View {
-        return Image("Image-2")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 150)
-            .clipped()
-            .cornerRadius(150)
-            .padding(.bottom, 75)
+        return Text("Transaction History")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 200, height: 50)
+            .background(Color.blue)
+            .cornerRadius(15.0)
     }
 }
-

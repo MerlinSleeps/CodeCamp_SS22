@@ -16,7 +16,7 @@ struct EditItemRow: View {
         HStack {
             VStack {
                 Text(item.name)
-                Text(String(item.price))
+                Text("$" + String(format:"%.2f",item.price))
             }
             Spacer()
             Button("Edit") {
