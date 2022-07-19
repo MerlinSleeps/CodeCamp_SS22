@@ -23,13 +23,11 @@ struct LoginScreen : View {
                 .padding()
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
-                .padding(.bottom, 20)
             SecureField("Password", text: $loginVM.password)
                 .textInputAutocapitalization(.never)
                 .padding()
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
-                .padding(.bottom, 70)
             
                NavigationLink(destination: MainScreen(), isActive: $loginVM.isAuthenticated) {
                 Button(action: {
