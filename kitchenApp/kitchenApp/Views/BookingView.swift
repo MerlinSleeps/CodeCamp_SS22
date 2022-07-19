@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BookingView: View {
     
+    @ObservedObject var profile = ProfileViewModel()
+    
     @State var items = [Item]()
     
     var orderModel = OrderViewModel()
@@ -37,8 +39,14 @@ struct BookingView: View {
                 Spacer()
             }
             .navigationTitle("Choose your Items")
+            .toolbar {
+                Button("Refund") {
+                    Webservice().refundPurchase(id: profile.userProfile.id)
+                }
+            }
             .onAppear() {
                 self.emptyOrder()
+                profile.getUserData()
             }
         }
     

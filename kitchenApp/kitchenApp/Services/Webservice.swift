@@ -412,6 +412,41 @@ var items = [Item]()
             //completion(.success(()))
             
         }.resume()
+    }
+    
+    func refundPurchase(id: String){
+        
+        
+        guard let url = URL(string: urlCC1 + "/users/"+id+"/purchases" + "/refund") else {
+            print("Invalid url...")
+            return
+        }
+        
+        
+       guard let token = getRefreshToken() else {
+                    //completion(.failure(.noData))
+                    return
+                }
+
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            
+            let httpResponse = response as? HTTPURLResponse
+                
+            if(httpResponse?.statusCode != 200){
+                print(httpResponse?.statusCode)
+                //completion(.failure(.decodingError))
+            }
+            
+            //completion(.success(()))
+            
+        }.resume()
         
         
     }
