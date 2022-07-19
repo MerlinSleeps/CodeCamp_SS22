@@ -34,6 +34,8 @@
 		D74C36F828776B4000510E18 /* EditItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36F628776B4000510E18 /* EditItemListView.swift */; };
 		D74C36FC28776BB100510E18 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36FB28776BB100510E18 /* EditItemView.swift */; };
 		D7B8F605285950BE0056B38D /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B8F604285950BE0056B38D /* BookingView.swift */; };
+		D7EC684A2886C24C001C3D08 /* SendMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EC68492886C24C001C3D08 /* SendMoneyView.swift */; };
+		D7EC684C2886CD6D001C3D08 /* GeneralButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EC684B2886CD6D001C3D08 /* GeneralButtonView.swift */; };
 		F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D480228254C8E00A898D4 /* kitchenAppApp.swift */; };
 		F77D480528254C8E00A898D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D480428254C8E00A898D4 /* ContentView.swift */; };
 		F77D480728254C8F00A898D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F77D480628254C8F00A898D4 /* Assets.xcassets */; };
@@ -88,6 +90,8 @@
 		D74C36F628776B4000510E18 /* EditItemListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemListView.swift; sourceTree = "<group>"; };
 		D74C36FB28776BB100510E18 /* EditItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		D7B8F604285950BE0056B38D /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
+		D7EC68492886C24C001C3D08 /* SendMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyView.swift; sourceTree = "<group>"; };
+		D7EC684B2886CD6D001C3D08 /* GeneralButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralButtonView.swift; sourceTree = "<group>"; };
 		F77D47FF28254C8E00A898D4 /* kitchenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kitchenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77D480228254C8E00A898D4 /* kitchenAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kitchenAppApp.swift; sourceTree = "<group>"; };
 		F77D480428254C8E00A898D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */,
 				D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */,
 				771880AF288605630061C3B1 /* SignUpScreen.swift */,
+				D7EC68492886C24C001C3D08 /* SendMoneyView.swift */,
+				D7EC684B2886CD6D001C3D08 /* GeneralButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -388,11 +394,13 @@
 				D731179F2885924800FD6997 /* MainScreenAdmin.swift in Sources */,
 				771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */,
 				D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */,
+				D7EC684C2886CD6D001C3D08 /* GeneralButtonView.swift in Sources */,
 				776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */,
 				D74C36F228776B2000510E18 /* Item.swift in Sources */,
 				77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */,
 				D74C36F428776B2E00510E18 /* AddNewItemView.swift in Sources */,
 				77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */,
+				D7EC684A2886C24C001C3D08 /* SendMoneyView.swift in Sources */,
 				77AD4A512884599F00134BF7 /* ProfileViewModel.swift in Sources */,
 				771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */,
 				D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */,

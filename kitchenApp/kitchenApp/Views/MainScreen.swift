@@ -26,21 +26,19 @@ struct MainScreen: View {
                 Text("Balance:")
                 Text(self.profile.userProfile.balance, format: .number).frame(height: 100)
             }
-            List{
                 NavigationLink(destination: BookingView()) {
                 Button(action: {
                     loginVM.login()
                 }) {
-                    BookItemButtonContent()
+                    GeneralButtonView(text: "Booking")
                 }
             }
             NavigationLink(destination: ProfileScreen()) {
                 Button(action: {
                     loginVM.login()
                 }) {
-                    EditProfileButtonContent()
+                    GeneralButtonView(text: "Profile")
                 }
-            }
             }
         }
         .padding()

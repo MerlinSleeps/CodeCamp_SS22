@@ -26,12 +26,11 @@ struct MainScreenAdmin: View {
                 Text("Balance:")
                 Text(self.profile.userProfile.balance, format: .number)
             }
-            List{
                 NavigationLink(destination: BookingView()) {
                     Button(action: {
                         loginVM.login()
                     }) {
-                        BookItemButtonContent()
+                        GeneralButtonView(text: "Booking")
                     }
                 }
                 
@@ -39,7 +38,7 @@ struct MainScreenAdmin: View {
                     Button(action: {
                         loginVM.login()
                     }) {
-                        EditProfileButtonContent()
+                        GeneralButtonView(text: "Profile")
                     }
                 }
                 
@@ -47,7 +46,7 @@ struct MainScreenAdmin: View {
                     Button(action: {
                         loginVM.login()
                     }) {
-                        UpdateItemsButtonContent()
+                        GeneralButtonView(text: "Edit Item")
                     }
                 }
                 
@@ -55,10 +54,9 @@ struct MainScreenAdmin: View {
                     Button(action: {
                         loginVM.login()
                     }) {
-                        ChargeMoneyButtonContent()
+                        GeneralButtonView(text: "Users")
                     }
                 }
-            }
             
         }
         .padding()
@@ -71,53 +69,5 @@ struct MainScreenAdmin: View {
 struct MainScreenAdmin_Previews: PreviewProvider {
     static var previews: some View {
         MainScreenAdmin()
-    }
-}
-    
-struct UpdateItemsButtonContent: View {
-    var body: some View {
-        return Text("Update Items")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 50)
-            .background(Color.blue)
-            .cornerRadius(15.0)
-    }
-}
-
-struct ChargeMoneyButtonContent: View {
-var body: some View {
-    return Text("Recharge Money")
-        .font(.headline)
-        .foregroundColor(.white)
-        .padding()
-        .frame(width: 200, height: 50)
-        .background(Color.blue)
-        .cornerRadius(15.0)
-    }
-}
-
-struct BookItemButtonContent: View {
-    var body: some View {
-        return Text("Book Items")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 50)
-            .background(Color.blue)
-            .cornerRadius(15.0)
-    }
-}
-    
-struct EditProfileButtonContent: View {
-    var body: some View {
-        return Text("Edit Profil")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 50)
-            .background(Color.blue)
-            .cornerRadius(15.0)
     }
 }
