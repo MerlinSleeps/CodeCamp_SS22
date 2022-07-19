@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OrderScreenView: View {
     
+    @ObservedObject var profile = ProfileViewModel()
+    
     @State var orderItems = [String]()
     @State private var showingOrderCancelAlert = false
     var orderModel = OrderViewModel()
@@ -26,22 +28,26 @@ struct OrderScreenView: View {
                     }
                     let order = orderModel.calculateOrder(items: orderModel.items)
                     for (key, value) in order.counts {
-                        orderItems.append("\(value)€ \(key.name)")
+                        orderItems.append("\(Double(value) * key.price)€ \(key.name)")
                     }
                 }
                 
                 
-                Text("Total Amount:" + String(orderModel.order.totalPrice))
+                Text("Total Amount: " + String(orderModel.order.totalPrice))
                 
                 HStack{
-                    Spacer()
-                    Button("Buy", action: {})
+                    Button("Buy")
+                    {
+                        orderModel.purchaseOrder(userId: profile.userProfile.id)
+                    }
                         .buttonStyle(.bordered)
-                    Spacer()
                 }
                 Spacer()
             }
             .navigationTitle("Confirm your Order")
+            .onAppear() {
+                profile.getUserData()
+            }
         }
     
 }

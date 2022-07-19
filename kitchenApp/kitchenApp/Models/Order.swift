@@ -9,6 +9,6 @@ import Foundation
 import SwiftUI
 
 struct Order: Hashable, Codable {
-    var counts: [Item : Double] = [:]
+    var counts: [Item : Int] = [:]
     var totalPrice: Double = 0
 }

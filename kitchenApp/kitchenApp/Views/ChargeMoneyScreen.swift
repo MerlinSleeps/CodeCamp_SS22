@@ -44,12 +44,6 @@ struct ChargeMoneyScreen: View {
                 showAlert = true
                 Webservice().fundUser(id: userID, amount: rechargeAmount)
             }
-            .alert(isPresented: $showAlert) {
-                Alert (
-                    title: Text("The balance got recharged by " + String(rechargeAmount)),
-                    message: Text("")
-                )
-            }
         }
         .navigationTitle("Fund user")
     }
