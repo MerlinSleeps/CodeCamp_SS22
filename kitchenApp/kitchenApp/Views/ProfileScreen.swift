@@ -116,7 +116,7 @@ struct ProfileScreen: View {
                         Text("Purchases")
                         Spacer()
                             .foregroundColor(.secondary)
-                        NavigationLink(destination: TransactionsScreen()) {}
+                        
                     }
                 }
             }
