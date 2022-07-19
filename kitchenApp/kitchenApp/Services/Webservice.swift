@@ -24,6 +24,12 @@ struct LoginRequestBody: Codable {
     let password: String
 }
 
+struct SignUpRequestBody: Codable {
+    let id: String
+    let name: String
+    let password: String
+}
+
 struct Token: Codable {
     let token: String
     let expiration: Int64
@@ -78,6 +84,44 @@ var items = [Item]()
             }
             
            completion(.success(token))
+            
+        }.resume()
+    }
+    
+    
+    func signUP(id: String, name: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
+        
+        guard let url = URL(string: urlCC1 + "/users") else {
+            completion(.failure(.custom(errorMessage: "URL is not correct")))
+            return
+        }
+        
+        let body = SignUpRequestBody(id: id, name: name, password: password)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(errorMessage: "No data")))
+                return
+            }
+            
+            
+            let httpResponse = response as? HTTPURLResponse
+                
+            if(httpResponse?.statusCode != 200){
+                completion(.failure(.custom(errorMessage: "ooo...")))
+                return
+            }
+    
+            
+            let str = String(decoding: data, as: UTF8.self)
+            
+           completion(.success(str))
             
         }.resume()
     }
