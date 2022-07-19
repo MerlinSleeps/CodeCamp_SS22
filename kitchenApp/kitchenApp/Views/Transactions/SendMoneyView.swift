@@ -14,7 +14,7 @@ struct SendMoneyView: View {
     @State var transferAmount = 0.0
     @State var showAlert = false
     
-    var recipientId: String
+    var user: User
     
     var body: some View {
         VStack {
@@ -25,23 +25,18 @@ struct SendMoneyView: View {
                     Text(self.profile.userProfile.balance, format: .number).foregroundColor(.secondary)
                 }
                 Section(header:Text("How much do want to transfer?")) {
-                    TextField("Recharge Amount", value: $transferAmount, format: .number)
+                    TextField("Transferamount", value: $transferAmount, format: .number)
                 }
             }
-            Button("Send") {
+            Button("Transfer to " + user.name) {
                 showAlert = true
-                Webservice().sendMoney(id: profile.userProfile.id, recipientId: self.recipientId, amount: transferAmount)
+                Webservice().sendMoney(id: profile.userProfile.id, recipientId: user.id, amount: transferAmount)
             }
+            .buttonStyle(GeneralButton())
         }
-        .navigationTitle("Transfer Money to " + recipientId)
+        .navigationTitle("Transfer Money")
         .onAppear() {
             profile.getUserData()
         }
-    }
-}
-
-struct SendMoneyView_Previews: PreviewProvider {
-    static var previews: some View {
-        SendMoneyView(recipientId: "")
     }
 }

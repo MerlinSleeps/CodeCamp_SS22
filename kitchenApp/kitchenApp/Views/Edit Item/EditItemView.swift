@@ -40,6 +40,7 @@ struct EditItemView: View {
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
             .font(.system(size: 30))
+            .buttonStyle(GeneralButton())
             
             Button(action: {self.showingDelete = true}, label: {
                 Text("Delete")
@@ -51,6 +52,7 @@ struct EditItemView: View {
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
             .font(.system(size: 30))
+            .buttonStyle(GeneralButton())
         }
     }
 }

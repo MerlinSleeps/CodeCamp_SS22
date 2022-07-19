@@ -26,6 +26,7 @@ struct MainScreenAdmin: View {
                 Text("Balance:")
                 Text(self.profile.userProfile.balance, format: .number)
             }
+                //Booking
                 NavigationLink(destination: BookingView(), tag: 1, selection: $tag) {
                     Button("Booking", action: {
                         loginVM.login()
@@ -33,7 +34,7 @@ struct MainScreenAdmin: View {
                     })
                     .buttonStyle(GeneralButton())
                 }
-                
+                //Profile
                 NavigationLink(destination: ProfileScreen(), tag: 2, selection: $tag) {
                     Button("Profile", action: {
                         loginVM.login()
@@ -41,22 +42,38 @@ struct MainScreenAdmin: View {
                     })
                     .buttonStyle(GeneralButton())
                 }
-                
-                NavigationLink(destination: EditItemListView(), tag: 3, selection: $tag) {
+                //Transfer Money
+                NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 3, selection: $tag) {
+                        Button("Fund user" ,action: {
+                            loginVM.login()
+                            self.tag = 3
+                        })
+                        .buttonStyle(GeneralButton())
+                }.buttonStyle(GeneralButton())
+                //Transfer History
+            NavigationLink(destination: HistoryListView(), tag: 4, selection: $tag) {
+                        Button("Transfer History" ,action: {
+                            loginVM.login()
+                            self.tag = 4
+                        })
+                        .buttonStyle(GeneralButton())
+                }.buttonStyle(GeneralButton())
+                //Edit Item
+                NavigationLink(destination: EditItemListView(), tag: 5, selection: $tag) {
                     Button("Edit Item" ,action: {
                         loginVM.login()
-                        self.tag = 3
+                        self.tag = 5
                     })
                     .buttonStyle(GeneralButton())
                 }
-                
-            NavigationLink(destination: ShowAllUserScreen(), tag: 4, selection: $tag) {
-                    Button("User" ,action: {
-                        loginVM.login()
-                        self.tag = 4
-                    })
-                    .buttonStyle(GeneralButton())
-            }.buttonStyle(GeneralButton())
+                //Charge Money
+                NavigationLink(destination: ShowAllUserScreen(destination: .chargeMoney), tag: 6, selection: $tag) {
+                        Button("Fund user" ,action: {
+                            loginVM.login()
+                            self.tag = 6
+                        })
+                        .buttonStyle(GeneralButton())
+                }.buttonStyle(GeneralButton())
         }
         .padding()
         .onAppear(perform: {

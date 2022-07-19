@@ -39,6 +39,7 @@ struct EditItemListView: View {
                 } label: {
                     Text("Add Item")
                 }
+                .buttonStyle(GeneralButton())
                 .navigationTitle("UpdateItem")
                 Divider()
             }

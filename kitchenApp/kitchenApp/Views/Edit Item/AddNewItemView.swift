@@ -36,6 +36,7 @@ struct AddNewItem: View {
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
             .font(.system(size: 30))
+            .buttonStyle(GeneralButton())
         }
     }
 }

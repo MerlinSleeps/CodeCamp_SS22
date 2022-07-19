@@ -15,42 +15,26 @@ struct ChargeMoneyScreen: View {
     
     @State var showAlert = false
     
-    var userID: String
+    var user:User
     
     var body: some View {
         VStack {
             Form {
                 Section(header: Text("Current Balance")) {
-                    HStack {
-                        Text("Name")
-                        Spacer()
-                        Text(self.profile.userProfile.name).foregroundColor(.secondary)
-                    }
-                        
-                    HStack {
-                        Text("Balance")
-                        Spacer()
-                        Text(self.profile.userProfile.balance, format: .number).foregroundColor(.secondary)
-                    }
+                    Text(user.name)
                 }
-                
                 Section(header:Text("Recharge Amount")) {
                     TextField("Recharge Amount",
                               value: $rechargeAmount,
                               format: .number)
                 }
             }
-            Button("Recharge Balance") {
+            Button("Fund " + user.name) {
                 showAlert = true
-                Webservice().fundUser(id: userID, amount: rechargeAmount)
+                Webservice().fundUser(id: user.id, amount: rechargeAmount)
             }
+            .buttonStyle(GeneralButton())
         }
         .navigationTitle("Fund user")
-    }
-}
-
-struct ChargeMoneyScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ChargeMoneyScreen(userID: "")
     }
 }
