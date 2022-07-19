@@ -35,13 +35,6 @@ struct Token: Codable {
     let expiration: Int64
 }
 
-struct newItem: Codable {
-    var name: String
-    var amount: Int
-    var price: Double
-}
-
-
 struct UpdateUserRequestBody: Codable {
     let name: String
     let password: String
@@ -198,55 +191,6 @@ var items = [Item]()
         return defaults.string(forKey: "jsonwebtoken")
     }
     
-    func addItemRequest(name: String, price: Double) {
-        
-        guard let url = URL(string: urlCC1 + "/items") else {
-            return
-        }
-        
-        let itembody = newItem(name: name, amount: 9, price: price)
-
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONEncoder().encode(itembody)
-        
-        URLSession.shared.dataTask(with: request) {
-            data, response, error in
-        }.resume()
-    }
-    
-    func editItemRequest(id: String, name: String, amount: Int, price: Double) {
-        
-        guard let url = URL(string: urlCC1 + "/items") else {
-            return
-        }
-        
-        let itembody = Item( id: id, name: name, amount: amount, price: price)
-
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        request.httpBody = try? JSONEncoder().encode(itembody)
-        
-        URLSession.shared.dataTask(with: request) {
-            data, response, error in
-        }.resume()
-    }
-    
-    func deleteItemRequest(id: String) {
-        
-        guard let url = URL(string: urlCC1 + "/items/" + id) else {
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        
-        URLSession.shared.dataTask(with: request) {
-            data, response, error in
-        }.resume()
-    }
     
     func getAllUser(completion:@escaping ([User]) -> ()) {
         

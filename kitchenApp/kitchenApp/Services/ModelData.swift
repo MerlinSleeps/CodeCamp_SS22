@@ -10,3 +10,6 @@
 import Foundation
 
 var items1:[Item] = []
+var histories:[History] = []
+var boughtItems:[Item] = []
+
