@@ -16,7 +16,7 @@ struct SignUpScreen : View {
     var body: some View {
         
         VStack {
-            CoffeeImageView()
+            CoffeeImagevView()
             TextField("User ID", text: $signUpVM.id)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)

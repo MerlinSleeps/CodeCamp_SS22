@@ -19,7 +19,7 @@ struct MainScreen: View {
     
     var body: some View {
         VStack {
-            CoffeeImageView()
+            CoffeeImagevView()
             HStack {
                 Text(self.profile.userProfile.name).frame(height: 30)
             }
@@ -71,5 +71,17 @@ struct HistoryButtonContent: View {
             .frame(width: 200, height: 50)
             .background(Color.blue)
             .cornerRadius(15.0)
+    }
+}
+    
+struct CoffeeImagevView: View {
+    var body: some View {
+        return Image("Image-2")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 150, height: 150)
+            .clipped()
+            .cornerRadius(150)
+            .padding(.bottom, 75)
     }
 }

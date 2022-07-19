@@ -17,7 +17,7 @@ struct LoginScreen : View {
         
         VStack {
             WelcomeText()
-            CoffeeImageView()
+            CoffeeImagevView()
             TextField("User ID", text: $loginVM.id)
                 .textInputAutocapitalization(.never)
                 .padding()
