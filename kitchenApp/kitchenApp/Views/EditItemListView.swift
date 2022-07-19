@@ -41,9 +41,6 @@ struct EditItemListView: View {
                 }
                 .navigationTitle("UpdateItem")
                 Divider()
-                Button("Back") {
-                }
-                
             }
         }
     }

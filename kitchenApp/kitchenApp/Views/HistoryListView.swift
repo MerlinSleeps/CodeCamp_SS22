@@ -13,10 +13,18 @@ struct HistoryListView: View {
         NavigationView{
             VStack {
                 List(initHistory()) { history in
-                    NavigationLink {
-                        HistoryView(history: history)
-                    } label: {
-                        HistoryRow(history: history)
+                    if (history.action == "Bought") {
+                        NavigationLink {
+                            HistoryView(history: history)
+                        } label: {
+                            HistoryRow(history: history)
+                        }
+                    } else {
+                        NavigationLink {
+                            HistoryTransView(history: history)
+                        } label: {
+                            HistoryTransRaw(history: history)
+                        }
                     }
                 }
                 .navigationTitle("Transaction History")

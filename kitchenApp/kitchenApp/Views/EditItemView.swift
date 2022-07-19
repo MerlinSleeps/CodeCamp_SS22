@@ -34,7 +34,7 @@ struct EditItemView: View {
                 Text("Done")
             })
             .alert(isPresented: $showingEdit) {
-                Alert(title: Text("Edit Item"), message: Text("Change Item to " + editedItemName + " " + editedItemPrice), primaryButton: .default(Text("OK")) {
+                Alert(title: Text("Edit Item"), message: Text("Change Item to " + editedItemName + " $" + editedItemPrice), primaryButton: .default(Text("OK")) {
                     let priceInDouble = Double(editedItemPrice)
                     updateItem(id: item.id, name: editedItemName, amount: item.amount, price: priceInDouble!)
                 }, secondaryButton: .destructive(Text("Cancel")))

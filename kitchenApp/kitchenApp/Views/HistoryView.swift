@@ -18,11 +18,14 @@ struct HistoryView: View {
             .onAppear() {
                 boughtItems = history.itemsBought
             }
+            Divider()
             Text("Summe: " + String(history.creditchange))
-                .frame(width: 300, height: 50, alignment: .trailing)
+                .frame(width: 300, height: 30, alignment: .trailing)
                 .font(.system(size: 25))
-            Text(history.time)
-                .frame(width: 300, height: 50, alignment:.trailing)
+            Divider()
+            Text("Date: " + history.time)
+                .frame(width: 300, height: 30, alignment:.trailing)
+                .font(.system(size: 18))
         }
     }
 }

@@ -1,13 +1,13 @@
 //
-//  HistoryView.swift
+//  HistoryTransRaw.swift
 //  kitchenApp
 //
-//  Created by Yiyu Shi on 18.07.22.
+//  Created by Yiyu Shi on 19.07.22.
 //
 
 import SwiftUI
 
-struct HistoryRow: View {
+struct HistoryTransRaw: View {
     var history: History
     
     var body: some View {
@@ -31,8 +31,9 @@ struct HistoryRow: View {
     }
 }
 
-struct HistoryRow_Previews: PreviewProvider {
+
+struct HistoryTransRaw_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryRow(history: histories[0])
+        HistoryTransRaw(history: histories[0])
     }
 }

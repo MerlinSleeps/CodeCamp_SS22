@@ -14,6 +14,8 @@ struct History: Identifiable{
     var time: String = ""
     var creditchange: Double = 0
     var itemsBought: [Item] = []
+    var from: String
+    var to : String
 }
 
 
