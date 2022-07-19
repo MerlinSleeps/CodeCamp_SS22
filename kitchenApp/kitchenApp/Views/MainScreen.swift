@@ -18,7 +18,7 @@ struct MainScreen: View {
     
     var body: some View {
         VStack {
-            CoffeeImage()
+            CoffeeImageView()
             HStack {
                 Text(self.profile.userProfile.name).frame(height: 30)
             }
@@ -60,18 +60,6 @@ struct MainScreen: View {
 struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
         MainScreen()
-    }
-}
-
-struct CoffeeImage : View {
-    var body: some View {
-        return Image("Image-2")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 150)
-            .clipped()
-            .cornerRadius(150)
-            .padding(.bottom, 75)
     }
 }
 
