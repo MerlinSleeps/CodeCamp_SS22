@@ -40,7 +40,7 @@ struct OrderScreenView: View {
                     {
                         orderModel.purchaseOrder(userId: profile.userProfile.id)
                     }
-                        .buttonStyle(.bordered)
+                        .buttonStyle(GeneralButton())
                 }
                 Spacer()
             }

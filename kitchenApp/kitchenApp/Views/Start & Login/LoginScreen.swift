@@ -30,19 +30,17 @@ struct LoginScreen : View {
                 .cornerRadius(5.0)
             
                NavigationLink(destination: MainScreen(), isActive: $loginVM.isAuthenticated) {
-                Button(action: {
+                Button("Login", action: {
                     loginVM.login()
-                }) {
-                   LoginButtonContent()
-                }
+                })
+                .buttonStyle(GeneralButton())
             }
             
                 NavigationLink(destination: MainScreenAdmin(), isActive: $loginVM.isAdmin) {
-                    Button(action: {
+                    Button("Admin Login", action: {
                         loginVM.loginIsAdmin()
-                    }) {
-                        LoginAsAdminButtonContent()
-                    }
+                    })
+                    .buttonStyle(GeneralButton())
                 }
             
             Spacer()
@@ -71,27 +69,4 @@ struct WelcomeText : View {
             .padding(.bottom, 20)
     }
 }
-
-struct LoginButtonContent : View {
-    var body: some View {
-        return Text("LOGIN")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 50)
-            .background(Color.blue)
-            .cornerRadius(15.0)
-    }
-}
-    struct LoginAsAdminButtonContent : View {
-        var body: some View {
-            return Text("LOGIN AS ADMIN")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 200, height: 50)
-                .background(Color.blue)
-                .cornerRadius(15.0)
-        }
-    }
 }

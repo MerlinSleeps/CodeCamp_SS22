@@ -36,6 +36,7 @@ struct BookingView: View {
                 NavigationLink(destination: OrderScreenView(orderModel: self.orderModel), label: { Text("Continue")
                             
                 })
+                .buttonStyle(GeneralButton())
                 Spacer()
             }
             .navigationTitle("Choose your Items")
