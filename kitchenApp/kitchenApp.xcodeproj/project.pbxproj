@@ -21,11 +21,9 @@
 		776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */; };
 		77AD4A512884599F00134BF7 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD4A502884599F00134BF7 /* ProfileViewModel.swift */; };
 		77AD4A53288459D500134BF7 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AD4A52288459D500134BF7 /* UserProfile.swift */; };
-		77B54F29285AA11D00217CD3 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B54F27285AA11D00217CD3 /* Coffee.swift */; };
 		77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B54F2C285AAFD500217CD3 /* LoginScreen.swift */; };
 		77C5961B285939B60086C25E /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961A285939B60086C25E /* StartScreen.swift */; };
 		77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961C285939EE0086C25E /* ProfileScreen.swift */; };
-		77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961E28593A570086C25E /* TransactionsScreen.swift */; };
 		D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */; };
 		D731179C28855CEF00FD6997 /* ShowAllUserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */; };
 		D731179F2885924800FD6997 /* MainScreenAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731179D2885924800FD6997 /* MainScreenAdmin.swift */; };
@@ -41,6 +39,8 @@
 		D74C36F828776B4000510E18 /* EditItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36F628776B4000510E18 /* EditItemListView.swift */; };
 		D74C36FC28776BB100510E18 /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36FB28776BB100510E18 /* EditItemView.swift */; };
 		D7B8F605285950BE0056B38D /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B8F604285950BE0056B38D /* BookingView.swift */; };
+		D7EC684A2886C24C001C3D08 /* SendMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EC68492886C24C001C3D08 /* SendMoneyView.swift */; };
+		D7EC684E2886EB56001C3D08 /* GeneralButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EC684D2886EB56001C3D08 /* GeneralButtonStyle.swift */; };
 		F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D480228254C8E00A898D4 /* kitchenAppApp.swift */; };
 		F77D480528254C8E00A898D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D480428254C8E00A898D4 /* ContentView.swift */; };
 		F77D480728254C8F00A898D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F77D480628254C8F00A898D4 /* Assets.xcassets */; };
@@ -82,11 +82,9 @@
 		776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		77AD4A502884599F00134BF7 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		77AD4A52288459D500134BF7 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		77B54F27285AA11D00217CD3 /* Coffee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		77B54F2C285AAFD500217CD3 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		77C5961A285939B60086C25E /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		77C5961C285939EE0086C25E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
-		77C5961E28593A570086C25E /* TransactionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsScreen.swift; sourceTree = "<group>"; };
 		D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeMoneyScreen.swift; sourceTree = "<group>"; };
 		D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllUserScreen.swift; sourceTree = "<group>"; };
 		D731179D2885924800FD6997 /* MainScreenAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenAdmin.swift; sourceTree = "<group>"; };
@@ -102,6 +100,8 @@
 		D74C36F628776B4000510E18 /* EditItemListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemListView.swift; sourceTree = "<group>"; };
 		D74C36FB28776BB100510E18 /* EditItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		D7B8F604285950BE0056B38D /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
+		D7EC68492886C24C001C3D08 /* SendMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyView.swift; sourceTree = "<group>"; };
+		D7EC684D2886EB56001C3D08 /* GeneralButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralButtonStyle.swift; sourceTree = "<group>"; };
 		F77D47FF28254C8E00A898D4 /* kitchenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kitchenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77D480228254C8E00A898D4 /* kitchenAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kitchenAppApp.swift; sourceTree = "<group>"; };
 		F77D480428254C8E00A898D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -175,30 +175,101 @@
 		77C5962028593DBD0086C25E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D7EC68572886EDF3001C3D08 /* Utillities */,
+				D7EC68562886EDDD001C3D08 /* Transactions */,
+				D7EC68552886EDC6001C3D08 /* Booking */,
+				D7EC68542886EDA6001C3D08 /* Edit Item */,
+				D7EC68532886ED8E001C3D08 /* Transaction History */,
+				D7EC68512886ED55001C3D08 /* Profile */,
+				D7EC68502886ED37001C3D08 /* MainMenu */,
+				D7EC684F2886ECFD001C3D08 /* Start & Login */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7EC684F2886ECFD001C3D08 /* Start & Login */ = {
+			isa = PBXGroup;
+			children = (
+				77C5961A285939B60086C25E /* StartScreen.swift */,
+				77B54F2C285AAFD500217CD3 /* LoginScreen.swift */,
+				771880AF288605630061C3B1 /* SignUpScreen.swift */,
+			);
+			path = "Start & Login";
+			sourceTree = "<group>";
+		};
+		D7EC68502886ED37001C3D08 /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D731179D2885924800FD6997 /* MainScreenAdmin.swift */,
+				D731179E2885924800FD6997 /* MainScreen.swift */,
+			);
+			path = MainMenu;
+			sourceTree = "<group>";
+		};
+		D7EC68512886ED55001C3D08 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				77C5961C285939EE0086C25E /* ProfileScreen.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D7EC68522886ED79001C3D08 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D7EC684D2886EB56001C3D08 /* GeneralButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		D7EC68532886ED8E001C3D08 /* Transaction History */ = {
+			isa = PBXGroup;
+			children = (
 				733523B62886988E007C0598 /* HistoryItemRowView.swift */,
 				733523B42886988E007C0598 /* HistoryListView.swift */,
 				733523BF2886A453007C0598 /* HistoryTransView.swift */,
 				733523BD2886A3ED007C0598 /* HistoryTransRaw.swift */,
 				733523B52886988E007C0598 /* HistoryRow.swift */,
 				733523B32886988E007C0598 /* HistoryView.swift */,
-				D731179E2885924800FD6997 /* MainScreen.swift */,
-				D731179D2885924800FD6997 /* MainScreenAdmin.swift */,
+			);
+			path = "Transaction History";
+			sourceTree = "<group>";
+		};
+		D7EC68542886EDA6001C3D08 /* Edit Item */ = {
+			isa = PBXGroup;
+			children = (
 				D74C36FB28776BB100510E18 /* EditItemView.swift */,
 				D74C36F628776B4000510E18 /* EditItemListView.swift */,
 				D74C36F528776B4000510E18 /* EditItemRow.swift */,
 				D74C36F328776B2E00510E18 /* AddNewItemView.swift */,
-				77B54F27285AA11D00217CD3 /* Coffee.swift */,
-				77C5961A285939B60086C25E /* StartScreen.swift */,
-				77C5961C285939EE0086C25E /* ProfileScreen.swift */,
-				77C5961E28593A570086C25E /* TransactionsScreen.swift */,
-				D7B8F604285950BE0056B38D /* BookingView.swift */,
-				77B54F2C285AAFD500217CD3 /* LoginScreen.swift */,
-				D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */,
-				D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */,
-				D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */,
-				771880AF288605630061C3B1 /* SignUpScreen.swift */,
 			);
-			path = Views;
+			path = "Edit Item";
+			sourceTree = "<group>";
+		};
+		D7EC68552886EDC6001C3D08 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				D7B8F604285950BE0056B38D /* BookingView.swift */,
+				D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		D7EC68562886EDDD001C3D08 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */,
+				D7EC68492886C24C001C3D08 /* SendMoneyView.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		D7EC68572886EDF3001C3D08 /* Utillities */ = {
+			isa = PBXGroup;
+			children = (
+				D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */,
+			);
+			path = Utillities;
 			sourceTree = "<group>";
 		};
 		F77D47F628254C8E00A898D4 = {
@@ -224,6 +295,7 @@
 		F77D480128254C8E00A898D4 /* kitchenApp */ = {
 			isa = PBXGroup;
 			children = (
+				D7EC68522886ED79001C3D08 /* Styles */,
 				776A4E5F2859E66F009B6FE6 /* Services */,
 				776A4E5E2859DBE1009B6FE6 /* ViewModels */,
 				776A4E5D2859DBD4009B6FE6 /* Models */,
@@ -394,7 +466,6 @@
 				733523BC288698A7007C0598 /* History.swift in Sources */,
 				D7B8F605285950BE0056B38D /* BookingView.swift in Sources */,
 				733523C02886A453007C0598 /* HistoryTransView.swift in Sources */,
-				77B54F29285AA11D00217CD3 /* Coffee.swift in Sources */,
 				D745480828786C080074EC74 /* Order.swift in Sources */,
 				D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */,
 				D74C36EE28776AFC00510E18 /* ModelData.swift in Sources */,
@@ -414,13 +485,14 @@
 				733523B82886988E007C0598 /* HistoryListView.swift in Sources */,
 				D731179F2885924800FD6997 /* MainScreenAdmin.swift in Sources */,
 				771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */,
+				D7EC684E2886EB56001C3D08 /* GeneralButtonStyle.swift in Sources */,
 				D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */,
 				776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */,
 				733523B92886988E007C0598 /* HistoryRow.swift in Sources */,
 				D74C36F228776B2000510E18 /* Item.swift in Sources */,
-				77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */,
 				D74C36F428776B2E00510E18 /* AddNewItemView.swift in Sources */,
 				77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */,
+				D7EC684A2886C24C001C3D08 /* SendMoneyView.swift in Sources */,
 				77AD4A512884599F00134BF7 /* ProfileViewModel.swift in Sources */,
 				771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */,
 				D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */,

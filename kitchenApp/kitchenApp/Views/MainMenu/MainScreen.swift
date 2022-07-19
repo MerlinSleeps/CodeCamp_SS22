@@ -14,11 +14,12 @@ struct MainScreen: View {
     
     @StateObject private var loginVM = LoginViewModel()
     
+    @State private var tag: Int? = 0
     @State var editProfile = Profile(name: "",password: "")
     
     var body: some View {
         VStack {
-            CoffeeImageView()
+            CoffeeImagevView()
             HStack {
                 Text(self.profile.userProfile.name).frame(height: 30)
             }
@@ -26,28 +27,26 @@ struct MainScreen: View {
                 Text("Balance:")
                 Text(self.profile.userProfile.balance, format: .number).frame(height: 100)
             }
-            List{
-                NavigationLink(destination: BookingView()) {
-                    Button(action: {
+                NavigationLink(destination: BookingView(), tag: 1, selection: $tag) {
+                    Button("Booking", action: {
+                    loginVM.login()
+                    self.tag = 1
+                })
+                .buttonStyle(GeneralButton())
+            }
+            NavigationLink(destination: ProfileScreen(), tag: 2, selection: $tag) {
+                Button("Profile" ,action: {
+                    loginVM.login()
+                    self.tag = 2
+                })
+                .buttonStyle(GeneralButton())
+            }
+            NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 4, selection: $tag) {
+                    Button("Send User Money" ,action: {
                         loginVM.login()
-                    }) {
-                        BookItemButtonContent()
-                    }
-                }
-                NavigationLink(destination: ProfileScreen()) {
-                    Button(action: {
-                        loginVM.login()
-                    }) {
-                        EditProfileButtonContent()
-                    }
-                }
-                NavigationLink(destination: HistoryListView()) {
-                    Button(action: {
-                        loginVM.login()
-                    }) {
-                        HistoryButtonContent()
-                    }
-                }
+                        self.tag = 4
+                    })
+                    .buttonStyle(GeneralButton())
             }
         }
         .padding()
@@ -72,5 +71,17 @@ struct HistoryButtonContent: View {
             .frame(width: 200, height: 50)
             .background(Color.blue)
             .cornerRadius(15.0)
+    }
+}
+    
+struct CoffeeImagevView: View {
+    var body: some View {
+        return Image("Image-2")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 150, height: 150)
+            .clipped()
+            .cornerRadius(150)
+            .padding(.bottom, 75)
     }
 }
