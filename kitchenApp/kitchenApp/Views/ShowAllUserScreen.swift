@@ -32,6 +32,8 @@ struct ShowAllUserScreen: View {
             }
         }
         .navigationTitle("Choose a user")
+        .toolbar() {
+        }
         .onAppear() {
             Webservice().getAllUser { (users) in
                 self.users = users
@@ -51,7 +53,7 @@ struct ShowAllUserScreen: View {
     fileprivate func showAllUsersToSendMoneyView() -> some View {
         return VStack {
             List (self.users) { (user) in
-            NavigationLink(destination: ChargeMoneyScreen(userID: user.id),label: {Text(user.name)
+                NavigationLink(destination: SendMoneyView(recipientId: user.id),label: {Text(user.name)
                 })
             }
         }

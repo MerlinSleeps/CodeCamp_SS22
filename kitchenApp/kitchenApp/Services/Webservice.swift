@@ -372,7 +372,7 @@ var items = [Item]()
             let httpResponse = response as? HTTPURLResponse
                 
             if(httpResponse?.statusCode != 200){
-                print(httpResponse?.statusCode)
+                  print(httpResponse?.statusCode)
                 //completion(.failure(.decodingError))
             }
             

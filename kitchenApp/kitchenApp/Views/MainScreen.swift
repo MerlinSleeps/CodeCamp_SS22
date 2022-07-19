@@ -14,6 +14,7 @@ struct MainScreen: View {
     
     @StateObject private var loginVM = LoginViewModel()
     
+    @State private var tag: Int? = 0
     @State var editProfile = Profile(name: "",password: "")
     
     var body: some View {
@@ -26,19 +27,26 @@ struct MainScreen: View {
                 Text("Balance:")
                 Text(self.profile.userProfile.balance, format: .number).frame(height: 100)
             }
-                NavigationLink(destination: BookingView()) {
-                Button(action: {
+                NavigationLink(destination: BookingView(), tag: 1, selection: $tag) {
+                    Button("Booking", action: {
                     loginVM.login()
-                }) {
-                    GeneralButtonView(text: "Booking")
-                }
+                    self.tag = 1
+                })
+                .buttonStyle(GeneralButton())
             }
-            NavigationLink(destination: ProfileScreen()) {
-                Button(action: {
+            NavigationLink(destination: ProfileScreen(), tag: 2, selection: $tag) {
+                Button("Profile" ,action: {
                     loginVM.login()
-                }) {
-                    GeneralButtonView(text: "Profile")
-                }
+                    self.tag = 2
+                })
+                .buttonStyle(GeneralButton())
+            }
+            NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 4, selection: $tag) {
+                    Button("Send User Money" ,action: {
+                        loginVM.login()
+                        self.tag = 4
+                    })
+                    .buttonStyle(GeneralButton())
             }
         }
         .padding()
