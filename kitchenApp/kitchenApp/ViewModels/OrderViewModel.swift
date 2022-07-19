@@ -31,9 +31,30 @@ class OrderViewModel: ObservableObject {
     }
     
     func purchaseOrder(userId: String) {
-
         for item in order.counts.keys {
             Webservice().purchaseItem(id: userId, itemId: item.id, amount: order.counts[item] ?? 0)
         }
+        
+        var boughtItems: [Item] = []
+        for item in items {
+            var newItem = item
+            newItem.amount = order.counts[item] ?? 0
+            if (boughtItems.count == 0) {
+                boughtItems.append(newItem)
+            } else {
+                var inBoughtItems = false
+                for i in boughtItems {
+                    if (newItem.name == i.name) {
+                        inBoughtItems = true
+                    }
+                }
+                if (!inBoughtItems) {
+                    boughtItems.append(newItem)
+                }
+            }
+        }
+        
+        let thisHistory = History(id: 1 + histories.count, action: "Bought", time: getTime(), creditchange: -order.totalPrice, itemsBought: boughtItems, from: "", to: "")
+        histories.append(thisHistory)
     }
 }

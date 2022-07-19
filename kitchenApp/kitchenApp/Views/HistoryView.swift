@@ -19,7 +19,7 @@ struct HistoryView: View {
                 boughtItems = history.itemsBought
             }
             Divider()
-            Text("Summe: " + String(history.creditchange))
+            Text("Summe: " + String(format:"%.2f", -history.creditchange))
                 .frame(width: 300, height: 30, alignment: .trailing)
                 .font(.system(size: 25))
             Divider()

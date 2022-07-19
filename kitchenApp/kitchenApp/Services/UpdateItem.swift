@@ -96,6 +96,7 @@ func findItem(name: String) -> Item {
 }
 
 func initHistory() -> [History] {
+    var histories : [History] = []
     var items2: [Item] = []
     items2.append(Item(id: "1", name: "i1", amount: 2, price: 3.33))
     items2.append(Item(id: "2", name: "i2", amount: 3, price: 4.44))

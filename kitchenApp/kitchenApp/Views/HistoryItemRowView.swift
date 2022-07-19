@@ -14,7 +14,9 @@ struct HistoryItemRowView: View {
         HStack {
             VStack {
                 Text(item.name)
+                    .frame(alignment: .leading)
                 Text("$" + String(format:"%.2f", item.price))
+                    .frame(alignment: .leading)
             }
             Spacer()
             Text("X" + String(item.amount))

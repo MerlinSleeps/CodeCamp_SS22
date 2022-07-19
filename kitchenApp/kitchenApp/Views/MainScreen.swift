@@ -28,19 +28,26 @@ struct MainScreen: View {
             }
             List{
                 NavigationLink(destination: BookingView()) {
-                Button(action: {
-                    loginVM.login()
-                }) {
-                    BookItemButtonContent()
+                    Button(action: {
+                        loginVM.login()
+                    }) {
+                        BookItemButtonContent()
+                    }
                 }
-            }
-            NavigationLink(destination: ProfileScreen()) {
-                Button(action: {
-                    loginVM.login()
-                }) {
-                    EditProfileButtonContent()
+                NavigationLink(destination: ProfileScreen()) {
+                    Button(action: {
+                        loginVM.login()
+                    }) {
+                        EditProfileButtonContent()
+                    }
                 }
-            }
+                NavigationLink(destination: HistoryListView()) {
+                    Button(action: {
+                        loginVM.login()
+                    }) {
+                        HistoryButtonContent()
+                    }
+                }
             }
         }
         .padding()
@@ -68,3 +75,14 @@ struct CoffeeImage : View {
     }
 }
 
+struct HistoryButtonContent: View {
+    var body: some View {
+        return Text("Transaction History")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 200, height: 50)
+            .background(Color.blue)
+            .cornerRadius(15.0)
+    }
+}

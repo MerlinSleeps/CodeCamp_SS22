@@ -12,7 +12,7 @@ struct HistoryListView: View {
     var body: some View {
         NavigationView{
             VStack {
-                List(initHistory()) { history in
+                List(histories) { history in
                     if (history.action == "Bought") {
                         NavigationLink {
                             HistoryView(history: history)

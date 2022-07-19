@@ -43,6 +43,14 @@ struct MainScreenAdmin: View {
                     }
                 }
                 
+                NavigationLink(destination: HistoryListView()) {
+                    Button(action: {
+                        loginVM.login()
+                    }) {
+                        HistoryButtonContent()
+                    }
+                }
+                
                 NavigationLink(destination: EditItemListView()) {
                     Button(action: {
                         loginVM.login()
@@ -121,3 +129,4 @@ struct EditProfileButtonContent: View {
             .cornerRadius(15.0)
     }
 }
+
