@@ -25,7 +25,7 @@ struct MainScreen: View {
             }
             HStack {
                 Text("Balance:")
-                Text(self.profile.userProfile.balance, format: .number).frame(height: 100)
+                Text(self.profile.userProfile.balance, format: .number)
             }
                 NavigationLink(destination: BookingView(), tag: 1, selection: $tag) {
                     Button("Booking", action: {
