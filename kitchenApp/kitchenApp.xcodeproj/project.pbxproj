@@ -14,6 +14,7 @@
 		733523BC288698A7007C0598 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523BB288698A7007C0598 /* History.swift */; };
 		733523BE2886A3ED007C0598 /* HistoryTransRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523BD2886A3ED007C0598 /* HistoryTransRaw.swift */; };
 		733523C02886A453007C0598 /* HistoryTransView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523BF2886A453007C0598 /* HistoryTransView.swift */; };
+		733523C22886C09D007C0598 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523C12886C09D007C0598 /* StatisticView.swift */; };
 		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
 		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
 		776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E602859E6D0009B6FE6 /* Webservice.swift */; };
@@ -75,6 +76,7 @@
 		733523BB288698A7007C0598 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = History.swift; path = kitchenApp/Models/History.swift; sourceTree = SOURCE_ROOT; };
 		733523BD2886A3ED007C0598 /* HistoryTransRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransRaw.swift; sourceTree = "<group>"; };
 		733523BF2886A453007C0598 /* HistoryTransView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransView.swift; sourceTree = "<group>"; };
+		733523C12886C09D007C0598 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		776A4E602859E6D0009B6FE6 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				77C5961C285939EE0086C25E /* ProfileScreen.swift */,
 				77C5961E28593A570086C25E /* TransactionsScreen.swift */,
 				D7B8F604285950BE0056B38D /* BookingView.swift */,
+				733523C12886C09D007C0598 /* StatisticView.swift */,
 				77B54F2C285AAFD500217CD3 /* LoginScreen.swift */,
 				D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */,
 				D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */,
@@ -416,6 +419,7 @@
 				771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */,
 				D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */,
 				776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */,
+				733523C22886C09D007C0598 /* StatisticView.swift in Sources */,
 				733523B92886988E007C0598 /* HistoryRow.swift in Sources */,
 				D74C36F228776B2000510E18 /* Item.swift in Sources */,
 				77C5961F28593A570086C25E /* TransactionsScreen.swift in Sources */,
