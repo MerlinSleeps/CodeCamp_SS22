@@ -60,27 +60,37 @@ struct nilBody: Codable {
 
 class Webservice : ObservableObject{
       
+    //URL + ROUTES
     let URLCC1 = "http://141.51.114.20:8080"
-    let LOGIN = "/login"
     let USERS = "/users"
+    let LOGIN = "/login"
     let ITEMS = "/items"
-    let ERROR_MESSAGE_BAD_URL = "URL is not correct"
-    let POST = "POST"
-    let APPLICATION_JSON = "application/json"
-    let CONTENT_TYPE = "Content-Type"
-    let ERROR_MESSAGE_NO_DATA = "No data"
-    let JWT = "jsonwebtoken"
-    let EXPIRATION = "expiration"
-    let USER_ID = "userID"
-    let USER_PASSWORD = "userPassword"
-    let TOKEN_REFRESH = "tokenrefresh"
-    let PUT = "PUT"
-    let BEARER = "Bearer"
-    let AUTHORIZATION = "Authorization"
+    let REFUND = "/refund"
     let FUNDING = "/funding"
     let PURCHASES = "/purchases"
-    let REFUND = "/refund"
     let SEND_MONEY = "/sendMoney"
+
+    //URL PARAMETER
+    let USER_ID = "userID"
+    let USER_PASSWORD = "userPassword"
+    
+    //HTTP_METHOD
+    let PUT = "PUT"
+    let POST = "POST"
+    
+    //ERROR MESSAGES
+    let ERROR_MESSAGE_NO_DATA = "No data"
+    let ERROR_MESSAGE_BAD_URL = "URL is not correct"
+    
+    //REQUEST CONTENT
+    let BEARER = "Bearer"
+    let JWT = "jsonwebtoken"
+    let EXPIRATION = "expiration"
+    let CONTENT_TYPE = "Content-Type"
+    let TOKEN_REFRESH = "tokenrefresh"
+    let AUTHORIZATION = "Authorization"
+    let APPLICATION_JSON = "application/json"
+
     
     func createRequest<T: Encodable>(url: URL, body: T, httpMethod: String, auth: Bool = false,
                                      token: String = "", hasBody: Bool = true) -> URLRequest {
