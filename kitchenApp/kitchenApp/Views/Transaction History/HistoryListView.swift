@@ -23,7 +23,7 @@ struct HistoryListView: View {
                         NavigationLink {
                             HistoryTransView(history: history)
                         } label: {
-                            HistoryTransRaw(history: history)
+                            HistoryRow(history: history)
                         }
                     }
                 }

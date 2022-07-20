@@ -19,7 +19,7 @@ struct BookingView: View {
             VStack {
                 List (self.items) { (item) in
                     HStack{
-                        Text(item.name + ": " + String(item.price) + "€")
+                        Text(item.name + ": " + String(format:"%.2f", item.price) + "$")
                         Spacer()
                         Button("Add") {
                             self.addItem(item: item)
