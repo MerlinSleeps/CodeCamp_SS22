@@ -17,7 +17,7 @@ struct LoginScreen : View {
         
         VStack {
             WelcomeText()
-            CoffeeImagevView()
+            CoffeeImageView()
             Text("\(loginVM.message)")
                 .foregroundColor(.red)
 

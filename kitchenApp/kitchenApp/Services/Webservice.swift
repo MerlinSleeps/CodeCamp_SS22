@@ -65,6 +65,7 @@ class Webservice : ObservableObject{
     let USERS = "/users"
     let LOGIN = "/login"
     let ITEMS = "/items"
+    let USERS_ = "/users/"
     let REFUND = "/refund"
     let FUNDING = "/funding"
     let PURCHASES = "/purchases"
@@ -83,7 +84,7 @@ class Webservice : ObservableObject{
     let ERROR_MESSAGE_BAD_URL = "URL is not correct"
     
     //REQUEST CONTENT
-    let BEARER = "Bearer"
+    let BEARER_ = "Bearer "
     let JWT = "jsonwebtoken"
     let EXPIRATION = "expiration"
     let CONTENT_TYPE = "Content-Type"
@@ -101,7 +102,7 @@ class Webservice : ObservableObject{
             request.httpBody = try? JSONEncoder().encode(body)
         }
         if auth {
-            request.addValue(BEARER + "\(token)",  forHTTPHeaderField: AUTHORIZATION)
+            request.addValue(BEARER_ + "\(token)",  forHTTPHeaderField: AUTHORIZATION)
         }
         
         return request
@@ -256,7 +257,7 @@ class Webservice : ObservableObject{
     func updateUser(id: String, name: String, password: String, completion: @escaping (Result<Void, NetworkError>) -> Void){
         
         
-        guard let url = URL(string: URLCC1 + USERS + id) else {
+        guard let url = URL(string: URLCC1 + USERS_ + id) else {
             print(ERROR_MESSAGE_BAD_URL)
             return
         }
@@ -292,14 +293,14 @@ class Webservice : ObservableObject{
     
     func getUserData(id: String, token: String, completion: @escaping (Result<UserProfile, NetworkError>) -> Void){
 
-        guard let url = URL(string: URLCC1 + USERS + id) else {
+        guard let url = URL(string: URLCC1 + USERS_ + id) else {
             print(ERROR_MESSAGE_BAD_URL)
             return
         }
         
         var request = URLRequest(url: url)
         
-        request.addValue(BEARER + "\(token)",  forHTTPHeaderField: AUTHORIZATION)
+        request.addValue(BEARER_ + "\(token)",  forHTTPHeaderField: AUTHORIZATION)
         request.setValue(APPLICATION_JSON, forHTTPHeaderField: CONTENT_TYPE)
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -322,7 +323,7 @@ class Webservice : ObservableObject{
     func fundUser(id: String, amount: Double) {
         
         
-        guard let url = URL(string: URLCC1 + USERS + id + FUNDING) else {
+        guard let url = URL(string: URLCC1 + USERS_ + id + FUNDING) else {
             print(ERROR_MESSAGE_BAD_URL)
             return
         }
@@ -355,7 +356,7 @@ class Webservice : ObservableObject{
     func purchaseItem(id: String, itemId: String, amount: Int){
         
         
-        guard let url = URL(string: URLCC1 + USERS + id + PURCHASES) else {
+        guard let url = URL(string: URLCC1 + USERS_ + id + PURCHASES) else {
             print(ERROR_MESSAGE_BAD_URL)
             return
         }
@@ -388,7 +389,7 @@ class Webservice : ObservableObject{
     
     func refundPurchase(id: String){
         
-        guard let url = URL(string: URLCC1 + USERS + id + PURCHASES + REFUND) else {
+        guard let url = URL(string: URLCC1 + USERS_ + id + PURCHASES + REFUND) else {
             print(ERROR_MESSAGE_BAD_URL)
             return
         }
@@ -421,7 +422,7 @@ class Webservice : ObservableObject{
     func sendMoney(id: String, recipientId: String, amount: Double){
         
         
-        guard let url = URL(string: URLCC1 + USERS + id + SEND_MONEY) else {
+        guard let url = URL(string: URLCC1 + USERS_ + id + SEND_MONEY) else {
             print(ERROR_MESSAGE_BAD_URL)
             return
         }
