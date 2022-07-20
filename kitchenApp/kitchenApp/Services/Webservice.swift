@@ -55,30 +55,63 @@ struct sendMoneyBody: Codable {
     let recipientId: String
 }
 
+struct nilBody: Codable {
+}
+
 class Webservice : ObservableObject{
       
-let urlCC1 = "http://141.51.114.20:8080"
-var items = [Item]()
+    let URLCC1 = "http://141.51.114.20:8080"
+    let LOGIN = "/login"
+    let USERS = "/users"
+    let ITEMS = "/items"
+    let ERROR_MESSAGE_BAD_URL = "URL is not correct"
+    let POST = "POST"
+    let APPLICATION_JSON = "application/json"
+    let CONTENT_TYPE = "Content-Type"
+    let ERROR_MESSAGE_NO_DATA = "No data"
+    let JWT = "jsonwebtoken"
+    let EXPIRATION = "expiration"
+    let USER_ID = "userID"
+    let USER_PASSWORD = "userPassword"
+    let TOKEN_REFRESH = "tokenrefresh"
+    let PUT = "PUT"
+    let BEARER = "Bearer"
+    let AUTHORIZATION = "Authorization"
+    let FUNDING = "/funding"
+    let PURCHASES = "/purchases"
+    let REFUND = "/refund"
+    let SEND_MONEY = "/sendMoney"
     
+    func createRequest<T: Encodable>(url: URL, body: T, httpMethod: String, auth: Bool = false,
+                                     token: String = "", hasBody: Bool = true) -> URLRequest {
+        var request = URLRequest(url: url )
+        request.httpMethod = httpMethod
+        request.addValue(APPLICATION_JSON, forHTTPHeaderField: CONTENT_TYPE)
+        if hasBody {
+            request.httpBody = try? JSONEncoder().encode(body)
+        }
+        if auth {
+            request.addValue(BEARER + "\(token)",  forHTTPHeaderField: AUTHORIZATION)
+        }
+        
+        return request
+    }
     
     func login(id: String, password: String, completion: @escaping (Result<Token, AuthenticationError>) -> Void) {
         
-        guard let url = URL(string: urlCC1 + "/login") else {
-            completion(.failure(.custom(errorMessage: "URL is not correct")))
+        guard let url = URL(string: URLCC1 + LOGIN) else {
+            completion(.failure(.custom(errorMessage: ERROR_MESSAGE_BAD_URL)))
             return
         }
         
         let body = LoginRequestBody(id: id, password: password)
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(body)
+        let request = createRequest(url: url, body: body, httpMethod: POST)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let data = data, error == nil else {
-                completion(.failure(.custom(errorMessage: "No data")))
+                completion(.failure(.custom(errorMessage: self.ERROR_MESSAGE_NO_DATA)))
                 return
             }
             
@@ -95,22 +128,19 @@ var items = [Item]()
     
     func signUP(id: String, name: String, password: String, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
         
-        guard let url = URL(string: urlCC1 + "/users") else {
-            completion(.failure(.custom(errorMessage: "URL is not correct")))
+        guard let url = URL(string: URLCC1 + USERS) else {
+            completion(.failure(.custom(errorMessage: ERROR_MESSAGE_BAD_URL)))
             return
         }
         
         let body = SignUpRequestBody(id: id, name: name, password: password)
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(body)
+        let request = createRequest(url: url, body: body, httpMethod: POST)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let data = data, error == nil else {
-                completion(.failure(.custom(errorMessage: "No data")))
+                completion(.failure(.custom(errorMessage: self.ERROR_MESSAGE_NO_DATA)))
                 return
             }
             
@@ -133,19 +163,16 @@ var items = [Item]()
     
     func getItems(completion:@escaping ([Item]) -> ()) {
         
-        guard let url = URL(string: urlCC1 + "/items") else {
-            print("Invalid url...")
+        guard let url = URL(string: URLCC1 + ITEMS) else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
-        
-        print(url)
     
         
         URLSession.shared.dataTask(with: url) { data, response, error in
 
             let items = try! JSONDecoder().decode([Item].self, from: data!)
             
-            print(items)
             DispatchQueue.main.async {
                 completion(items)
             }
@@ -164,12 +191,12 @@ var items = [Item]()
         
         var needRefresh = false;
         
-        let token = defaults.string(forKey: "jsonwebtoken")
+        let token = defaults.string(forKey: JWT)
         
         if(token == nil){
             needRefresh = true
         } else {
-            let expiration : Int = defaults.integer(forKey: "expiration")
+            let expiration : Int = defaults.integer(forKey: EXPIRATION)
             if(getCurrentMillis() > expiration){
                 needRefresh = true
             }
@@ -179,40 +206,36 @@ var items = [Item]()
             return token
         }
         
-       let id = defaults.string(forKey: "userID")!
-       let password = defaults.string(forKey: "userPassword")!
+       let id = defaults.string(forKey: USER_ID)!
+       let password = defaults.string(forKey: USER_PASSWORD)!
 
         
         Webservice().login(id: id, password: password) { result in
             switch result {
             case .success(let token):
-                defaults.setValue(token.token, forKey: "jsonwebtoken")
-                defaults.setValue(token.expiration/1000, forKey: "tokenrefresh")
+                defaults.setValue(token.token, forKey: self.JWT)
+                defaults.setValue(token.expiration/1000, forKey: self.TOKEN_REFRESH)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
         
         
-        return defaults.string(forKey: "jsonwebtoken")
+        return defaults.string(forKey: JWT)
     }
     
     
     func getAllUser(completion:@escaping ([User]) -> ()) {
         
-        guard let url = URL(string: urlCC1 + "/users") else {
-            print("Invalid url...")
+        guard let url = URL(string: URLCC1 + USERS) else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
-        
-        print(url)
-    
         
         URLSession.shared.dataTask(with: url) { data, response, error in
 
             let users = try! JSONDecoder().decode([User].self, from: data!)
             
-            print(users)
             DispatchQueue.main.async {
                 completion(users)
             }
@@ -223,8 +246,8 @@ var items = [Item]()
     func updateUser(id: String, name: String, password: String, completion: @escaping (Result<Void, NetworkError>) -> Void){
         
         
-        guard let url = URL(string: urlCC1 + "/users/"+id) else {
-            print("Invalid url...")
+        guard let url = URL(string: URLCC1 + USERS + id) else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
         
@@ -237,11 +260,8 @@ var items = [Item]()
         
         let body = UpdateUserRequestBody(name: name, password: password)
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(body)
-        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+        let request = createRequest(url: url, body: body, httpMethod: PUT, auth: true, token: token)
+        
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -262,15 +282,15 @@ var items = [Item]()
     
     func getUserData(id: String, token: String, completion: @escaping (Result<UserProfile, NetworkError>) -> Void){
 
-        guard let url = URL(string: urlCC1 + "/users/"+id) else {
-            print("Invalid url...")
+        guard let url = URL(string: URLCC1 + USERS + id) else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
         
         var request = URLRequest(url: url)
         
-        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(BEARER + "\(token)",  forHTTPHeaderField: AUTHORIZATION)
+        request.setValue(APPLICATION_JSON, forHTTPHeaderField: CONTENT_TYPE)
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -292,8 +312,8 @@ var items = [Item]()
     func fundUser(id: String, amount: Double) {
         
         
-        guard let url = URL(string: urlCC1 + "/users/" + id + "/funding") else {
-            print("Invalid url...")
+        guard let url = URL(string: URLCC1 + USERS + id + FUNDING) else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
         
@@ -305,11 +325,7 @@ var items = [Item]()
         
         let body = newFunding(amount: amount)
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(body)
-        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+        let request = createRequest(url: url, body: body, httpMethod: POST, auth: true, token: token)
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -317,7 +333,7 @@ var items = [Item]()
             let httpResponse = response as? HTTPURLResponse
                 
             if(httpResponse?.statusCode != 200){
-                  print(httpResponse?.statusCode)
+                print(httpResponse?.statusCode as Any)
                 //completion(.failure(.decodingError))
             }
             
@@ -329,8 +345,8 @@ var items = [Item]()
     func purchaseItem(id: String, itemId: String, amount: Int){
         
         
-        guard let url = URL(string: urlCC1 + "/users/"+id+"/purchases") else {
-            print("Invalid url...")
+        guard let url = URL(string: URLCC1 + USERS + id + PURCHASES) else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
         
@@ -343,11 +359,7 @@ var items = [Item]()
         
         let body = pruchaseItemBody(itemId: itemId, amount: amount)
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(body)
-        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+        let request = createRequest(url: url, body: body, httpMethod: POST, auth: true, token: token)
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -355,7 +367,7 @@ var items = [Item]()
             let httpResponse = response as? HTTPURLResponse
                 
             if(httpResponse?.statusCode != 200){
-                print(httpResponse?.statusCode)
+                print(httpResponse?.statusCode as Any)
                 //completion(.failure(.decodingError))
             }
             
@@ -366,8 +378,8 @@ var items = [Item]()
     
     func refundPurchase(id: String){
         
-        guard let url = URL(string: urlCC1 + "/users/"+id+"/purchases" + "/refund") else {
-            print("Invalid url...")
+        guard let url = URL(string: URLCC1 + USERS + id + PURCHASES + REFUND) else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
         
@@ -376,20 +388,18 @@ var items = [Item]()
                     //completion(.failure(.noData))
                     return
                 }
-
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
-
+   
+        let body = nilBody()
+        
+        let request = createRequest(url: url, body: body, httpMethod: POST, auth: true, token: token, hasBody: false )
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             
             let httpResponse = response as? HTTPURLResponse
                 
             if(httpResponse?.statusCode != 200){
-                print(httpResponse?.statusCode)
+                print(httpResponse?.statusCode as Any)
                 //completion(.failure(.decodingError))
             }
             
@@ -401,8 +411,8 @@ var items = [Item]()
     func sendMoney(id: String, recipientId: String, amount: Double){
         
         
-        guard let url = URL(string: urlCC1 + "/users/"+id+"/sendMoney") else {
-            print("Invalid url...")
+        guard let url = URL(string: URLCC1 + USERS + id + SEND_MONEY) else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
         
@@ -415,11 +425,7 @@ var items = [Item]()
         
         let body = sendMoneyBody(amount: amount, recipientId: recipientId)
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(body)
-        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+        let request = createRequest(url: url, body: body, httpMethod: POST, auth: true, token: token)
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -427,7 +433,7 @@ var items = [Item]()
             let httpResponse = response as? HTTPURLResponse
                 
             if(httpResponse?.statusCode != 200){
-                print(httpResponse?.statusCode)
+                print(httpResponse?.statusCode as Any)
                 //completion(.failure(.decodingError))
             }
             
