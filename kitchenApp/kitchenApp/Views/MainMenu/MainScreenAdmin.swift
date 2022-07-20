@@ -29,7 +29,6 @@ struct MainScreenAdmin: View {
                 //Booking
                 NavigationLink(destination: BookingView(), tag: 1, selection: $tag) {
                     Button("Booking", action: {
-                        loginVM.login()
                         self.tag = 1
                     })
                     .buttonStyle(GeneralButton())
@@ -37,7 +36,6 @@ struct MainScreenAdmin: View {
                 //Profile
                 NavigationLink(destination: ProfileScreen(), tag: 2, selection: $tag) {
                     Button("Profile", action: {
-                        loginVM.login()
                         self.tag = 2
                     })
                     .buttonStyle(GeneralButton())
@@ -45,7 +43,6 @@ struct MainScreenAdmin: View {
                 //Transfer Money
                 NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 3, selection: $tag) {
                         Button("Fund user" ,action: {
-                            loginVM.login()
                             self.tag = 3
                         })
                         .buttonStyle(GeneralButton())
@@ -53,7 +50,6 @@ struct MainScreenAdmin: View {
                 //Transfer History
             NavigationLink(destination: HistoryListView(), tag: 4, selection: $tag) {
                         Button("Transfer History" ,action: {
-                            loginVM.login()
                             self.tag = 4
                         })
                         .buttonStyle(GeneralButton())
@@ -61,7 +57,6 @@ struct MainScreenAdmin: View {
                 //Edit Item
                 NavigationLink(destination: EditItemListView(), tag: 5, selection: $tag) {
                     Button("Edit Item" ,action: {
-                        loginVM.login()
                         self.tag = 5
                     })
                     .buttonStyle(GeneralButton())
@@ -69,7 +64,6 @@ struct MainScreenAdmin: View {
                 //Charge Money
                 NavigationLink(destination: ShowAllUserScreen(destination: .chargeMoney), tag: 6, selection: $tag) {
                         Button("Fund user" ,action: {
-                            loginVM.login()
                             self.tag = 6
                         })
                         .buttonStyle(GeneralButton())

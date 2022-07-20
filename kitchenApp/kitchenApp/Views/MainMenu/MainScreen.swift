@@ -12,8 +12,6 @@ import MapKit
 struct MainScreen: View {
     @ObservedObject var profile = ProfileViewModel()
     
-    @StateObject private var loginVM = LoginViewModel()
-    
     @State private var tag: Int? = 0
     @State var editProfile = Profile(name: "",password: "")
     
@@ -30,7 +28,6 @@ struct MainScreen: View {
             //Booking
             NavigationLink(destination: BookingView(), tag: 1, selection: $tag) {
                 Button("Booking", action: {
-                    loginVM.login()
                     self.tag = 1
                 })
                 .buttonStyle(GeneralButton())
@@ -38,7 +35,6 @@ struct MainScreen: View {
             //Profile
             NavigationLink(destination: ProfileScreen(), tag: 2, selection: $tag) {
                 Button("Profile", action: {
-                    loginVM.login()
                     self.tag = 2
                 })
                 .buttonStyle(GeneralButton())
@@ -46,7 +42,6 @@ struct MainScreen: View {
             //Transfer Money
             NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 3, selection: $tag) {
                     Button("Fund user" ,action: {
-                        loginVM.login()
                         self.tag = 3
                     })
                     .buttonStyle(GeneralButton())
@@ -54,7 +49,6 @@ struct MainScreen: View {
             //Transfer History
             NavigationLink(destination: HistoryListView(), tag: 4, selection: $tag) {
                     Button("Transfer History" ,action: {
-                        loginVM.login()
                         self.tag = 4
                     })
                     .buttonStyle(GeneralButton())
