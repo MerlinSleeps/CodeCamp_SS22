@@ -16,6 +16,7 @@
 		733523C02886A453007C0598 /* HistoryTransView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523BF2886A453007C0598 /* HistoryTransView.swift */; };
 		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
 		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
+		771880B5288750B80061C3B1 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 771880B4288750B80061C3B1 /* JWTDecode */; };
 		776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E602859E6D0009B6FE6 /* Webservice.swift */; };
 		776A4E632859ECB5009B6FE6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E622859ECB5009B6FE6 /* User.swift */; };
 		776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */; };
@@ -119,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771880B5288750B80061C3B1 /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +351,9 @@
 			dependencies = (
 			);
 			name = kitchenApp;
+			packageProductDependencies = (
+				771880B4288750B80061C3B1 /* JWTDecode */,
+			);
 			productName = kitchenApp;
 			productReference = F77D47FF28254C8E00A898D4 /* kitchenApp.app */;
 			productType = "com.apple.product-type.application";
@@ -421,6 +426,9 @@
 				Base,
 			);
 			mainGroup = F77D47F628254C8E00A898D4;
+			packageReferences = (
+				771880B3288750B80061C3B1 /* XCRemoteSwiftPackageReference "JWTDecode" */,
+			);
 			productRefGroup = F77D480028254C8E00A898D4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -819,6 +827,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		771880B3288750B80061C3B1 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		771880B4288750B80061C3B1 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 771880B3288750B80061C3B1 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F77D47F728254C8E00A898D4 /* Project object */;
 }

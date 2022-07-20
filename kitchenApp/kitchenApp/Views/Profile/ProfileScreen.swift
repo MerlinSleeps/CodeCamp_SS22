@@ -73,7 +73,6 @@ struct ProfileScreen: View {
             } else {
                 ProfileView()
                     .onAppear(perform: {
-                        profile.getUserData()
                     })
             }
         }
@@ -112,28 +111,25 @@ struct ProfileScreen: View {
                         Text(self.profile.userProfile.balance, format: .number).foregroundColor(.secondary)
                     }
                     
-                    HStack {
-                        Text("Purchases")
-                        Spacer()
-                            .foregroundColor(.secondary)
-                        
-                    }
                 }
+                
             }
+            
+        }
                 
         
-            
-            Button("Sign off?") {
-                showAlert = true
-            }
-            .alert(isPresented: $showAlert) {
-                Alert (
-                    title: Text("You are signed off"),
-                    message: Text("")
-                )
-            }
-        }
+//
+//            Button("Sign off?") {
+//                showAlert = true
+//            }
+//            .alert(isPresented: $showAlert) {
+//                Alert (
+//                    title: Text("You are signed off"),
+//                    message: Text("")
+//                )
+//            }
         
+
         .navigationBarTitle(Text("Profile"))
         .navigationBarItems(trailing: CustomEditButton(inactive: {
      
@@ -142,7 +138,6 @@ struct ProfileScreen: View {
             editProfile.name = profile.userProfile.name
             editProfile.password = UserDefaults.standard.string(forKey: "userPassword")!
         }))
- //       .navigationBarBackButtonHidden(true)
         .environment(\.editMode, self.$mode)
 
     }
@@ -164,13 +159,12 @@ struct ProfileScreen: View {
                     .foregroundColor(.secondary)
             }
             Section(header:Text("Balance")) {
-                TextField("Balance", text: sBalance)
+                TextField("Balance", text: sBalance )
                     .disabled(true)
                     .foregroundColor(.secondary)
             }
         }
         
-        //"Cancel" still is not working very well
         .navigationBarTitle(Text("Edit Profile"))
         .navigationBarItems(trailing: CustomEditButton(
        
@@ -195,7 +189,6 @@ struct ProfileScreen: View {
               
             }
         ))
-//        .navigationBarItems(leading: Button(action: {}) {NavigationLink(destination: ProfileView()) {Button("Cancel")}}, trailing: EditButton())
         .navigationBarBackButtonHidden(true)
         .environment(\.editMode, self.$mode)
      
@@ -228,5 +221,4 @@ struct ProfileScreen: View {
             })
         }
     }
-
 }

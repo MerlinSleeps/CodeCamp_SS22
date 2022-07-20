@@ -31,7 +31,7 @@ struct SignUpScreen : View {
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
-            SecureField("Password", text: $signUpVM.password)
+            SecureField("Password (must be at least 8 characters)", text: $signUpVM.password)
                 .textInputAutocapitalization(.never)
                 .padding()
                 .background(lightGreyColor)
@@ -47,6 +47,7 @@ struct SignUpScreen : View {
             }
         }
         .padding()
+        
     }
 }
 

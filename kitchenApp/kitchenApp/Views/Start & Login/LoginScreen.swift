@@ -18,6 +18,9 @@ struct LoginScreen : View {
         VStack {
             WelcomeText()
             CoffeeImagevView()
+            Text("\(loginVM.message)")
+                .foregroundColor(.red)
+
             TextField("User ID", text: $loginVM.id)
                 .textInputAutocapitalization(.never)
                 .padding()
@@ -50,6 +53,7 @@ struct LoginScreen : View {
                 }
         }
         .padding()
+        .navigationBarBackButtonHidden(true)
     }
 
 
@@ -68,5 +72,5 @@ struct WelcomeText : View {
             .fontWeight(.semibold)
             .padding(.bottom, 20)
     }
-}
+  }
 }

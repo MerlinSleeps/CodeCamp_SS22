@@ -6,13 +6,16 @@
 //
 
 import Foundation
+import JWTDecode
 
 class LoginViewModel: ObservableObject {
     
-    @Published var id: String = "a3620095-0598-415f-89d6-f382a6e9d9c8"
-    @Published var password: String = "iOSGroupA"
+    @Published var id: String = ""
+    @Published var password: String = ""
     @Published var isAuthenticated: Bool = false    
     @Published var isAdmin: Bool = false
+    @Published var message: String = ""
+
     
     
     func loginIsAdmin() {
@@ -25,16 +28,31 @@ class LoginViewModel: ObservableObject {
         Webservice().login(id: id, password: password) { result in
             switch result {
             case .success(let token):
-                defaults.setValue(true, forKey: "isAdmin")
-                defaults.setValue(token.token, forKey: "jsonwebtoken")
-                defaults.setValue(token.expiration/1000, forKey: "expiration")
-
+               
                 DispatchQueue.main.async {
-                    self.isAdmin = true
+                    do  {
+                      let jwt  = try decode(jwt: token.token)
+                        let claim = jwt.claim(name: "isAdmin")
+                        let isAdmin = claim.boolean!
+                        
+                        if(isAdmin){
+                            defaults.setValue(true, forKey: "isAdmin")
+                            defaults.setValue(token.token, forKey: "jsonwebtoken")
+                            defaults.setValue(token.expiration/1000, forKey: "expiration")
+                            self.isAdmin = true
+                            self.message = ""
+                        } else {
+                            self.message = "You are not the administrator"
+                        }
+                    } catch {
+                        self.message = "oops..something went wrong"
+                    }
                     print(token)
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.message = "Authentication Error"
+                }
             }
         }
     }
@@ -56,10 +74,13 @@ class LoginViewModel: ObservableObject {
 
                 DispatchQueue.main.async {
                     self.isAuthenticated = true
+                    self.message = ""
                     print(token)
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.message = "Authentication Error"
+                }
             }
         }
     }
