@@ -6,8 +6,8 @@
 //
 
 import Foundation
-           
-            
+
+
 enum AuthenticationError: Error {
     case invalidCredentials
     case custom(errorMessage: String)
@@ -56,9 +56,9 @@ struct sendMoneyBody: Codable {
 }
 
 class Webservice : ObservableObject{
-      
-let urlCC1 = "http://141.51.114.20:8080"
-var items = [Item]()
+    
+    let urlCC1 = "http://141.51.114.20:8080"
+    var items = [Item]()
     
     
     func login(id: String, password: String, completion: @escaping (Result<Token, AuthenticationError>) -> Void) {
@@ -87,7 +87,7 @@ var items = [Item]()
                 return
             }
             
-           completion(.success(token))
+            completion(.success(token))
             
         }.resume()
     }
@@ -116,16 +116,16 @@ var items = [Item]()
             
             
             let httpResponse = response as? HTTPURLResponse
-                
+            
             if(httpResponse?.statusCode != 200){
                 completion(.failure(.custom(errorMessage: "ooo...")))
                 return
             }
-    
+            
             
             let str = String(decoding: data, as: UTF8.self)
             
-           completion(.success(str))
+            completion(.success(str))
             
         }.resume()
     }
@@ -139,10 +139,10 @@ var items = [Item]()
         }
         
         print(url)
-    
+        
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-
+            
             let items = try! JSONDecoder().decode([Item].self, from: data!)
             
             print(items)
@@ -156,10 +156,10 @@ var items = [Item]()
     func getCurrentMillis()->Int{
         return  Int(NSDate().timeIntervalSince1970)
     }
-
+    
     
     func getRefreshToken()->String?{
-
+        
         let defaults = UserDefaults.standard
         
         var needRefresh = false;
@@ -179,9 +179,9 @@ var items = [Item]()
             return token
         }
         
-       let id = defaults.string(forKey: "userID")!
-       let password = defaults.string(forKey: "userPassword")!
-
+        let id = defaults.string(forKey: "userID")!
+        let password = defaults.string(forKey: "userPassword")!
+        
         
         Webservice().login(id: id, password: password) { result in
             switch result {
@@ -206,10 +206,10 @@ var items = [Item]()
         }
         
         print(url)
-    
+        
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-
+            
             let users = try! JSONDecoder().decode([User].self, from: data!)
             
             print(users)
@@ -229,25 +229,25 @@ var items = [Item]()
         }
         
         
-       guard let token = getRefreshToken() else {
-                    completion(.failure(.noData))
-                    return
-                }
-
+        guard let token = getRefreshToken() else {
+            completion(.failure(.noData))
+            return
+        }
+        
         
         let body = UpdateUserRequestBody(name: name, password: password)
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(body)
         request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
-
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             
             let httpResponse = response as? HTTPURLResponse
-                
+            
             if(httpResponse?.statusCode != 200){
                 completion(.failure(.decodingError))
             }
@@ -261,7 +261,7 @@ var items = [Item]()
     
     
     func getUserData(id: String, token: String, completion: @escaping (Result<UserProfile, NetworkError>) -> Void){
-
+        
         guard let url = URL(string: urlCC1 + "/users/"+id) else {
             print("Invalid url...")
             return
@@ -271,7 +271,7 @@ var items = [Item]()
         
         request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let data = data, error == nil else {
@@ -298,26 +298,26 @@ var items = [Item]()
         }
         
         
-       guard let token = getRefreshToken() else {
-                    return
-                }
-
+        guard let token = getRefreshToken() else {
+            return
+        }
+        
         
         let body = newFunding(amount: amount)
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(body)
         request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
-
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             
             let httpResponse = response as? HTTPURLResponse
-                
+            
             if(httpResponse?.statusCode != 200){
-                  print(httpResponse?.statusCode)
+                print(httpResponse?.statusCode)
                 //completion(.failure(.decodingError))
             }
             
@@ -335,25 +335,25 @@ var items = [Item]()
         }
         
         
-       guard let token = getRefreshToken() else {
-                    //completion(.failure(.noData))
-                    return
-                }
-
+        guard let token = getRefreshToken() else {
+            //completion(.failure(.noData))
+            return
+        }
+        
         
         let body = pruchaseItemBody(itemId: itemId, amount: amount)
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(body)
         request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
-
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             
             let httpResponse = response as? HTTPURLResponse
-                
+            
             if(httpResponse?.statusCode != 200){
                 print(httpResponse?.statusCode)
                 //completion(.failure(.decodingError))
@@ -372,22 +372,22 @@ var items = [Item]()
         }
         
         
-       guard let token = getRefreshToken() else {
-                    //completion(.failure(.noData))
-                    return
-                }
-
-
+        guard let token = getRefreshToken() else {
+            //completion(.failure(.noData))
+            return
+        }
+        
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
-
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             
             let httpResponse = response as? HTTPURLResponse
-                
+            
             if(httpResponse?.statusCode != 200){
                 print(httpResponse?.statusCode)
                 //completion(.failure(.decodingError))
@@ -407,25 +407,25 @@ var items = [Item]()
         }
         
         
-       guard let token = getRefreshToken() else {
-                    //completion(.failure(.noData))
-                    return
-                }
-
+        guard let token = getRefreshToken() else {
+            //completion(.failure(.noData))
+            return
+        }
+        
         
         let body = sendMoneyBody(amount: amount, recipientId: recipientId)
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(body)
         request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
-
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             
             let httpResponse = response as? HTTPURLResponse
-                
+            
             if(httpResponse?.statusCode != 200){
                 print(httpResponse?.statusCode)
                 //completion(.failure(.decodingError))
@@ -433,6 +433,36 @@ var items = [Item]()
             
             //completion(.success(()))
             
+        }.resume()
+    }
+    
+    func getTransactions(id: String, completion:@escaping ([String]) -> ()) {
+        guard let url = URL(string: urlCC1 + "/users/" + id + "/transactions") else {
+            print("Invalid url...")
+            return
+        }
+        
+        print(url)
+        
+        guard let token = getRefreshToken() else {
+            //completion(.failure(.noData))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            let httpResponse = response as? HTTPURLResponse
+            print(httpResponse?.statusCode)
+            
+            //let histories = try! JSONDecoder().decode([String].self, from: data!)
+            
+            print(histories)
+            DispatchQueue.main.async {
+                //completion(histories)
+            }
         }.resume()
     }
     

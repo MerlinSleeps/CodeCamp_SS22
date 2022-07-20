@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HistoryListView: View {
+    @State var his1 = [String]()
     
     var body: some View {
         NavigationView{
@@ -25,6 +26,12 @@ struct HistoryListView: View {
                         } label: {
                             HistoryRow(history: history)
                         }
+                    }
+                }
+                .onAppear(){
+                    Webservice().getTransactions(id: "abacuscus") { (his1) in
+                        self.his1 = his1
+                        print(his1)
                     }
                 }
                 .navigationTitle("Transaction History")

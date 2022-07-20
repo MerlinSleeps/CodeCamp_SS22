@@ -11,5 +11,6 @@ import Foundation
 
 var items1:[Item] = []
 var histories:[History] = initHistory()
+var his: [String] = []
 var boughtItems:[Item] = []
 
