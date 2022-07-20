@@ -28,12 +28,12 @@ struct OrderScreenView: View {
                     }
                     let order = orderModel.calculateOrder(items: orderModel.items)
                     for (key, value) in order.counts {
-                        orderItems.append("\(Double(value) * key.price)€ \(key.name)")
+                        orderItems.append(String(key.name) + " " + String(format:"%.2f", key.price) + "$ X\(value)")
                     }
                 }
                 
                 
-                Text("Total Amount: " + String(orderModel.order.totalPrice))
+                Text("Total Amount: " + String(format:"%.2f", orderModel.order.totalPrice) + "$")
                 
                 HStack{
                     Button("Buy")

@@ -14,7 +14,7 @@ struct EditItemRow: View {
     
     var body: some View {
         HStack {
-            VStack {
+            VStack (alignment: .leading) {
                 Text(item.name)
                 Text("$" + String(format:"%.2f",item.price))
             }
