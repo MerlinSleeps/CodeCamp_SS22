@@ -66,15 +66,3 @@ struct MainScreen_Previews: PreviewProvider {
         MainScreen()
     }
 }
-    
-struct CoffeeImagevView: View {
-    var body: some View {
-        return Image("Image-2")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 150)
-            .clipped()
-            .cornerRadius(150)
-            .padding(.bottom, 75)
-    }
-}
