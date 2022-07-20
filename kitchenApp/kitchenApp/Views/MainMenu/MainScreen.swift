@@ -17,7 +17,7 @@ struct MainScreen: View {
     
     var body: some View {
         VStack {
-            CoffeeImagevView()
+            CoffeeImageView()
             HStack {
                 Text(self.profile.userProfile.name).frame(height: 30)
             }
