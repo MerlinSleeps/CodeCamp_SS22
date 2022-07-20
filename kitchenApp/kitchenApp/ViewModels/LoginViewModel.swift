@@ -10,8 +10,8 @@ import JWTDecode
 
 class LoginViewModel: ObservableObject {
     
-    @Published var id: String = ""
-    @Published var password: String = ""
+    @Published var id: String = "abacuscus"
+    @Published var password: String = "babuscus"
     @Published var isAuthenticated: Bool = false    
     @Published var isAdmin: Bool = false
     @Published var message: String = ""
@@ -51,7 +51,7 @@ class LoginViewModel: ObservableObject {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.message = "Authentication Error"
+                    self.message = error.localizedDescription
                 }
             }
         }
@@ -79,7 +79,7 @@ class LoginViewModel: ObservableObject {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.message = "Authentication Error"
+                    self.message = error.localizedDescription
                 }
             }
         }
