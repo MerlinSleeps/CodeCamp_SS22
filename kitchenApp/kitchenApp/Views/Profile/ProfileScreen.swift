@@ -81,7 +81,6 @@ struct ProfileScreen: View {
     
     fileprivate func ProfileView() -> some View {
         @Environment(\.editMode) var editMode
-        @State var tag: Int? = 0
         let defaults = UserDefaults.standard
         let pwd = defaults.string(forKey: "userPassword")!
         return  VStack {
