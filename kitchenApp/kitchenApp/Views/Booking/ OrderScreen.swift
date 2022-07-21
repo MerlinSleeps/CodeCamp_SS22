@@ -9,14 +9,21 @@ import SwiftUI
 
 struct OrderScreenView: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @ObservedObject var profile = ProfileViewModel()
     
     @State var orderItems = [String]()
-    @State private var showingOrderCancelAlert = false
+    @State var showAlert = false
+    @State var activeLink = false
+
     var orderModel = OrderViewModel()
     
     var body: some View {
             VStack {
+                NavigationLink(destination: Text("Y"), isActive: $activeLink,
+                               label: { EmptyView() })
+                
                 List (self.orderItems, id: \.self) { (item) in
                     HStack{
                         Text(item)
@@ -38,7 +45,7 @@ struct OrderScreenView: View {
                 HStack{
                     Button("Buy")
                     {
-                        orderModel.purchaseOrder(userId: profile.userProfile.id)
+                        showAlert = true
                     }
                         .buttonStyle(GeneralButton())
                 }
@@ -47,6 +54,12 @@ struct OrderScreenView: View {
             .navigationTitle("Confirm your Order")
             .onAppear() {
                 profile.getUserData()
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Please confirm your order"), primaryButton: .default(Text("Confirm")) {
+                    orderModel.purchaseOrder(userId: profile.userProfile.id)
+                    self.presentationMode.wrappedValue.dismiss()
+                }, secondaryButton: .destructive(Text("Cancel")))
             }
         }
     

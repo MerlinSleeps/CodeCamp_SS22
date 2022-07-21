@@ -47,7 +47,7 @@ struct MainScreenAdmin: View {
                             self.tag = 3
                         })
                         .buttonStyle(GeneralButton())
-                }.buttonStyle(GeneralButton())
+                }
                 //Edit Item
                 NavigationLink(destination: EditItemListView(), tag: 4, selection: $tag) {
                     Button("Edit Item" ,action: {
@@ -61,7 +61,7 @@ struct MainScreenAdmin: View {
                             self.tag = 5
                         })
                         .buttonStyle(GeneralButton())
-                }.buttonStyle(GeneralButton())
+                }
         }
         .padding()
         .onAppear(perform: {

@@ -10,7 +10,6 @@ import Foundation
 class ProfileViewModel: ObservableObject {
     
     @Published var userProfile = UserProfile(id: "", name: "", balance: 0.0)
-
     
     init(){
         getUserData()

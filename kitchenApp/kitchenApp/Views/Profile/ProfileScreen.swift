@@ -23,7 +23,8 @@ struct ProfileScreen: View {
     @ObservedObject var profile = ProfileViewModel()
     
     @State var editProfile = Profile(name: "",password: "")
-   
+    @State private var tag: Int? = 0
+    
     var sName: Binding<String> {
            .init(get: {
                return editProfile.name
@@ -72,8 +73,6 @@ struct ProfileScreen: View {
                 editProfileView()
             } else {
                 ProfileView()
-                    .onAppear(perform: {
-                    })
             }
         }
     }
@@ -109,17 +108,15 @@ struct ProfileScreen: View {
                         Spacer()
                         Text(self.profile.userProfile.balance, format: .number).foregroundColor(.secondary)
                     }
-                    
                 }
-                
-                NavigationLink(destination: HistoryListView()) {
-                        Button("Transfer History" ,action: {
-                     
-                        })
-                        .buttonStyle(GeneralButton())
-                }.padding().onAppear(perform: {
-                    profile.getUserData()
-                })
+
+            }
+            
+            NavigationLink(destination: HistoryListView(), tag: 1, selection: $tag) {
+                    Button("Transfer History" ,action: {
+                        self.tag = 1
+                    })
+                    .buttonStyle(GeneralButton())
             }
             
         }
