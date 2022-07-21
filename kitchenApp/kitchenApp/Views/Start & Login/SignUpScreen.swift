@@ -39,11 +39,10 @@ struct SignUpScreen : View {
                 .padding(.bottom, 70)
             
             NavigationLink(destination: LoginScreen(), isActive: $signUpVM.success) {
-                Button(action: {
+                Button("Sign Up", action: {
                     signUpVM.signUp()
-                }) {
-                   SignUpButtonContent()
-                }
+                })
+                .buttonStyle(GeneralButton())
             }
         }
         .padding()
@@ -55,30 +54,5 @@ struct SignUpScreen : View {
 struct SignUpScreen_Previews : PreviewProvider {
     static var previews: some View {
         SignUpScreen()
-    }
-}
-
-
-struct UserImage : View {
-    var body: some View {
-        return Image("Image-2")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 150)
-            .clipped()
-            .cornerRadius(150)
-            .padding(.bottom, 75)
-    }
-}
-
-struct SignUpButtonContent : View {
-    var body: some View {
-        return Text("Sign Up")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 50)
-            .background(Color.blue)
-            .cornerRadius(15.0)
     }
 }

@@ -42,29 +42,22 @@ struct MainScreenAdmin: View {
                 }
                 //Transfer Money
                 NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 3, selection: $tag) {
-                        Button("Fund user" ,action: {
+                        Button("Send Money" ,action: {
                             self.tag = 3
                         })
                         .buttonStyle(GeneralButton())
                 }.buttonStyle(GeneralButton())
-                //Transfer History
-            NavigationLink(destination: HistoryListView(), tag: 4, selection: $tag) {
-                        Button("Transfer History" ,action: {
-                            self.tag = 4
-                        })
-                        .buttonStyle(GeneralButton())
-                }.buttonStyle(GeneralButton())
                 //Edit Item
-                NavigationLink(destination: EditItemListView(), tag: 5, selection: $tag) {
+                NavigationLink(destination: EditItemListView(), tag: 4, selection: $tag) {
                     Button("Edit Item" ,action: {
-                        self.tag = 5
+                        self.tag = 4
                     })
                     .buttonStyle(GeneralButton())
                 }
                 //Charge Money
-                NavigationLink(destination: ShowAllUserScreen(destination: .chargeMoney), tag: 6, selection: $tag) {
-                        Button("Fund user" ,action: {
-                            self.tag = 6
+                NavigationLink(destination: ShowAllUserScreen(destination: .chargeMoney), tag: 5, selection: $tag) {
+                        Button("Charge Money" ,action: {
+                            self.tag = 5
                         })
                         .buttonStyle(GeneralButton())
                 }.buttonStyle(GeneralButton())

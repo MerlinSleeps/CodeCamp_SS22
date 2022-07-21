@@ -41,15 +41,8 @@ struct MainScreen: View {
             }
             //Transfer Money
             NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 3, selection: $tag) {
-                    Button("Fund user" ,action: {
+                    Button("Send Money" ,action: {
                         self.tag = 3
-                    })
-                    .buttonStyle(GeneralButton())
-            }.buttonStyle(GeneralButton())
-            //Transfer History
-            NavigationLink(destination: HistoryListView(), tag: 4, selection: $tag) {
-                    Button("Transfer History" ,action: {
-                        self.tag = 4
                     })
                     .buttonStyle(GeneralButton())
             }.buttonStyle(GeneralButton())

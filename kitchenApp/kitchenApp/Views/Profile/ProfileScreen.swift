@@ -81,7 +81,6 @@ struct ProfileScreen: View {
     
     fileprivate func ProfileView() -> some View {
         @Environment(\.editMode) var editMode
-
         let defaults = UserDefaults.standard
         let pwd = defaults.string(forKey: "userPassword")!
         return  VStack {
@@ -113,6 +112,14 @@ struct ProfileScreen: View {
                     
                 }
                 
+                NavigationLink(destination: HistoryListView()) {
+                        Button("Transfer History" ,action: {
+                     
+                        })
+                        .buttonStyle(GeneralButton())
+                }.padding().onAppear(perform: {
+                    profile.getUserData()
+                })
             }
             
         }

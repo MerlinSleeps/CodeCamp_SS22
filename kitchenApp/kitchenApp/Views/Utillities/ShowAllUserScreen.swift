@@ -62,7 +62,8 @@ struct ShowAllUserScreen: View {
     fileprivate func showAllUsersToShowView() -> some View {
         return VStack {
             List (self.users) { (user) in
-                Text(user.name)
+                HStack{UserImageView()
+                   Text(user.name)}
             }
         }
     }
