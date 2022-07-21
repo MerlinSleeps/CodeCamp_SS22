@@ -23,9 +23,12 @@ struct BookingView: View {
                         Spacer()
                         Button("Add") {
                             self.addItem(item: item)
-                        }
+                        }.foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(15.0)
                             .buttonStyle(.bordered)
-                    }
+                    }.padding().border(.black, width: 2)
+                        .background(Color.gray)
                 }
                 .onAppear() {
                     Webservice().getItems { (items) in
