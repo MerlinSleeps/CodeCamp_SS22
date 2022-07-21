@@ -25,6 +25,7 @@ struct MainScreenAdmin: View {
             HStack {
                 Text("Balance:")
                 Text(self.profile.userProfile.balance, format: .number)
+                    .foregroundColor(self.profile.userProfile.balance >= 0 ? .black : .red)
             }
                 //Booking
                 NavigationLink(destination: BookingView(), tag: 1, selection: $tag) {
