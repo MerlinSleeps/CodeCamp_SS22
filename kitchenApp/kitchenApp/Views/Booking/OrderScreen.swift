@@ -14,7 +14,7 @@ struct OrderScreenView: View {
     @State var orderItems = [String]()
     @State private var showingOrderCancelAlert = false
     var orderModel = OrderViewModel()
-    
+    @State var showAlert = false
     var body: some View {
             VStack {
                 List (self.orderItems, id: \.self) { (item) in
