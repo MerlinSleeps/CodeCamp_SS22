@@ -47,7 +47,6 @@ struct MainScreenAdmin: View {
                         })
                         .buttonStyle(GeneralButton())
                 }.buttonStyle(GeneralButton())
-                //Transfer History
                 //Edit Item
                 NavigationLink(destination: EditItemListView(), tag: 4, selection: $tag) {
                     Button("Edit Item" ,action: {
