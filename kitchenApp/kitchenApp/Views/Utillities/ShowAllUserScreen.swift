@@ -16,6 +16,7 @@ enum ShowAllUserDestination {
 struct ShowAllUserScreen: View {
     
     @State var users = [User]()
+    @State private var searchText = ""
     
     var destination: ShowAllUserDestination = .justShow
     
@@ -47,6 +48,7 @@ struct ShowAllUserScreen: View {
                 NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {Text(user.name)
                 })
             }
+            .searchable(text: $searchText)
         }
     }
     
@@ -57,6 +59,7 @@ struct ShowAllUserScreen: View {
                 })
             }
         }
+        .searchable(text: $searchText)
     }
     
     fileprivate func showAllUsersToShowView() -> some View {
@@ -65,6 +68,7 @@ struct ShowAllUserScreen: View {
                 HStack{UserImageView()
                    Text(user.name)}
             }
+            .searchable(text: $searchText)
         }
     }
 }
