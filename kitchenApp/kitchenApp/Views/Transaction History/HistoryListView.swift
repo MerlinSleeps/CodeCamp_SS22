@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HistoryListView: View {
     
+    @ObservedObject var profile = ProfileViewModel()
+    
     var body: some View {
         NavigationView{
             VStack {
@@ -28,8 +30,8 @@ struct HistoryListView: View {
                     }
                 }
                 .onAppear(){
-                    Webservice().getTransactions(id: "a3620095-0598-415f-89d6-f382a6e9d9c8") { (his1) in
-                        self.his1 = his1
+                    Webservice().getTransactions(id: profile.userProfile.id) { (his1) in
+                        //self.his1 = his1
                         print(his1)
                     }
                 }

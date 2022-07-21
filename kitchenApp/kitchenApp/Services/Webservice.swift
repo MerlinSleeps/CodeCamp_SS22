@@ -453,13 +453,11 @@ class Webservice : ObservableObject{
         }.resume()
     }
     
-    func getTransactions(id: String, completion:@escaping ([String]) -> ()) {
-        guard let url = URL(string: urlCC1 + "/users/" + id + "/transactions") else {
-            print("Invalid url...")
+    func getTransactions(id: String, completion:@escaping (Result<String, NetworkError>) -> ()) {
+        guard let url = URL(string: urlCC1 + USERS_ + id + "/transactions") else {
+            print(ERROR_MESSAGE_BAD_URL)
             return
         }
-        
-        print(url)
         
         guard let token = getRefreshToken() else {
             //completion(.failure(.noData))
@@ -467,20 +465,21 @@ class Webservice : ObservableObject{
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
+        request.addValue(BEARER_ + "\(token)",  forHTTPHeaderField: AUTHORIZATION)
+        request.setValue(APPLICATION_JSON, forHTTPHeaderField: CONTENT_TYPE)
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            let httpResponse = response as? HTTPURLResponse
-            print(httpResponse?.statusCode)
+        URLSession.shared.dataTask(with: request) { data, response, error in
             
-            //let histories = try! JSONDecoder().decode([String].self, from: data!)
-            
-            print(data)
-            DispatchQueue.main.async {
-                //completion(histories)
+            guard let data = data, error == nil else {
+                completion(.failure(.noData))
+                return
             }
+            
+            guard let histories = try? JSONDecoder().decode(String.self, from: data) else {
+                completion(.failure(.decodingError))
+                return
+            }
+            print(histories)
         }.resume()
     }
 }

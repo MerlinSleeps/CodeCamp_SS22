@@ -52,7 +52,6 @@ class LoginViewModel: ObservableObject {
                     } catch {
                         self.message = "oops..something went wrong"
                     }
-                    print(token)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -80,7 +79,6 @@ class LoginViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.isAuthenticated = true
                     self.message = ""
-                    print(token)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
