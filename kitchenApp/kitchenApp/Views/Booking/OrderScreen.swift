@@ -27,7 +27,10 @@ struct OrderScreenView: View {
                 List (self.orderItems, id: \.self) { (item) in
                     HStack{
                         Text(item)
-                    }
+                        Spacer()
+                    }.padding()
+                        .border(.black, width: 2)
+                        .background(Color.gray)
                 }
                 .onAppear() {
                     if orderItems.count > 0 {
