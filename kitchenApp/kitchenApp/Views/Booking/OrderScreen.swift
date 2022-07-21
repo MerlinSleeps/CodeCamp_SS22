@@ -39,7 +39,14 @@ struct OrderScreenView: View {
                     Button("Buy")
                     {
                         orderModel.purchaseOrder(userId: profile.userProfile.id)
-                    }
+                        showAlert = true
+                    }.alert(isPresented: $showAlert) {
+                                        Alert (
+                                            title: Text("Purchase successful"),
+                                            message: Text("You have paid " + String(orderModel.order.totalPrice) + "€")
+                                           
+                                        )
+                                    }
                         .buttonStyle(GeneralButton())
                 }
                 Spacer()
