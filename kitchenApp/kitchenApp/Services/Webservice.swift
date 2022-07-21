@@ -454,7 +454,7 @@ class Webservice : ObservableObject{
     }
     
     func getTransactions(id: String, completion:@escaping ([History]) -> ()) {
-        guard let url = URL(string: urlCC1 + USERS_ + id + "/transactions") else {
+        guard let url = URL(string: URLCC1 + USERS_ + id + "/transactions") else {
             print(ERROR_MESSAGE_BAD_URL)
             return
         }
