@@ -16,6 +16,7 @@ enum ShowAllUserDestination {
 struct ShowAllUserScreen: View {
     
     @State var users = [User]()
+    @State private var searchText = ""
     
     var destination: ShowAllUserDestination = .justShow
     
@@ -43,19 +44,26 @@ struct ShowAllUserScreen: View {
     
     fileprivate func showAllUsersToChargeView() -> some View {
         return VStack {
-            List (self.users) { (user) in
-                NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {Text(user.name)
-                })
+            List {
+                ForEach(searchResults, id: \.self) { (user) in
+                    NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {Text(user.name)
+                    })
+                }
             }
+            .searchable(text: $searchText)
         }
     }
     
     fileprivate func showAllUsersToSendMoneyView() -> some View {
         return VStack {
-            List (self.users) { (user) in
-                NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {Text(user.name)
-                })
+            List {
+                ForEach(searchResults, id: \.self) { (user) in
+                    NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {Text(user.name)
+                    })
+                }
             }
+            .searchable(text: $searchText)
+            .textCase(.none)
         }
     }
     
@@ -65,6 +73,16 @@ struct ShowAllUserScreen: View {
                 HStack{UserImageView()
                    Text(user.name)}
             }
+            .searchable(text: $searchText)
+            .textCase(.none)
+        }
+    }
+    
+    var searchResults: [User] {
+        if searchText.isEmpty {
+            return users
+        } else {
+            return users.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
         }
     }
 }
