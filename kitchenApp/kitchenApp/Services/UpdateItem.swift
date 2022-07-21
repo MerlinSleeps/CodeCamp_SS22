@@ -112,3 +112,11 @@ func getTime() -> String {
     print(dformat.string(from: now))
     return dformat.string(from: now)
 }
+
+func getDate() -> String {
+    let now = Date()
+    let dformat = DateFormatter()
+    dformat.dateFormat = "dd.MM.yyyy"
+    print(dformat.string(from: now))
+    return dformat.string(from: now)
+}

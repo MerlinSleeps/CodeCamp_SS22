@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		73196291288808C4009C051D /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73196290288808C4009C051D /* Bar.swift */; };
+		731962EB28884691009C051D /* AAInfographics in Frameworks */ = {isa = PBXBuildFile; productRef = 731962EA28884691009C051D /* AAInfographics */; };
 		733523B72886988E007C0598 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523B32886988E007C0598 /* HistoryView.swift */; };
 		733523B82886988E007C0598 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523B42886988E007C0598 /* HistoryListView.swift */; };
 		733523B92886988E007C0598 /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523B52886988E007C0598 /* HistoryRow.swift */; };
 		733523BA2886988E007C0598 /* HistoryItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523B62886988E007C0598 /* HistoryItemRowView.swift */; };
 		733523BC288698A7007C0598 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523BB288698A7007C0598 /* History.swift */; };
 		733523C02886A453007C0598 /* HistoryTransView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523BF2886A453007C0598 /* HistoryTransView.swift */; };
+		7345E4AF288942B800C085EF /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4AE288942B800C085EF /* testView.swift */; };
+		7345E4B12889430400C085EF /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4B02889430400C085EF /* ChartView.swift */; };
+		7345E4B3288943EF00C085EF /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4B2288943EF00C085EF /* Chart.swift */; };
 		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
 		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
 		771880B5288750B80061C3B1 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 771880B4288750B80061C3B1 /* JWTDecode */; };
@@ -77,6 +81,9 @@
 		733523B62886988E007C0598 /* HistoryItemRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItemRowView.swift; sourceTree = "<group>"; };
 		733523BB288698A7007C0598 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = History.swift; path = kitchenApp/Models/History.swift; sourceTree = SOURCE_ROOT; };
 		733523BF2886A453007C0598 /* HistoryTransView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransView.swift; sourceTree = "<group>"; };
+		7345E4AE288942B800C085EF /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
+		7345E4B02889430400C085EF /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		7345E4B2288943EF00C085EF /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		776A4E602859E6D0009B6FE6 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
@@ -123,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				771880B5288750B80061C3B1 /* JWTDecode in Frameworks */,
+				731962EB28884691009C051D /* AAInfographics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +151,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7345E4B428894CBE00C085EF /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				7345E4B2288943EF00C085EF /* Chart.swift */,
+				7345E4B02889430400C085EF /* ChartView.swift */,
+				7345E4AE288942B800C085EF /* testView.swift */,
+			);
+			path = Statistic;
+			sourceTree = "<group>";
+		};
 		776A4E5D2859DBD4009B6FE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +198,7 @@
 		77C5962028593DBD0086C25E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7345E4B428894CBE00C085EF /* Statistic */,
 				D7EC68572886EDF3001C3D08 /* Utillities */,
 				D7EC68562886EDDD001C3D08 /* Transactions */,
 				D7EC68552886EDC6001C3D08 /* Booking */,
@@ -356,6 +375,7 @@
 			name = kitchenApp;
 			packageProductDependencies = (
 				771880B4288750B80061C3B1 /* JWTDecode */,
+				731962EA28884691009C051D /* AAInfographics */,
 			);
 			productName = kitchenApp;
 			productReference = F77D47FF28254C8E00A898D4 /* kitchenApp.app */;
@@ -431,6 +451,7 @@
 			mainGroup = F77D47F628254C8E00A898D4;
 			packageReferences = (
 				771880B3288750B80061C3B1 /* XCRemoteSwiftPackageReference "JWTDecode" */,
+				731962E928884691009C051D /* XCRemoteSwiftPackageReference "AAChartKit-Swift" */,
 			);
 			productRefGroup = F77D480028254C8E00A898D4 /* Products */;
 			projectDirPath = "";
@@ -474,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7345E4B3288943EF00C085EF /* Chart.swift in Sources */,
 				733523BC288698A7007C0598 /* History.swift in Sources */,
 				D7B8F605285950BE0056B38D /* BookingView.swift in Sources */,
 				733523C02886A453007C0598 /* HistoryTransView.swift in Sources */,
@@ -487,6 +509,8 @@
 				D74C36FC28776BB100510E18 /* EditItemView.swift in Sources */,
 				733523BA2886988E007C0598 /* HistoryItemRowView.swift in Sources */,
 				D731179C28855CEF00FD6997 /* ShowAllUserScreen.swift in Sources */,
+				7345E4B12889430400C085EF /* ChartView.swift in Sources */,
+				7345E4AF288942B800C085EF /* testView.swift in Sources */,
 				F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */,
 				D7BED2AC288844C000B83D17 /* CoffeeImageView.swift in Sources */,
 				776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */,
@@ -833,6 +857,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		731962E928884691009C051D /* XCRemoteSwiftPackageReference "AAChartKit-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AAChartModel/AAChartKit-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		771880B3288750B80061C3B1 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
@@ -844,6 +876,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		731962EA28884691009C051D /* AAInfographics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 731962E928884691009C051D /* XCRemoteSwiftPackageReference "AAChartKit-Swift" */;
+			productName = AAInfographics;
+		};
 		771880B4288750B80061C3B1 /* JWTDecode */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 771880B3288750B80061C3B1 /* XCRemoteSwiftPackageReference "JWTDecode" */;
