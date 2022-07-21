@@ -453,7 +453,7 @@ class Webservice : ObservableObject{
         }.resume()
     }
     
-    func getTransactions(id: String, completion:@escaping (Result<String, NetworkError>) -> ()) {
+    func getTransactions(id: String, completion:@escaping ([History]) -> ()) {
         guard let url = URL(string: urlCC1 + USERS_ + id + "/transactions") else {
             print(ERROR_MESSAGE_BAD_URL)
             return
@@ -469,15 +469,13 @@ class Webservice : ObservableObject{
         request.setValue(APPLICATION_JSON, forHTTPHeaderField: CONTENT_TYPE)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
+            let httpResponse = response as? HTTPURLResponse
+            print(httpResponse?.statusCode)
             
-            guard let data = data, error == nil else {
-                completion(.failure(.noData))
-                return
-            }
+            let histories = try! JSONDecoder().decode([History].self, from: data!)
             
-            guard let histories = try? JSONDecoder().decode(String.self, from: data) else {
-                completion(.failure(.decodingError))
-                return
+            DispatchQueue.main.async {
+                completion(histories)
             }
             print(histories)
         }.resume()

@@ -35,6 +35,7 @@ struct SendMoneyView: View {
                 let amountString = String(format: "%0.2f", transferAmount)
                 alertMessage = "You are about to transfer: " + amountString + "$ to \(user.name)" 
                 showAlert = true
+                Webservice().sendMoney(id: profile.userProfile.id, recipientId: user.id, amount: transferAmount)
             }
             .buttonStyle(GeneralButton())
         }

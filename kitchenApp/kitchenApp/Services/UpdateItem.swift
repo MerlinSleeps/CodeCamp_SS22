@@ -7,11 +7,11 @@
 
 import Foundation
 
-let urlCC1 = "http://141.51.114.20:8080"
+let urlItems = "http://141.51.114.20:8080/items"
 
 func updateItem(id: String, name: String, amount: Int, price: Double) {
     
-    guard let url = URL(string: urlCC1 + "/items") else {
+    guard let url = URL(string: urlItems) else {
         print("Invalid url...")
         return
     }
@@ -44,7 +44,7 @@ func updateItem(id: String, name: String, amount: Int, price: Double) {
 func createItem(name: String, price: Double) {
     print("Created!")
     
-    guard let url = URL(string: urlCC1 + "/items") else {
+    guard let url = URL(string: urlItems) else {
         return
     }
     
@@ -68,7 +68,7 @@ func createItem(name: String, price: Double) {
 
 func deleteItem(id: String) {
     print("Deleted!")
-    guard let url = URL(string: urlCC1 + "/items/" + id) else {
+    guard let url = URL(string: urlItems + id) else {
         return
     }
     
@@ -95,28 +95,48 @@ func findItem(name: String) -> Item {
     return Item(id: "Null", name: "Null", amount: 0, price: 0)
 }
 
-func initHistory() -> [History] {
-    var histories : [History] = []
-    var items2: [Item] = []
-    items2.append(Item(id: "1", name: "i1", amount: 2, price: 3.33))
-    items2.append(Item(id: "2", name: "i2", amount: 3, price: 4.44))
-    histories.append(History(id: 1, action: "Transfer", time: getTime(), creditchange: -18.5, itemsBought: [], from: "u1", to: "u2"))
-    histories.append(History(id: 2, action: "Bought", time: getTime(), creditchange: -33.5, itemsBought: items2, from: "", to: ""))
-    return histories
-}
-
-func getTime() -> String {
-    let now = Date()
+func getTime(timeStamp: Int) -> String {
+    let timeInterval: TimeInterval = TimeInterval(timeStamp/1000)
+    let date = Date(timeIntervalSince1970: timeInterval)
     let dformat = DateFormatter()
     dformat.dateFormat = "dd.MM.yyyy HH:mm:ss"
-    print(dformat.string(from: now))
-    return dformat.string(from: now)
+    print(date)
+    print(timeStamp)
+    return dformat.string(from: date)
 }
 
-func getDate() -> String {
-    let now = Date()
+func getDate(timeStamp: Int) -> String {
+    let timeInterval: TimeInterval = TimeInterval(timeStamp/1000)
+    let date = Date(timeIntervalSince1970: timeInterval)
     let dformat = DateFormatter()
     dformat.dateFormat = "dd.MM.yyyy"
-    print(dformat.string(from: now))
-    return dformat.string(from: now)
+    print(timeStamp)
+    return dformat.string(from: date)
 }
+
+func statistic() {
+    for his in histories {
+        if (his.type == "purchase") {
+            if (itemPurchaseCount[his.itemName!] == nil) {
+                itemPurchaseCount[his.itemName!] = his.amount!
+            } else {
+                itemPurchaseCount[his.itemName!]! += his.amount!
+            }
+        }
+    }
+}
+
+func getMostpopularItems() -> [String] {
+    var itemAmountList = [Int](itemPurchaseCount.values)
+    var itemNames: [String] = []
+    var othersCount = 0
+    itemAmountList.sort(by: >)
+    for (key, value) in itemPurchaseCount {
+        if (value == itemAmountList[0] || value == itemAmountList[1] || value == itemAmountList[2] || value == itemAmountList[3] || value == itemAmountList[4]) {
+            itemNames.append(key)
+        }
+    }
+
+    return itemNames
+}
+

@@ -15,31 +15,31 @@ struct HistoryTransView: View {
             Text("From: ")
                 .frame(width: 350, height: 50, alignment: .leading)
                 .font(.system(size: 40))
-            Text(history.from)
+            Text(history.type)
                 .frame(width: 300, height: 50, alignment: .leading)
                 .font(.system(size: 30))
             Divider()
             Text("To: " )
                 .frame(width: 350, height: 50, alignment: .leading)
                 .font(.system(size: 40))
-            Text(history.to)
+            Text(history.type)
                 .frame(width: 300, height: 50, alignment: .leading)
                 .font(.system(size: 30))
             Divider()
             Spacer()
             Divider()
             VStack {
-                if (history.creditchange >= 0) {
-                    Text("Transfer amount: " + String(format:"%.2f", history.creditchange))
+                if (history.value >= 0) {
+                    Text("Transfer amount: " + String(format:"%.2f", history.value))
                         .frame(width: 300, height: 30, alignment: .trailing)
                         .font(.system(size: 25))
                 } else {
-                    Text("Transfer amount: " + String(format:"%.2f", -(history.creditchange)))
+                    Text("Transfer amount: " + String(format:"%.2f", -(history.value)))
                         .frame(width: 300, height: 30, alignment: .trailing)
                         .font(.system(size: 25))
                 }
                 Divider()
-                Text("Date: " + history.time)
+                Text("Date: " + getTime(timeStamp: history.timestamp))
                     .frame(width: 300, height: 30, alignment:.trailing)
                     .font(.system(size: 18))
             }

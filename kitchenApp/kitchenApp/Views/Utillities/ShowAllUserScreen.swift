@@ -21,7 +21,8 @@ struct ShowAllUserScreen: View {
     
     var body: some View {
         
-        Group {
+        Text("12")
+        /*Group {
             switch destination {
             case .chargeMoney:
                 showAllUsersToChargeView()
@@ -39,6 +40,7 @@ struct ShowAllUserScreen: View {
                 self.users = users
             }
         }
+         */
     }
     
     fileprivate func showAllUsersToChargeView() -> some View {
@@ -59,7 +61,7 @@ struct ShowAllUserScreen: View {
         }
     }
     
-    fileprivate func showAllUsersToShowView() -> some View {
+    /*fileprivate func showAllUsersToShowView() -> some View {
         return VStack {
             List (self.users) { (user) in
                 HStack{UserImageView()
@@ -67,6 +69,7 @@ struct ShowAllUserScreen: View {
             }
         }
     }
+     */
 }
 
 struct ShowAllUserScreen_Previews: PreviewProvider {

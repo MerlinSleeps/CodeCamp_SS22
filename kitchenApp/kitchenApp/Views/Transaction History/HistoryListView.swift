@@ -8,31 +8,28 @@
 import SwiftUI
 
 struct HistoryListView: View {
+    @State var his1: [History] = []
     
     @ObservedObject var profile = ProfileViewModel()
     
     var body: some View {
         NavigationView{
             VStack {
-                List(histories) { history in
-                    if (history.action == "Bought") {
-                        NavigationLink {
-                            HistoryView(history: history)
-                        } label: {
-                            HistoryRow(history: history)
-                        }
+                List(self.his1) { history in
+                    if (history.type == "purchase") {
+                        HistoryRow(history: history)
                     } else {
-                        NavigationLink {
-                            HistoryTransView(history: history)
-                        } label: {
-                            HistoryRow(history: history)
-                        }
+                        HistoryRow(history: history)
                     }
                 }
                 .onAppear(){
-                    Webservice().getTransactions(id: profile.userProfile.id) { (his1) in
-                        //self.his1 = his1
-                        print(his1)
+                    Webservice().getTransactions(id: currentUserId) { (historiesData) in
+                        for h in historiesData {
+                            var history = h
+                            history.id = histories.count
+                            histories.append(history)
+                        }
+                        self.his1 = histories.reversed()
                     }
                 }
                 .toolbar {
