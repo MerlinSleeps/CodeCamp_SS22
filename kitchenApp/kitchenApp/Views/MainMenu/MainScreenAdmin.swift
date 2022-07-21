@@ -62,6 +62,14 @@ struct MainScreenAdmin: View {
                         })
                         .buttonStyle(GeneralButton())
                 }
+                // Show all Users with their Images
+                NavigationLink(destination: ShowAllUserScreen(destination: .justShow), tag: 6, selection: $tag) {
+                        Button("Show all users" ,action: {
+                            loginVM.login()
+                            self.tag = 6
+                        })
+                        .buttonStyle(GeneralButton())
+                }.buttonStyle(GeneralButton())
         }
         .padding()
         .onAppear(perform: {
