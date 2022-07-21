@@ -56,7 +56,7 @@ struct OrderScreenView: View {
                 profile.getUserData()
             }
             .alert(isPresented: $showAlert) {
-                Alert(title: Text("Please confirm your order"), primaryButton: .default(Text("Confirm")) {
+                Alert(title: Text("Please confirm your order"),message: Text("You have to pay " + String(orderModel.order.totalPrice) + "$"), primaryButton: .default(Text("Confirm")) {
                     orderModel.purchaseOrder(userId: profile.userProfile.id)
                     self.presentationMode.wrappedValue.dismiss()
                 }, secondaryButton: .destructive(Text("Cancel")))

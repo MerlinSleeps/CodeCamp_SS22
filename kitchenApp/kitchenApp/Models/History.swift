@@ -8,14 +8,14 @@
 import Foundation
 import SwiftUI
 
-struct History: Identifiable{
-    var id: Int
-    var action: String = ""
-    var time: String = ""
-    var creditchange: Double = 0
-    var itemsBought: [Item] = []
-    var from: String
-    var to : String
+struct History: Identifiable, Decodable{
+    var type: String
+    var value: Double
+    var timestamp: Int
+    var itemId: String?
+    var itemName: String?
+    var amount: Int?
+    var id: Int? 
 }
 
 

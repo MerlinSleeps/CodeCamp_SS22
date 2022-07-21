@@ -53,8 +53,5 @@ class OrderViewModel: ObservableObject {
                 }
             }
         }
-        
-        let thisHistory = History(id: 1 + histories.count, action: "Bought", time: getTime(), creditchange: -order.totalPrice, itemsBought: boughtItems, from: "", to: "")
-        histories.append(thisHistory)
     }
 }

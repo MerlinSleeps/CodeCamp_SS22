@@ -59,6 +59,7 @@ class LoginViewModel: ObservableObject {
                 }
             }
         }
+        currentUserId = id
     }
 
         

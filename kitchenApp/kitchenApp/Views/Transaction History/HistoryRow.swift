@@ -13,9 +13,9 @@ struct HistoryRow: View {
     var body: some View {
         HStack {
             VStack {
-                Text(history.action)
+                Text(history.type)
                 Spacer()
-                let credit = history.creditchange
+                let credit = history.value
                 if (credit > 0) {
                     Text("+ $" + String(format:"%.2f", credit))
                         .foregroundColor(.green)
@@ -25,7 +25,7 @@ struct HistoryRow: View {
                 }
             }
             Spacer()
-            Text(history.time)
+            Text(getTime(timeStamp: history.timestamp))
                 .font(.system(size: 16))
         }
     }

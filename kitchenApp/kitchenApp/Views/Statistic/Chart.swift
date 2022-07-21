@@ -15,7 +15,7 @@ class Chart: UIViewController {
         
         // 初始化图表视图控件
         let chartWidth  = self.view.frame.size.width
-        let chartHeight = self.view.frame.size.height
+        let chartHeight = self.view.frame.size.height-100
         let aaChartView = AAChartView()
         aaChartView.frame = CGRect(x:0, y:0, width:chartWidth, height:chartHeight)
         self.view.addSubview(aaChartView)
@@ -35,7 +35,7 @@ class Chart: UIViewController {
         let chartModel = AAChartModel()
             .chartType(.column)//图表类型
             .title("Booking Statistics")//图表主标题
-            .subtitle(getDate())//图表副标题
+            .subtitle("")//图表副标题
             .inverted(false)//是否翻转图形
             .yAxisTitle("")// Y 轴标题
             .legendEnabled(true)//是否启用图表的图例(图表底部的可点击的小圆点)
@@ -50,11 +50,8 @@ class Chart: UIViewController {
                 AASeriesElement()
                     .name("Summe")
                     .data([1, 3, 2, 1, 5, 6])
-                    .toDic()!,
-                AASeriesElement()
-                    .name("user")
-                    .data([1, 1, 2, 1, 3, 5])
-                    .toDic()!])
+                    .toDic()!
+            ])
         
         // 图表视图对象调用图表模型对象,绘制最终图形
         aaChartView.aa_drawChartWithChartModel(chartModel)
