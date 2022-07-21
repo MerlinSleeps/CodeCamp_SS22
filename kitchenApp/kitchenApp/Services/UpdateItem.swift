@@ -122,21 +122,37 @@ func statistic() {
             } else {
                 itemPurchaseCount[his.itemName!]! += his.amount!
             }
+            if (itemPurchaseSumme[his.itemName!] == nil) {
+                itemPurchaseSumme[his.itemName!] = (-his.value)
+            } else {
+                itemPurchaseSumme[his.itemName!]! += (-his.value)
+            }
         }
     }
 }
 
 func getMostpopularItems() -> [String] {
-    var itemAmountList = [Int](itemPurchaseCount.values)
+    var itemSummeList = [Double](itemPurchaseSumme.values)
     var itemNames: [String] = []
-    var othersCount = 0
-    itemAmountList.sort(by: >)
-    for (key, value) in itemPurchaseCount {
-        if (value == itemAmountList[0] || value == itemAmountList[1] || value == itemAmountList[2] || value == itemAmountList[3] || value == itemAmountList[4]) {
+    var othersSummeCount: Double = 0.0
+    var othersAmountCount = 0
+    itemSummeList.sort(by: >)
+    for (key, value) in itemPurchaseSumme {
+        if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
             itemNames.append(key)
+        } else {
+            othersSummeCount += value
         }
     }
-
+    itemPurchaseSumme["others"] = othersSummeCount
+    
+    for (key, value) in itemPurchaseCount {
+        if (!itemNames.contains(key)) {
+            othersAmountCount += value
+        }
+    }
+    itemPurchaseCount["others"] = othersAmountCount
+    print(itemNames)
     return itemNames
 }
 

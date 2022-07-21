@@ -20,17 +20,16 @@ class Chart: UIViewController {
         aaChartView.frame = CGRect(x:0, y:0, width:chartWidth, height:chartHeight)
         self.view.addSubview(aaChartView)
         
-        var itemsName: [String] = []
-        for i in items1 {
-            itemsName.append(i.name)
+        statistic()
+        let itemsName: [String] = getMostpopularItems()
+        var itemsAmount: [Int] = []
+        var itemsSumme: [Double] = []
+        for item in itemsName {
+            itemsAmount.append(itemPurchaseCount[item]!)
+            itemsSumme.append(itemPurchaseSumme[item]!)
         }
-        if (itemsName.count == 0) {
-            itemsName.append("water")
-            itemsName.append("juice")
-            itemsName.append("milk")
-            itemsName.append("coffee")
-            itemsName.append("ice tee")
-        }
+        
+        
         // 初始化图表模型
         let chartModel = AAChartModel()
             .chartType(.column)//图表类型
@@ -45,11 +44,11 @@ class Chart: UIViewController {
             .series([
                 AASeriesElement()
                     .name("Amount")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5])
+                    .data(itemsAmount)
                     .toDic()!,
                 AASeriesElement()
                     .name("Summe")
-                    .data([1, 3, 2, 1, 5, 6])
+                    .data(itemsSumme)
                     .toDic()!
             ])
         

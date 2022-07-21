@@ -12,4 +12,4 @@ var histories: [History] = []
 var boughtItems: [Item] = []
 var currentUserId: String = ""
 var itemPurchaseCount: [String:Int] = [:]
-
+var itemPurchaseSumme: [String:Double] = [:]

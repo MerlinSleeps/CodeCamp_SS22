@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HistoryListView: View {
     @State var his1: [History] = []
+    @State private var showingChart = false
     
     @ObservedObject var profile = ProfileViewModel()
     
@@ -38,6 +39,12 @@ struct HistoryListView: View {
                     }
                 }
                 .navigationTitle("Transaction History")
+                Button("Show Chart") {
+                        self.showingChart = true
+                }
+            }
+            .sheet(isPresented: $showingChart) {
+                ChartView()
             }
         }
     }
