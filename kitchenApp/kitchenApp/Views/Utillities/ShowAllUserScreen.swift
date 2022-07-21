@@ -44,9 +44,11 @@ struct ShowAllUserScreen: View {
     
     fileprivate func showAllUsersToChargeView() -> some View {
         return VStack {
-            List (self.users) { (user) in
-                NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {Text(user.name)
-                })
+            List {
+                ForEach(searchResults, id: \.self) { (user) in
+                    NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {Text(user.name)
+                    })
+                }
             }
             .searchable(text: $searchText)
         }
@@ -54,12 +56,15 @@ struct ShowAllUserScreen: View {
     
     fileprivate func showAllUsersToSendMoneyView() -> some View {
         return VStack {
-            List (self.users) { (user) in
-                NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {Text(user.name)
-                })
+            List {
+                ForEach(searchResults, id: \.self) { (user) in
+                    NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {Text(user.name)
+                    })
+                }
             }
+            .searchable(text: $searchText)
+            .textCase(.none)
         }
-        .searchable(text: $searchText)
     }
     
     fileprivate func showAllUsersToShowView() -> some View {
@@ -69,6 +74,15 @@ struct ShowAllUserScreen: View {
                    Text(user.name)}
             }
             .searchable(text: $searchText)
+            .textCase(.none)
+        }
+    }
+    
+    var searchResults: [User] {
+        if searchText.isEmpty {
+            return users
+        } else {
+            return users.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
         }
     }
 }
