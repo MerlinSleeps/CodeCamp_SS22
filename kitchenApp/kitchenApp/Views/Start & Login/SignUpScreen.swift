@@ -12,7 +12,7 @@ let kightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255
 struct SignUpScreen : View {
     
     @StateObject private var signUpVM = SignUpViewModel()
-    
+    @State var showAlert = false
     var body: some View {
         
         VStack {
@@ -41,8 +41,13 @@ struct SignUpScreen : View {
             NavigationLink(destination: LoginScreen(), isActive: $signUpVM.success) {
                 Button("Sign Up", action: {
                     signUpVM.signUp()
-                })
-                .buttonStyle(GeneralButton())
+                    showAlert = true
+                }).alert(isPresented: $showAlert) {
+                        Alert (
+                            title: Text("You are signed in"),
+                            message: Text("")
+                        )
+                    }.buttonStyle(GeneralButton())
             }
         }
         .padding()
