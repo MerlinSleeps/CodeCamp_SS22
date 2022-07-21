@@ -35,6 +35,11 @@ struct HistoryListView: View {
                         print(his1)
                     }
                 }
+                .toolbar {
+                    Button("Refund last item") {
+                        Webservice().refundPurchase(id: profile.userProfile.id)
+                    }
+                }
                 .navigationTitle("Transaction History")
             }
         }

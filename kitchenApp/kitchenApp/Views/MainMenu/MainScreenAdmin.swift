@@ -25,6 +25,7 @@ struct MainScreenAdmin: View {
             HStack {
                 Text("Balance:")
                 Text(self.profile.userProfile.balance, format: .number)
+                    .foregroundColor(self.profile.userProfile.balance >= 0 ? .black : .red)
             }
                 //Booking
                 NavigationLink(destination: BookingView(), tag: 1, selection: $tag) {
@@ -46,7 +47,7 @@ struct MainScreenAdmin: View {
                             self.tag = 3
                         })
                         .buttonStyle(GeneralButton())
-                }.buttonStyle(GeneralButton())
+                }
                 //Edit Item
                 NavigationLink(destination: EditItemListView(), tag: 4, selection: $tag) {
                     Button("Edit Item" ,action: {
@@ -60,7 +61,7 @@ struct MainScreenAdmin: View {
                             self.tag = 5
                         })
                         .buttonStyle(GeneralButton())
-                }.buttonStyle(GeneralButton())
+                }
         }
         .padding()
         .onAppear(perform: {

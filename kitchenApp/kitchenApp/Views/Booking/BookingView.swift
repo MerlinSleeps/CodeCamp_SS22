@@ -40,11 +40,6 @@ struct BookingView: View {
                 Spacer()
             }
             .navigationTitle("Choose your Items")
-            .toolbar {
-                Button("Refund") {
-                    Webservice().refundPurchase(id: profile.userProfile.id)
-                }
-            }
             .onAppear() {
                 self.emptyOrder()
                 profile.getUserData()

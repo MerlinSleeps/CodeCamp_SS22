@@ -34,7 +34,7 @@
 		D731179F2885924800FD6997 /* MainScreenAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731179D2885924800FD6997 /* MainScreenAdmin.swift */; };
 		D73117A02885924800FD6997 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731179E2885924800FD6997 /* MainScreen.swift */; };
 		D73640532889521C0076FC8B /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73640522889521C0076FC8B /* UserImageView.swift */; };
-		D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */; };
+		D739785D285BA5BC000B7DC6 /* OrderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D739785C285BA5BC000B7DC6 /* OrderScreen.swift */; };
 		D745480828786C080074EC74 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745480728786C080074EC74 /* Order.swift */; };
 		D745480A28786D0B0074EC74 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745480928786D0B0074EC74 /* OrderViewModel.swift */; };
 		D74C36EE28776AFC00510E18 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C36ED28776AFC00510E18 /* ModelData.swift */; };
@@ -100,7 +100,7 @@
 		D731179D2885924800FD6997 /* MainScreenAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenAdmin.swift; sourceTree = "<group>"; };
 		D731179E2885924800FD6997 /* MainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		D73640522889521C0076FC8B /* UserImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
-		D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " OrderScreen.swift"; sourceTree = "<group>"; };
+		D739785C285BA5BC000B7DC6 /* OrderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderScreen.swift; sourceTree = "<group>"; };
 		D745480728786C080074EC74 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		D745480928786D0B0074EC74 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		D74C36ED28776AFC00510E18 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				D7B8F604285950BE0056B38D /* BookingView.swift */,
-				D739785C285BA5BC000B7DC6 /*  OrderScreen.swift */,
+				D739785C285BA5BC000B7DC6 /* OrderScreen.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				733523C02886A453007C0598 /* HistoryTransView.swift in Sources */,
 				D73640532889521C0076FC8B /* UserImageView.swift in Sources */,
 				D745480828786C080074EC74 /* Order.swift in Sources */,
-				D739785D285BA5BC000B7DC6 /*  OrderScreen.swift in Sources */,
+				D739785D285BA5BC000B7DC6 /* OrderScreen.swift in Sources */,
 				D74C36EE28776AFC00510E18 /* ModelData.swift in Sources */,
 				F77D480528254C8E00A898D4 /* ContentView.swift in Sources */,
 				D73117A02885924800FD6997 /* MainScreen.swift in Sources */,

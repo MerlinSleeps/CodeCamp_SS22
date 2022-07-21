@@ -44,7 +44,7 @@ struct ShowAllUserScreen: View {
     fileprivate func showAllUsersToChargeView() -> some View {
         return VStack {
             List (self.users) { (user) in
-            NavigationLink(destination: ChargeMoneyScreen(user: user),label: {Text(user.name)
+                NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {Text(user.name)
                 })
             }
         }
@@ -53,7 +53,7 @@ struct ShowAllUserScreen: View {
     fileprivate func showAllUsersToSendMoneyView() -> some View {
         return VStack {
             List (self.users) { (user) in
-                NavigationLink(destination: SendMoneyView(user: user),label: {Text(user.name)
+                NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {Text(user.name)
                 })
             }
         }

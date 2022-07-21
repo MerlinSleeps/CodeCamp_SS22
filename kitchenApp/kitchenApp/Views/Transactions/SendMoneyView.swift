@@ -9,10 +9,13 @@ import SwiftUI
 
 struct SendMoneyView: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @ObservedObject var profile = ProfileViewModel()
     
-    @State var transferAmount = 0.0
+    @State var transferAmount:Double = 0.0
     @State var showAlert = false
+    @State var alertMessage: String
     
     var user: User
     
@@ -29,8 +32,9 @@ struct SendMoneyView: View {
                 }
             }
             Button("Transfer to " + user.name) {
+                let amountString = String(format: "%0.2f", transferAmount)
+                alertMessage = "You are about to transfer: " + amountString + "$ to \(user.name)" 
                 showAlert = true
-                Webservice().sendMoney(id: profile.userProfile.id, recipientId: user.id, amount: transferAmount)
             }
             .buttonStyle(GeneralButton())
         }
