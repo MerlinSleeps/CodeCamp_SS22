@@ -28,8 +28,6 @@ func updateItem(id: String, name: String, amount: Int, price: Double) {
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("Bearer \(token)",  forHTTPHeaderField: "Authorization")
     
-    print(request)
-    
     URLSession.shared.dataTask(with: request) {
         data, response, error in
         
@@ -38,11 +36,9 @@ func updateItem(id: String, name: String, amount: Int, price: Double) {
         
     }.resume()
     
-    print("Edited!")
 }
 
 func createItem(name: String, price: Double) {
-    print("Created!")
     
     guard let url = URL(string: urlItems) else {
         return
@@ -63,12 +59,14 @@ func createItem(name: String, price: Double) {
     
     URLSession.shared.dataTask(with: request) {
         data, response, error in
+        
+        let httpresponse = response as? HTTPURLResponse
+        print(httpresponse?.statusCode)
     }.resume()
 }
 
 func deleteItem(id: String) {
-    print("Deleted!")
-    guard let url = URL(string: urlItems + id) else {
+    guard let url = URL(string: urlItems + "/" + id) else {
         return
     }
     
@@ -83,6 +81,9 @@ func deleteItem(id: String) {
     
     URLSession.shared.dataTask(with: request) {
         data, response, error in
+        
+        let httpresponse = response as? HTTPURLResponse
+        print(httpresponse?.statusCode)
     }.resume()
 }
 
@@ -100,8 +101,6 @@ func getTime(timeStamp: Int) -> String {
     let date = Date(timeIntervalSince1970: timeInterval)
     let dformat = DateFormatter()
     dformat.dateFormat = "dd.MM.yyyy HH:mm:ss"
-    print(date)
-    print(timeStamp)
     return dformat.string(from: date)
 }
 
@@ -110,7 +109,6 @@ func getDate(timeStamp: Int) -> String {
     let date = Date(timeIntervalSince1970: timeInterval)
     let dformat = DateFormatter()
     dformat.dateFormat = "dd.MM.yyyy"
-    print(timeStamp)
     return dformat.string(from: date)
 }
 
@@ -152,7 +150,6 @@ func getMostpopularItems() -> [String] {
         }
     }
     itemPurchaseCount["others"] = othersAmountCount
-    print(itemNames)
     return itemNames
 }
 
