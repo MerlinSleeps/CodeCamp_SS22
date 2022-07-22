@@ -512,7 +512,7 @@ class Webservice : ObservableObject{
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             let httpResponse = response as? HTTPURLResponse
-            print(httpResponse?.statusCode)
+            print(httpResponse?.statusCode as Any)
             
             let histories = try! JSONDecoder().decode([History].self, from: data!)
             

@@ -32,7 +32,7 @@ func updateItem(id: String, name: String, amount: Int, price: Double) {
         data, response, error in
         
         let httpresponse = response as? HTTPURLResponse
-        print(httpresponse?.statusCode)
+        print(httpresponse?.statusCode as Any)
         
     }.resume()
     
@@ -61,7 +61,7 @@ func createItem(name: String, price: Double) {
         data, response, error in
         
         let httpresponse = response as? HTTPURLResponse
-        print(httpresponse?.statusCode)
+        print(httpresponse?.statusCode as Any)
     }.resume()
 }
 
@@ -83,7 +83,7 @@ func deleteItem(id: String) {
         data, response, error in
         
         let httpresponse = response as? HTTPURLResponse
-        print(httpresponse?.statusCode)
+        print(httpresponse?.statusCode as Any)
     }.resume()
 }
 

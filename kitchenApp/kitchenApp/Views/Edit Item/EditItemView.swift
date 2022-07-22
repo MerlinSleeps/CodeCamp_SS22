@@ -12,7 +12,8 @@ struct EditItemView: View {
     @State var showingEdit = false
     @State var showingDelete = false
     @State var editedItemName = ""
-    @State var editedItemPrice = ""
+    @State var editedItemPrice: Double = 0
+    @State var alertMessage: String = ""
     var body: some View {
         VStack(spacing: 15) {
             Text("Edit Item")
@@ -25,21 +26,24 @@ struct EditItemView: View {
                 .border(.gray, width: 2)
             
             
-            TextField(String(item.price), text: $editedItemPrice)
+            TextField(String(item.price), value: $editedItemPrice, format: .number)
                 .font(.system(size: 30))
                 .frame(width: 250, height: 40, alignment: .center)
                 .border(.gray, width: 2)
             
-            Button(action: {self.showingEdit = true}, label: {
-                Text("Done")
-            })
-            .alert(isPresented: $showingEdit) {
-                Alert(title: Text("Edit Item"), message: Text("Change Item to " + editedItemName + " $" + editedItemPrice), primaryButton: .default(Text("OK")) {
-                    let priceInDouble = Double(editedItemPrice)
-                    updateItem(id: item.id, name: editedItemName, amount: item.amount, price: priceInDouble!)
-                }, secondaryButton: .destructive(Text("Cancel")))
+            Button("Done") {
+                self.showingEdit = true
+                let priceString: String = String(format: "%0.02f", editedItemPrice)
+                alertMessage = "Add " + editedItemName + " " + priceString + "?"
             }
-            .font(.system(size: 30))
+                .alert(isPresented: $showingEdit) {
+                    Alert(title: Text("Edit Item"),
+                        message: Text(alertMessage),
+                        primaryButton: .default(Text("OK")) {
+                        updateItem(id: item.id, name: editedItemName, amount: item.amount, price: editedItemPrice)
+                        },
+                        secondaryButton: .destructive(Text("Cancel")))
+                }
             .buttonStyle(GeneralButton())
             
             Button(action: {self.showingDelete = true}, label: {
@@ -51,7 +55,6 @@ struct EditItemView: View {
                     deleteItem(id: item.id)
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
-            .font(.system(size: 30))
             .buttonStyle(GeneralButton())
         }
     }

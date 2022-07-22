@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct AddNewItem: View {
+    
     @State var showingAdd = false
     @State var newItemName = ""
-    @State var newItemPrice = ""
+    @State var newItemPrice: Double = 0
+    @State var alertMessage: String = ""
+    
     var body: some View {
         VStack(spacing: 15) {
+
             Text("Add Item")
                 .frame(width: 300, height: 50, alignment: .leading)
                 .font(.system(size: 50))
@@ -22,20 +26,24 @@ struct AddNewItem: View {
                 .frame(width: 250, height: 40, alignment: .center)
                 .border(.gray, width: 2)
             
-            TextField("Price", text: $newItemPrice)
+            TextField("Price", value: $newItemPrice, format: .number)
                 .font(.system(size: 30))
                 .frame(width: 250, height: 40, alignment: .center)
                 .border(.gray, width: 2)
             
-            Button(action: {self.showingAdd = true}, label: {
-                Text("Done")
-            })
-            .alert(isPresented: $showingAdd) {
-                Alert(title: Text("Add Item"), message: Text("Add " + newItemName + " " + newItemPrice + "?"), primaryButton: .default(Text("OK")) {
-                    createItem(name: newItemName, price: Double(newItemPrice)!)
-                }, secondaryButton: .destructive(Text("Cancel")))
+            Button("Done") {
+                self.showingAdd = true
+                let priceString: String = String(format: "%0.02f", newItemPrice)
+                alertMessage = "Add " + newItemName + " " + priceString + "?"
             }
-            .font(.system(size: 30))
+            .alert(isPresented: $showingAdd) {
+                Alert(title: Text("Add Item"),
+                    message: Text(alertMessage),
+                    primaryButton: .default(Text("OK")) {
+                        createItem(name: newItemName, price: newItemPrice)
+                    },
+                    secondaryButton: .destructive(Text("Cancel")))
+            }
             .buttonStyle(GeneralButton())
         }
     }
