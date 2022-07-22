@@ -72,6 +72,15 @@ struct MainScreenAdmin: View {
                 })
                 .buttonStyle(GeneralButton())
             }.buttonStyle(GeneralButton())
+            
+            //Profile
+            NavigationLink(destination: ProfileScreen(isAdmin: true), tag: 7, selection: $tag) {
+                Button("Profile", action: {
+                    self.tag = 7
+                })
+                .buttonStyle(GeneralButton())
+            }
+
         }
         .padding()
         .onAppear(perform: {
