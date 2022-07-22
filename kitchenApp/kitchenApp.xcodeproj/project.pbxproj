@@ -12,10 +12,10 @@
 		733523B82886988E007C0598 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523B42886988E007C0598 /* HistoryListView.swift */; };
 		733523B92886988E007C0598 /* HistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523B52886988E007C0598 /* HistoryRow.swift */; };
 		733523BC288698A7007C0598 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523BB288698A7007C0598 /* History.swift */; };
-		733523C02886A453007C0598 /* HistoryTransView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733523BF2886A453007C0598 /* HistoryTransView.swift */; };
-		7345E4AF288942B800C085EF /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4AE288942B800C085EF /* testView.swift */; };
 		7345E4B12889430400C085EF /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4B02889430400C085EF /* ChartView.swift */; };
 		7345E4B3288943EF00C085EF /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4B2288943EF00C085EF /* Chart.swift */; };
+		73595D01288ACA2A00031AFA /* TimeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73595D00288ACA2A00031AFA /* TimeChart.swift */; };
+		73595D03288AD35200031AFA /* TimeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73595D02288AD35200031AFA /* TimeChartView.swift */; };
 		7397482D288A97230052E07A /* CreateAdminAccoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */; };
 		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
 		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
@@ -83,10 +83,10 @@
 		733523B42886988E007C0598 /* HistoryListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		733523B52886988E007C0598 /* HistoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryRow.swift; sourceTree = "<group>"; };
 		733523BB288698A7007C0598 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = History.swift; path = kitchenApp/Models/History.swift; sourceTree = SOURCE_ROOT; };
-		733523BF2886A453007C0598 /* HistoryTransView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransView.swift; sourceTree = "<group>"; };
-		7345E4AE288942B800C085EF /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
 		7345E4B02889430400C085EF /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		7345E4B2288943EF00C085EF /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		73595D00288ACA2A00031AFA /* TimeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChart.swift; sourceTree = "<group>"; };
+		73595D02288AD35200031AFA /* TimeChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChartView.swift; sourceTree = "<group>"; };
 		7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdminAccoutScreen.swift; sourceTree = "<group>"; };
 		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -165,8 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				7345E4B2288943EF00C085EF /* Chart.swift */,
+				73595D00288ACA2A00031AFA /* TimeChart.swift */,
 				7345E4B02889430400C085EF /* ChartView.swift */,
-				7345E4AE288942B800C085EF /* testView.swift */,
+				73595D02288AD35200031AFA /* TimeChartView.swift */,
 			);
 			path = Statistic;
 			sourceTree = "<group>";
@@ -273,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				733523B42886988E007C0598 /* HistoryListView.swift */,
-				733523BF2886A453007C0598 /* HistoryTransView.swift */,
 				733523B52886988E007C0598 /* HistoryRow.swift */,
 			);
 			path = "Transaction History";
@@ -522,7 +522,6 @@
 				7345E4B3288943EF00C085EF /* Chart.swift in Sources */,
 				733523BC288698A7007C0598 /* History.swift in Sources */,
 				D7B8F605285950BE0056B38D /* BookingView.swift in Sources */,
-				733523C02886A453007C0598 /* HistoryTransView.swift in Sources */,
 				7397482D288A97230052E07A /* CreateAdminAccoutScreen.swift in Sources */,
 				D73640532889521C0076FC8B /* UserImageView.swift in Sources */,
 				D745480828786C080074EC74 /* Order.swift in Sources */,
@@ -537,11 +536,12 @@
 				D731179C28855CEF00FD6997 /* ShowAllUserScreen.swift in Sources */,
 				77594D61288AB0F700104F06 /* ScanScreen.swift in Sources */,
 				7345E4B12889430400C085EF /* ChartView.swift in Sources */,
-				7345E4AF288942B800C085EF /* testView.swift in Sources */,
 				F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */,
 				D7BED2AC288844C000B83D17 /* CoffeeImageView.swift in Sources */,
 				776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */,
 				D74C36F028776B0A00510E18 /* UpdateItem.swift in Sources */,
+				73595D03288AD35200031AFA /* TimeChartView.swift in Sources */,
+				73595D01288ACA2A00031AFA /* TimeChart.swift in Sources */,
 				77C5961B285939B60086C25E /* StartScreen.swift in Sources */,
 				77594D67288AB16300104F06 /* CreateHistory.swift in Sources */,
 				D74C36F828776B4000510E18 /* EditItemListView.swift in Sources */,

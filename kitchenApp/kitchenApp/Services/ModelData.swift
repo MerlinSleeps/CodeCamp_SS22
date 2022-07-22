@@ -13,3 +13,8 @@ var boughtItems: [Item] = []
 var currentUserId: String = ""
 var itemPurchaseCount: [String:Int] = [:]
 var itemPurchaseSumme: [String:Double] = [:]
+var amountInTime: [String:Int] = [:]
+var summeInTime: [String:Double] = [:]
+
+//1d = 86400, 1week = 604800
+var myTimeInterval: Int = 86400

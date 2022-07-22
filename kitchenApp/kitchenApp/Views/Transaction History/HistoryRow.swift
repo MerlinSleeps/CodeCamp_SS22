@@ -25,7 +25,7 @@ struct HistoryRow: View {
                 }
             }
             Spacer()
-            Text(getTime(timeStamp: history.timestamp))
+            Text(getTime(timeStamp: history.timestamp/1000))
                 .font(.system(size: 16))
         }.padding()
             .border(.black, width: 2)
