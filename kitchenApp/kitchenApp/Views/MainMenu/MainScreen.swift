@@ -46,6 +46,21 @@ struct MainScreen: View {
                     })
                     .buttonStyle(GeneralButton())
             }.buttonStyle(GeneralButton())
+            
+           //Transfer History
+            NavigationLink(destination: HistoryListView(), tag: 4, selection: $tag) {
+                    Button("Transfer History" ,action: {
+                        self.tag = 4
+                    })
+                    .buttonStyle(GeneralButton())
+            }.buttonStyle(GeneralButton())
+            
+            NavigationLink(destination: ScanScreen(), tag: 5, selection: $tag) {
+                    Button("Scan QR code" ,action: {
+                        self.tag = 5
+                    })
+                    .buttonStyle(GeneralButton())
+            }.buttonStyle(GeneralButton())
         }
         .padding()
         .onAppear(perform: {
