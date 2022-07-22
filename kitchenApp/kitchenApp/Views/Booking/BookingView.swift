@@ -12,6 +12,7 @@ struct BookingView: View {
     @ObservedObject var profile = ProfileViewModel()
     
     @State var items = [Item]()
+    @State private var tag: Int? = 0
     
     var orderModel = OrderViewModel()
     
@@ -41,6 +42,14 @@ struct BookingView: View {
                 })
                 .buttonStyle(GeneralButton())
                 Spacer()
+            }
+            .toolbar {
+                //QR Code Scan
+                NavigationLink(destination: ScanScreen(), tag: 4, selection: $tag) {
+                        Button("Scan QR code" ,action: {
+                            self.tag = 4
+                        })
+                }
             }
             .navigationTitle("Choose your Items")
             .onAppear() {

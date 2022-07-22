@@ -51,6 +51,7 @@ struct ShowAllUserScreen: View {
                 }
             }
             .searchable(text: $searchText)
+            .textCase(.none)
         }
     }
     
@@ -69,7 +70,7 @@ struct ShowAllUserScreen: View {
     
     fileprivate func showAllUsersToShowView() -> some View {
         return VStack {
-            List (self.users) { (user) in
+            List (searchResults, id: \.self) { (user) in
                 HStack{UserImageView()
                    Text(user.name)}
             }
