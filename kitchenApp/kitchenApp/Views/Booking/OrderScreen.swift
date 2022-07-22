@@ -21,9 +21,15 @@ struct OrderScreenView: View {
     
     var body: some View {
             VStack {
-                NavigationLink(destination: Text("Y"), isActive: $activeLink,
-                               label: { EmptyView() })
-                
+                HStack {
+                    Spacer()
+                    Text("Your Balance")
+                    Spacer()
+                    let balance = String(format: "%0.02f", self.profile.userProfile.balance)
+                    Text(balance + " $").foregroundColor(.secondary)
+                    Spacer()
+                }
+
                 List (self.orderItems, id: \.self) { (item) in
                     HStack{
                         Text(item)
@@ -41,7 +47,6 @@ struct OrderScreenView: View {
                         orderItems.append(String(key.name) + " " + String(format:"%.2f", key.price) + "$ X\(value)")
                     }
                 }
-                
                 
                 Text("Total Amount: " + String(format:"%.2f", orderModel.order.totalPrice) + "$")
                 
