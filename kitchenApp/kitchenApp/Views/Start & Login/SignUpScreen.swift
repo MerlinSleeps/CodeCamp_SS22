@@ -13,10 +13,21 @@ struct SignUpScreen : View {
     
     @StateObject private var signUpVM = SignUpViewModel()
     @State var showAlert = false
+    @State var showHint = false
+    
+    //password RegEx
+    let password = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
+    let securityHint = "Your password needs to have at least one digit, 8 signs, one lower case and one upper case letter"
+    
     var body: some View {
         
         VStack {
             CoffeeImageView()
+            if (showHint) {
+                Text("\(securityHint)")
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+            }
             TextField("User ID", text: $signUpVM.id)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
@@ -40,8 +51,12 @@ struct SignUpScreen : View {
             
             NavigationLink(destination: LoginScreen(), isActive: $signUpVM.success) {
                 Button("Sign Up", action: {
-                    signUpVM.signUp()
-                    showAlert = true
+                    if (password.evaluate(with: signUpVM.password)) {
+                        signUpVM.signUp()
+                        showAlert = true
+                    } else {
+                        showHint = true
+                    }
                 }).alert(isPresented: $showAlert) {
                         Alert (
                             title: Text("You are signed in"),
