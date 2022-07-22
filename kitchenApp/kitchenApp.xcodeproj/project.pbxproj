@@ -20,6 +20,11 @@
 		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
 		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
 		771880B5288750B80061C3B1 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 771880B4288750B80061C3B1 /* JWTDecode */; };
+		77360F40288AB3E0008E3FAB /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 77360F3F288AB3E0008E3FAB /* CodeScanner */; };
+		77594D61288AB0F700104F06 /* ScanScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77594D60288AB0F700104F06 /* ScanScreen.swift */; };
+		77594D63288AB11B00104F06 /* ScannedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77594D62288AB11B00104F06 /* ScannedItem.swift */; };
+		77594D65288AB14700104F06 /* HistoryItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77594D64288AB14700104F06 /* HistoryItemRowView.swift */; };
+		77594D67288AB16300104F06 /* CreateHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77594D66288AB16300104F06 /* CreateHistory.swift */; };
 		776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E602859E6D0009B6FE6 /* Webservice.swift */; };
 		776A4E632859ECB5009B6FE6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E622859ECB5009B6FE6 /* User.swift */; };
 		776A4E652859EF1F009B6FE6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */; };
@@ -85,6 +90,10 @@
 		7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdminAccoutScreen.swift; sourceTree = "<group>"; };
 		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		77594D60288AB0F700104F06 /* ScanScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanScreen.swift; path = kitchenApp/Scan/ScanScreen.swift; sourceTree = SOURCE_ROOT; };
+		77594D62288AB11B00104F06 /* ScannedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannedItem.swift; path = kitchenApp/Models/ScannedItem.swift; sourceTree = SOURCE_ROOT; };
+		77594D64288AB14700104F06 /* HistoryItemRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryItemRowView.swift; path = "kitchenApp/Views/Transaction History/HistoryItemRowView.swift"; sourceTree = SOURCE_ROOT; };
+		77594D66288AB16300104F06 /* CreateHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateHistory.swift; path = kitchenApp/Services/CreateHistory.swift; sourceTree = SOURCE_ROOT; };
 		776A4E602859E6D0009B6FE6 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		776A4E622859ECB5009B6FE6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +140,7 @@
 			files = (
 				771880B5288750B80061C3B1 /* JWTDecode in Frameworks */,
 				731962EB28884691009C051D /* AAInfographics in Frameworks */,
+				77360F40288AB3E0008E3FAB /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +188,10 @@
 			isa = PBXGroup;
 			children = (
 				776A4E642859EF1F009B6FE6 /* LoginViewModel.swift */,
+				77594D66288AB16300104F06 /* CreateHistory.swift */,
+				77594D64288AB14700104F06 /* HistoryItemRowView.swift */,
+				77594D62288AB11B00104F06 /* ScannedItem.swift */,
+				77594D60288AB0F700104F06 /* ScanScreen.swift */,
 				D745480928786D0B0074EC74 /* OrderViewModel.swift */,
 				77AD4A502884599F00134BF7 /* ProfileViewModel.swift */,
 				771880B1288616EC0061C3B1 /* SignUpViewModel.swift */,
@@ -376,6 +390,7 @@
 			packageProductDependencies = (
 				771880B4288750B80061C3B1 /* JWTDecode */,
 				731962EA28884691009C051D /* AAInfographics */,
+				77360F3F288AB3E0008E3FAB /* CodeScanner */,
 			);
 			productName = kitchenApp;
 			productReference = F77D47FF28254C8E00A898D4 /* kitchenApp.app */;
@@ -452,6 +467,7 @@
 			packageReferences = (
 				771880B3288750B80061C3B1 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 				731962E928884691009C051D /* XCRemoteSwiftPackageReference "AAChartKit-Swift" */,
+				77360F3E288AB3E0008E3FAB /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = F77D480028254C8E00A898D4 /* Products */;
 			projectDirPath = "";
@@ -507,8 +523,11 @@
 				F77D480528254C8E00A898D4 /* ContentView.swift in Sources */,
 				D73117A02885924800FD6997 /* MainScreen.swift in Sources */,
 				77AD4A53288459D500134BF7 /* UserProfile.swift in Sources */,
+				77594D65288AB14700104F06 /* HistoryItemRowView.swift in Sources */,
 				D74C36FC28776BB100510E18 /* EditItemView.swift in Sources */,
+				77594D63288AB11B00104F06 /* ScannedItem.swift in Sources */,
 				D731179C28855CEF00FD6997 /* ShowAllUserScreen.swift in Sources */,
+				77594D61288AB0F700104F06 /* ScanScreen.swift in Sources */,
 				7345E4B12889430400C085EF /* ChartView.swift in Sources */,
 				7345E4AF288942B800C085EF /* testView.swift in Sources */,
 				F77D480328254C8E00A898D4 /* kitchenAppApp.swift in Sources */,
@@ -516,6 +535,7 @@
 				776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */,
 				D74C36F028776B0A00510E18 /* UpdateItem.swift in Sources */,
 				77C5961B285939B60086C25E /* StartScreen.swift in Sources */,
+				77594D67288AB16300104F06 /* CreateHistory.swift in Sources */,
 				D74C36F828776B4000510E18 /* EditItemListView.swift in Sources */,
 				73196291288808C4009C051D /* Bar.swift in Sources */,
 				733523B82886988E007C0598 /* HistoryListView.swift in Sources */,
@@ -693,7 +713,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kitchenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 73SGGLVBN7;
+				DEVELOPMENT_TEAM = SX9WU824N2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -706,7 +726,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Willi.kitchenApp;
+				PRODUCT_BUNDLE_IDENTIFIER = kitchenApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -722,7 +742,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kitchenApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 73SGGLVBN7;
+				DEVELOPMENT_TEAM = SX9WU824N2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -735,7 +755,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Willi.kitchenApp;
+				PRODUCT_BUNDLE_IDENTIFIER = kitchenApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -873,6 +893,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		77360F3E288AB3E0008E3FAB /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -885,6 +913,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 771880B3288750B80061C3B1 /* XCRemoteSwiftPackageReference "JWTDecode" */;
 			productName = JWTDecode;
+		};
+		77360F3F288AB3E0008E3FAB /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77360F3E288AB3E0008E3FAB /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -32,7 +32,14 @@ class OrderViewModel: ObservableObject {
     
     func purchaseOrder(userId: String) {
         for item in order.counts.keys {
-            Webservice().purchaseItem(id: userId, itemId: item.id, amount: order.counts[item] ?? 0)
+            Webservice().purchaseItem(id: userId, itemId: item.id, amount: order.counts[item] ?? 0){ result in
+                switch result {
+                case .success():
+                 print ("gekauft \(item.id)")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         }
         
         var boughtItems: [Item] = []

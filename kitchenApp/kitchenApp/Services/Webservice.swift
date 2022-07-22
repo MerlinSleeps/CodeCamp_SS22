@@ -396,7 +396,8 @@ class Webservice : ObservableObject{
         }.resume()
     }
     
-    func purchaseItem(id: String, itemId: String, amount: Int){
+    func purchaseItem(id: String, itemId: String, amount: Int, completion: @escaping (Result<Void, NetworkError>) -> Void)
+    {
         
         
         guard let url = URL(string: URLCC1 + USERS_ + id + PURCHASES) else {
@@ -406,7 +407,7 @@ class Webservice : ObservableObject{
         
         
        guard let token = getRefreshToken() else {
-                    //completion(.failure(.noData))
+                    completion(.failure(.noData))
                     return
                 }
 
@@ -422,11 +423,11 @@ class Webservice : ObservableObject{
                 
             if(httpResponse?.statusCode != 200){
                 print(httpResponse?.statusCode as Any)
-                //completion(.failure(.decodingError))
+                completion(.failure(.noData))
+                return
             }
             
-            //completion(.success(()))
-            
+            completion(.success(()))
         }.resume()
     }
     
