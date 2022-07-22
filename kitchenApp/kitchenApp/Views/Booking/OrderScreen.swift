@@ -60,9 +60,6 @@ struct OrderScreenView: View {
                 Spacer()
             }
             .navigationTitle("Confirm your Order")
-            .onAppear() {
-                profile.getUserData()
-            }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Please confirm your order"),message: Text("You have to pay " + String(orderModel.order.totalPrice) + "$"), primaryButton: .default(Text("Confirm")) {
                     orderModel.purchaseOrder(userId: profile.userProfile.id)

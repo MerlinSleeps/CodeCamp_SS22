@@ -39,28 +39,20 @@ struct MainScreen: View {
                 })
                 .buttonStyle(GeneralButton())
             }
+            // Show all Users with their Images
+            NavigationLink(destination: ShowAllUserScreen(destination: .justShow), tag: 3, selection: $tag) {
+                Button("Show all users", action: {
+                    self.tag = 3
+                })
+                .buttonStyle(GeneralButton())
+            }
             //Transfer Money
-            NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 3, selection: $tag) {
-                    Button("Send Money" ,action: {
-                        self.tag = 3
-                    })
-                    .buttonStyle(GeneralButton())
-            }.buttonStyle(GeneralButton())
-            
-           //Transfer History
-            NavigationLink(destination: HistoryListView(), tag: 4, selection: $tag) {
-                    Button("Transfer History" ,action: {
-                        self.tag = 4
-                    })
-                    .buttonStyle(GeneralButton())
-            }.buttonStyle(GeneralButton())
-            
-            NavigationLink(destination: ScanScreen(), tag: 5, selection: $tag) {
-                    Button("Scan QR code" ,action: {
-                        self.tag = 5
-                    })
-                    .buttonStyle(GeneralButton())
-            }.buttonStyle(GeneralButton())
+            NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 4, selection: $tag) {
+                Button("Send Money" ,action: {
+                    self.tag = 4
+                })
+                .buttonStyle(GeneralButton())
+            }
         }
         .padding()
         .onAppear(perform: {

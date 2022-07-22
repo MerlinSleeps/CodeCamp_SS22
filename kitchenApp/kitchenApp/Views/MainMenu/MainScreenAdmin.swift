@@ -34,29 +34,27 @@ struct MainScreenAdmin: View {
                 })
                 .buttonStyle(GeneralButton())
             }
-          
-            //Transfer Money
-            NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 2, selection: $tag) {
-                Button("Send Money" ,action: {
+            //Profile
+            NavigationLink(destination: ProfileScreen(isAdmin: true), tag: 2, selection: $tag) {
+                Button("Profile", action: {
                     self.tag = 2
                 })
                 .buttonStyle(GeneralButton())
             }
-            //Edit Item
-            NavigationLink(destination: EditItemListView(), tag: 3, selection: $tag) {
-                Button("Edit Item" ,action: {
+            // Show all Users with their Images
+            NavigationLink(destination: ShowAllUserScreen(destination: .justShow), tag: 3, selection: $tag) {
+                Button("Show all users", action: {
                     self.tag = 3
                 })
                 .buttonStyle(GeneralButton())
             }
-            //Create Account
-            NavigationLink(destination: CreateAdminAccoutScreen(), tag: 4, selection: $tag) {
-                Button("Create new Account" ,action: {
-                    loginVM.login()
+            //Transfer Money
+            NavigationLink(destination: ShowAllUserScreen(destination: .sendMoney), tag: 4, selection: $tag) {
+                Button("Send Money" ,action: {
                     self.tag = 4
                 })
                 .buttonStyle(GeneralButton())
-            }.buttonStyle(GeneralButton())
+            }
             //Charge Money
             NavigationLink(destination: ShowAllUserScreen(destination: .chargeMoney), tag: 5, selection: $tag) {
                 Button("Charge Money" ,action: {
@@ -64,23 +62,20 @@ struct MainScreenAdmin: View {
                 })
                 .buttonStyle(GeneralButton())
             }
-            // Show all Users with their Images
-            NavigationLink(destination: ShowAllUserScreen(destination: .justShow), tag: 6, selection: $tag) {
-                Button("Show all users" ,action: {
-                    loginVM.login()
+            //Edit Item
+            NavigationLink(destination: EditItemListView(), tag: 6, selection: $tag) {
+                Button("Edit Item" ,action: {
                     self.tag = 6
                 })
                 .buttonStyle(GeneralButton())
-            }.buttonStyle(GeneralButton())
-            
-            //Profile
-            NavigationLink(destination: ProfileScreen(isAdmin: true), tag: 7, selection: $tag) {
-                Button("Profile", action: {
+            }
+            //Create Account
+            NavigationLink(destination: CreateAdminAccoutScreen(), tag: 7, selection: $tag) {
+                Button("Create new Account" ,action: {
                     self.tag = 7
                 })
                 .buttonStyle(GeneralButton())
             }
-
         }
         .padding()
         .onAppear(perform: {

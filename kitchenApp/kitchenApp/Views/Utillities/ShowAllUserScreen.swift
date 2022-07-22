@@ -46,11 +46,14 @@ struct ShowAllUserScreen: View {
         return VStack {
             List {
                 ForEach(searchResults, id: \.self) { (user) in
-                    NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {Text(user.name)
+                    NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {
+                        HStack{UserImageView()
+                           Text(user.name)}
                     })
                 }
             }
             .searchable(text: $searchText)
+            .textCase(.none)
         }
     }
     
@@ -58,7 +61,9 @@ struct ShowAllUserScreen: View {
         return VStack {
             List {
                 ForEach(searchResults, id: \.self) { (user) in
-                    NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {Text(user.name)
+                    NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {
+                        HStack{UserImageView()
+                           Text(user.name)}
                     })
                 }
             }
@@ -69,7 +74,7 @@ struct ShowAllUserScreen: View {
     
     fileprivate func showAllUsersToShowView() -> some View {
         return VStack {
-            List (self.users) { (user) in
+            List (searchResults, id: \.self) { (user) in
                 HStack{UserImageView()
                    Text(user.name)}
             }

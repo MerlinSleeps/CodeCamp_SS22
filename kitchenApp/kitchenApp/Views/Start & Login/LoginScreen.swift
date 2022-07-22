@@ -32,6 +32,8 @@ struct LoginScreen : View {
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
             
+            Spacer()
+            
                NavigationLink(destination: MainScreen(), isActive: $loginVM.isAuthenticated) {
                 Button("Login", action: {
                     loginVM.login()
