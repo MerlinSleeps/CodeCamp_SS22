@@ -43,6 +43,7 @@ struct EditItemView: View {
                         message: Text(alertMessage),
                         primaryButton: .default(Text("OK")) {
                         updateItem(id: item.id, name: editedItemName, amount: item.amount, price: editedItemPrice)
+                        self.presentationMode.wrappedValue.dismiss()
                         },
                         secondaryButton: .destructive(Text("Cancel")))
                 }
