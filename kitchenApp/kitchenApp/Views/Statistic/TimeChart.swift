@@ -1,14 +1,14 @@
 //
-//  Chart.swift
+//  TimeChart.swift
 //  kitchenApp
 //
-//  Created by Yiyu Shi on 21.07.22.
+//  Created by Yiyu Shi on 22.07.22.
 //
 
 import AAInfographics
 import UIKit
 
-class Chart: UIViewController {
+class TimeChart: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +20,18 @@ class Chart: UIViewController {
         aaChartView.frame = CGRect(x:0, y:0, width:chartWidth, height:chartHeight)
         self.view.addSubview(aaChartView)
         
-        statistic()
-        var itemsName: [String] = getMostpopularItems()
+        analysisOfTime()
+        var names: [String] = []
+        let timeInterval:TimeInterval = Date().timeIntervalSince1970
+        let timeStamp = Int(timeInterval)
+        var s = 6
         var itemsAmount: [Int] = []
         var itemsSumme: [Int] = []
-        itemsName.append("others")
-        for item in itemsName {
-            itemsAmount.append(itemPurchaseCount[item]!)
-            itemsSumme.append(Int(itemPurchaseSumme[item]!))
+        while (s >= 1) {
+            itemsAmount.append(amountInTime[String(s)] ?? 0)
+            itemsSumme.append(Int(summeInTime[String(s)] ?? 0.0))
+            s -= 1
+            names.append(getDate(timeStamp: timeStamp-myTimeInterval*s))
         }
         
         
@@ -40,7 +44,7 @@ class Chart: UIViewController {
             .yAxisTitle("")
             .legendEnabled(true)
             .tooltipValueSuffix("")
-            .categories(itemsName)
+            .categories(names)
             .colorsTheme(["#fe117c","#ffc069","#06caf4"])
             .series([
                 AASeriesElement()

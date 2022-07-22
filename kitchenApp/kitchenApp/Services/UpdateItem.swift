@@ -97,7 +97,7 @@ func findItem(name: String) -> Item {
 }
 
 func getTime(timeStamp: Int) -> String {
-    let timeInterval: TimeInterval = TimeInterval(timeStamp/1000)
+    let timeInterval: TimeInterval = TimeInterval(timeStamp)
     let date = Date(timeIntervalSince1970: timeInterval)
     let dformat = DateFormatter()
     dformat.dateFormat = "dd.MM.yyyy HH:mm:ss"
@@ -105,10 +105,10 @@ func getTime(timeStamp: Int) -> String {
 }
 
 func getDate(timeStamp: Int) -> String {
-    let timeInterval: TimeInterval = TimeInterval(timeStamp/1000)
+    let timeInterval: TimeInterval = TimeInterval(timeStamp)
     let date = Date(timeIntervalSince1970: timeInterval)
     let dformat = DateFormatter()
-    dformat.dateFormat = "dd.MM.yyyy"
+    dformat.dateFormat = "dd.MM.yy"
     return dformat.string(from: date)
 }
 
@@ -153,3 +153,29 @@ func getMostpopularItems() -> [String] {
     return itemNames
 }
 
+func analysisOfTime() {
+    var s = 5
+    let timeInterval:TimeInterval = Date().timeIntervalSince1970
+    let timeStamp = Int(timeInterval)
+    while (s >= 0) {
+        let old = timeStamp-myTimeInterval*s
+        s -= 1
+        let recent = timeStamp-myTimeInterval*s
+        for his in histories {
+            if (his.timestamp/1000 > old && his.timestamp/1000 <= recent) {
+                print("good")
+                if (amountInTime[String(s)] == nil) {
+                    amountInTime[String(s)] = his.amount ?? 0
+                } else {
+                    amountInTime[String(s)]! += his.amount ?? 0
+                }
+                if (summeInTime[String(s)] == nil) {
+                    summeInTime[String(s)] = his.value
+                } else {
+                    summeInTime[String(s)]! += his.value
+                }
+            }
+            print(amountInTime.keys)
+        }
+    }
+}

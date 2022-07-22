@@ -11,6 +11,7 @@ struct HistoryListView: View {
     @State var his1: [History] = []
     @State private var isShowing = true
     @State private var showingChart = false
+    @State private var showingTimeChart = false
     
     @ObservedObject var profile = ProfileViewModel()
     
@@ -92,12 +93,20 @@ struct HistoryListView: View {
                     }
                     .navigationTitle("Transaction History")
                 }
-                Button("Show Chart") {
+                Button("Statistics by Item") {
                         self.showingChart = true
                 }
+                .buttonStyle(GeneralButton())
+                Button("Statistics by Time") {
+                        self.showingTimeChart = true
+                }
+                .buttonStyle(GeneralButton())
             }
             .sheet(isPresented: $showingChart) {
                 ChartView()
+            }
+            .sheet(isPresented: $showingTimeChart) {
+                TimeChartView()
             }
         }
     }
