@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct EditItemView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var item: Item
     @State var showingEdit = false
     @State var showingDelete = false
     @State var editedItemName = ""
     @State var editedItemPrice = ""
+    
     var body: some View {
         VStack(spacing: 15) {
             Text("Edit Item")
@@ -37,6 +40,7 @@ struct EditItemView: View {
                 Alert(title: Text("Edit Item"), message: Text("Change Item to " + editedItemName + " $" + editedItemPrice), primaryButton: .default(Text("OK")) {
                     let priceInDouble = Double(editedItemPrice)
                     updateItem(id: item.id, name: editedItemName, amount: item.amount, price: priceInDouble!)
+                    self.presentationMode.wrappedValue.dismiss()
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
             .font(.system(size: 30))
@@ -49,6 +53,7 @@ struct EditItemView: View {
             .alert(isPresented: $showingDelete) {
                 Alert(title: Text("Delete Item"), message: Text("Delete Item"), primaryButton: .default(Text("OK")) {
                     deleteItem(id: item.id)
+                    self.presentationMode.wrappedValue.dismiss()
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
             .font(.system(size: 30))

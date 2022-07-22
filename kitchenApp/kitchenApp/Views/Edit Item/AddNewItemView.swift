@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddNewItem: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var showingAdd = false
     @State var newItemName = ""
     @State var newItemPrice = ""
@@ -33,6 +35,7 @@ struct AddNewItem: View {
             .alert(isPresented: $showingAdd) {
                 Alert(title: Text("Add Item"), message: Text("Add " + newItemName + " " + newItemPrice + "?"), primaryButton: .default(Text("OK")) {
                     createItem(name: newItemName, price: Double(newItemPrice)!)
+                    self.presentationMode.wrappedValue.dismiss()
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
             .font(.system(size: 30))

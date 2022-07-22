@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CreateAdminAccoutScreen: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var showingCreate = false
     @State var showingDelete = false
     @State private var admin = false
@@ -19,7 +21,7 @@ struct CreateAdminAccoutScreen: View {
         VStack(spacing: 15) {
             Spacer()
             Text("Create new Account")
-                .frame(width: 300, height: 50, alignment: .leading)
+                .frame(width: 300, height: 50, alignment: .center)
                 .font(.system(size: 30))
             
             TextField("id", text: $idInput)
@@ -47,6 +49,7 @@ struct CreateAdminAccoutScreen: View {
             .alert(isPresented: $showingCreate) {
                 Alert(title: Text("Edit Item"), message: Text("Are you sure you want create this Account?"), primaryButton: .default(Text("OK")) {
                     Webservice().createAccountAdmin(id: idInput, name: nameInput, isAdmin: admin, password: passwordInput)
+                    self.presentationMode.wrappedValue.dismiss()
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
             .font(.system(size: 30))
