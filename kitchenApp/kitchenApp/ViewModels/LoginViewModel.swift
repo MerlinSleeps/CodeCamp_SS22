@@ -10,11 +10,8 @@ import JWTDecode
 
 class LoginViewModel: ObservableObject {
     
- //   @Published var id: String = "a3620095-0598-415f-89d6-f382a6e9d9c8"
-  //  @Published var password: String = "iOSGroupA"
-        
-    @Published var id: String = ""
-    @Published var password: String = ""
+    @Published var id: String = "a3620095-0598-415f-89d6-f382a6e9d9c8"
+    @Published var password: String = "iOSGroupA"
     @Published var isAuthenticated: Bool = false    
     @Published var isAdmin: Bool = false
     @Published var message: String = ""
