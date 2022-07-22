@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EditItemView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var item: Item
     @State var showingEdit = false
     @State var showingDelete = false
@@ -53,6 +55,7 @@ struct EditItemView: View {
             .alert(isPresented: $showingDelete) {
                 Alert(title: Text("Delete Item"), message: Text("Delete Item"), primaryButton: .default(Text("OK")) {
                     deleteItem(id: item.id)
+                    self.presentationMode.wrappedValue.dismiss()
                 }, secondaryButton: .destructive(Text("Cancel")))
             }
             .buttonStyle(GeneralButton())

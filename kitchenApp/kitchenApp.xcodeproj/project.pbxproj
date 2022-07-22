@@ -16,6 +16,7 @@
 		7345E4AF288942B800C085EF /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4AE288942B800C085EF /* testView.swift */; };
 		7345E4B12889430400C085EF /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4B02889430400C085EF /* ChartView.swift */; };
 		7345E4B3288943EF00C085EF /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345E4B2288943EF00C085EF /* Chart.swift */; };
+		7397482D288A97230052E07A /* CreateAdminAccoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */; };
 		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
 		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
 		771880B5288750B80061C3B1 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 771880B4288750B80061C3B1 /* JWTDecode */; };
@@ -81,6 +82,7 @@
 		7345E4AE288942B800C085EF /* testView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
 		7345E4B02889430400C085EF /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		7345E4B2288943EF00C085EF /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdminAccoutScreen.swift; sourceTree = "<group>"; };
 		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		776A4E602859E6D0009B6FE6 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				77C5961A285939B60086C25E /* StartScreen.swift */,
 				77B54F2C285AAFD500217CD3 /* LoginScreen.swift */,
 				771880AF288605630061C3B1 /* SignUpScreen.swift */,
+				7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */,
 			);
 			path = "Start & Login";
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				733523BC288698A7007C0598 /* History.swift in Sources */,
 				D7B8F605285950BE0056B38D /* BookingView.swift in Sources */,
 				733523C02886A453007C0598 /* HistoryTransView.swift in Sources */,
+				7397482D288A97230052E07A /* CreateAdminAccoutScreen.swift in Sources */,
 				D73640532889521C0076FC8B /* UserImageView.swift in Sources */,
 				D745480828786C080074EC74 /* Order.swift in Sources */,
 				D739785D285BA5BC000B7DC6 /* OrderScreen.swift in Sources */,

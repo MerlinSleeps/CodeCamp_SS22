@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HistoryListView: View {
     @State var his1: [History] = []
+    @State private var isShowing = true
     @State private var showingChart = false
     
     @ObservedObject var profile = ProfileViewModel()
@@ -16,29 +17,81 @@ struct HistoryListView: View {
     var body: some View {
         NavigationView{
             VStack {
-                List(self.his1) { history in
-                    if (history.type == "purchase") {
-                        HistoryRow(history: history)
-                    } else {
-                        HistoryRow(history: history)
-                    }
-                }
-                .onAppear(){
-                    Webservice().getTransactions(id: currentUserId) { (historiesData) in
-                        for h in historiesData {
-                            var history = h
-                            history.id = histories.count
-                            histories.append(history)
+                if (isShowing){
+                    List(self.his1) { history in
+                        if (history.type == "purchase") {
+                            HistoryRow(history: history)
+                        } else {
+                            HistoryRow(history: history)
                         }
-                        self.his1 = histories.reversed()
                     }
-                }
-                .toolbar {
-                    Button("Refund last item") {
-                        Webservice().refundPurchase(id: profile.userProfile.id)
+                    .onAppear(){
+                        Webservice().getTransactions(id: currentUserId) { (historiesData) in
+                            for h in historiesData {
+                                var history = h
+                                history.id = histories.count
+                                histories.append(history)
+                            }
+                            self.his1 = histories.reversed()
+                        }
                     }
+                    .toolbar {
+                        Button("Refund last item") {
+                            Webservice().refundPurchase(id: profile.userProfile.id)
+                            Webservice().getTransactions(id: currentUserId) { (historiesData) in
+                                for h in historiesData {
+                                    var history = h
+                                    history.id = histories.count
+                                    histories.append(history)
+                                }
+                                self.his1 = histories.reversed()
+                            }
+                            if (isShowing) {
+                                isShowing = false
+                            } else {
+                                isShowing = true
+                            }
+                        }
+                    }
+                    .navigationTitle("Transaction History")
+                } else {
+                    List(self.his1) { history in
+                        if (history.type == "purchase") {
+                            HistoryRow(history: history)
+                        } else {
+                            HistoryRow(history: history)
+                        }
+                    }
+                    .onAppear(){
+                        Webservice().getTransactions(id: currentUserId) { (historiesData) in
+                            for h in historiesData {
+                                var history = h
+                                history.id = histories.count
+                                histories.append(history)
+                            }
+                            self.his1 = histories.reversed()
+                        }
+                    }
+                    .toolbar {
+                        Button("Refund last item") {
+                            Webservice().refundPurchase(id: profile.userProfile.id)
+                            Webservice().getTransactions(id: currentUserId) { (historiesData) in
+                                for h in historiesData {
+                                    var history = h
+                                    history.id = histories.count
+                                    histories.append(history)
+                                }
+                                self.his1 = histories.reversed()
+                            }
+                            if (isShowing) {
+                                isShowing = false
+                            } else {
+                                isShowing = true
+                            }
+                        }
+                    }
+                    .navigationTitle("Transaction History")
                 }
-                .navigationTitle("Transaction History")
                 Button("Show Chart") {
                         self.showingChart = true
                 }
