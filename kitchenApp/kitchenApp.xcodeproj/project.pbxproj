@@ -90,7 +90,7 @@
 		7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdminAccoutScreen.swift; sourceTree = "<group>"; };
 		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		77594D60288AB0F700104F06 /* ScanScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanScreen.swift; path = kitchenApp/Scan/ScanScreen.swift; sourceTree = SOURCE_ROOT; };
+		77594D60288AB0F700104F06 /* ScanScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanScreen.swift; path = kitchenApp/Views/Scan/ScanScreen.swift; sourceTree = SOURCE_ROOT; };
 		77594D62288AB11B00104F06 /* ScannedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannedItem.swift; path = kitchenApp/Models/ScannedItem.swift; sourceTree = SOURCE_ROOT; };
 		77594D64288AB14700104F06 /* HistoryItemRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryItemRowView.swift; path = "kitchenApp/Views/Transaction History/HistoryItemRowView.swift"; sourceTree = SOURCE_ROOT; };
 		77594D66288AB16300104F06 /* CreateHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateHistory.swift; path = kitchenApp/Services/CreateHistory.swift; sourceTree = SOURCE_ROOT; };
@@ -171,6 +171,14 @@
 			path = Statistic;
 			sourceTree = "<group>";
 		};
+		77360F41288AB881008E3FAB /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				77594D60288AB0F700104F06 /* ScanScreen.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
 		776A4E5D2859DBD4009B6FE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +199,6 @@
 				77594D66288AB16300104F06 /* CreateHistory.swift */,
 				77594D64288AB14700104F06 /* HistoryItemRowView.swift */,
 				77594D62288AB11B00104F06 /* ScannedItem.swift */,
-				77594D60288AB0F700104F06 /* ScanScreen.swift */,
 				D745480928786D0B0074EC74 /* OrderViewModel.swift */,
 				77AD4A502884599F00134BF7 /* ProfileViewModel.swift */,
 				771880B1288616EC0061C3B1 /* SignUpViewModel.swift */,
@@ -212,6 +219,7 @@
 		77C5962028593DBD0086C25E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				77360F41288AB881008E3FAB /* Scan */,
 				7345E4B428894CBE00C085EF /* Statistic */,
 				D7EC68572886EDF3001C3D08 /* Utillities */,
 				D7EC68562886EDDD001C3D08 /* Transactions */,
