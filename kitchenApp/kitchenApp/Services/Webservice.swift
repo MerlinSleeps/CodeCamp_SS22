@@ -137,6 +137,7 @@ class Webservice : ObservableObject{
                 completion(.failure(.invalidCredentials))
                 return
             }
+            print(token)
             
            completion(.success(token))
             
@@ -511,9 +512,7 @@ class Webservice : ObservableObject{
         request.setValue(APPLICATION_JSON, forHTTPHeaderField: CONTENT_TYPE)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            let httpResponse = response as? HTTPURLResponse
-            print(httpResponse?.statusCode)
-            
+
             let histories = try! JSONDecoder().decode([History].self, from: data!)
             
             DispatchQueue.main.async {
@@ -521,5 +520,33 @@ class Webservice : ObservableObject{
             }
             print(histories)
         }.resume()
+    }
+    
+    func createAccountAdmin(id: String, name: String, isAdmin: Bool, password: String) {
+        
+        
+        guard let url = URL(string: URLCC1 + USERS_ + "admin") else {
+            print(ERROR_MESSAGE_BAD_URL)
+            return
+        }
+        
+        
+        let token = getRefreshToken()!
+        
+        
+        let body = updateAdminBody(id: id, name: name, isAdmin: isAdmin, password: password)
+        
+        let request = createRequest(url: url, body: body, httpMethod: POST, auth: true, token: token)
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let httpResponse = response as? HTTPURLResponse
+                
+            if(httpResponse?.statusCode == 409){
+                print("This ID is already used!")
+            }
+        }.resume()
+        
+        
     }
 }

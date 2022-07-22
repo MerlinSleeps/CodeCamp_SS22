@@ -7,7 +7,7 @@
 
 import Foundation
 
-let urlItems = "http://141.51.114.20:8080/items"
+let urlItems = "http://141.51.114.20:8080/items/"
 
 func updateItem(id: String, name: String, amount: Int, price: Double) {
     
@@ -16,7 +16,7 @@ func updateItem(id: String, name: String, amount: Int, price: Double) {
         return
     }
     let itembody = Item( id: id, name: name, amount: amount, price: price)
-    
+    print(id)
     guard let token = Webservice().getRefreshToken() else {
         print("no token")
                  return
@@ -33,9 +33,6 @@ func updateItem(id: String, name: String, amount: Int, price: Double) {
     URLSession.shared.dataTask(with: request) {
         data, response, error in
         
-        let httpresponse = response as? HTTPURLResponse
-        print(httpresponse?.statusCode)
-        
     }.resume()
     
     print("Edited!")
@@ -48,7 +45,7 @@ func createItem(name: String, price: Double) {
         return
     }
     
-    let createItemId = String(items1.count + 1)
+    let createItemId = String(items1.count + 1000000)
     let itembody = Item(id: createItemId, name: name, amount: 9, price: price)
 
     guard let token = Webservice().getRefreshToken() else {
@@ -63,6 +60,7 @@ func createItem(name: String, price: Double) {
     
     URLSession.shared.dataTask(with: request) {
         data, response, error in
+        
     }.resume()
 }
 
@@ -75,7 +73,7 @@ func deleteItem(id: String) {
     guard let token = Webservice().getRefreshToken() else {
                  return
              }
-
+    print(id)
     var request = URLRequest(url: url)
     request.httpMethod = "DELETE"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -83,6 +81,7 @@ func deleteItem(id: String) {
     
     URLSession.shared.dataTask(with: request) {
         data, response, error in
+
     }.resume()
 }
 

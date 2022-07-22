@@ -10,7 +10,6 @@ import SwiftUI
 struct EditItemListView: View {
     @State var items = [Item]()
     
-    
     var body: some View {
         NavigationView{
             VStack {
