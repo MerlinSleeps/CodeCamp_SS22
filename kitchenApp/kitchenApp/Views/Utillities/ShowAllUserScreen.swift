@@ -46,7 +46,9 @@ struct ShowAllUserScreen: View {
         return VStack {
             List {
                 ForEach(searchResults, id: \.self) { (user) in
-                    NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {Text(user.name)
+                    NavigationLink(destination: ChargeMoneyScreen(alertMessage: "", user: user),label: {
+                        HStack{UserImageView()
+                           Text(user.name)}
                     })
                 }
             }
@@ -59,7 +61,9 @@ struct ShowAllUserScreen: View {
         return VStack {
             List {
                 ForEach(searchResults, id: \.self) { (user) in
-                    NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {Text(user.name)
+                    NavigationLink(destination: SendMoneyView(alertMessage: "", user: user),label: {
+                        HStack{UserImageView()
+                           Text(user.name)}
                     })
                 }
             }

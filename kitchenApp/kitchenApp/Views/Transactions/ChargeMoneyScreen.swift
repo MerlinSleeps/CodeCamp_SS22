@@ -31,6 +31,7 @@ struct ChargeMoneyScreen: View {
                               value: $rechargeAmount,
                               format: .number)
                 }
+                .keyboardType(.decimalPad)
             }
             Button("Fund " + user.name) {
                 let amountString = String(format: "%0.2f", rechargeAmount)

@@ -29,6 +29,7 @@ struct SendMoneyView: View {
                 }
                 Section(header:Text("How much do want to transfer?")) {
                     TextField("Transferamount", value: $transferAmount, format: .number)
+                        .keyboardType(.decimalPad)
                 }
             }
             Button("Transfer to " + user.name) {
