@@ -55,6 +55,13 @@ struct sendMoneyBody: Codable {
     let recipientId: String
 }
 
+struct updateAdminBody: Codable {
+    let id: String
+    let name: String
+    let isAdmin: Bool
+    let password: String
+}
+
 struct nilBody: Codable {
 }
 
@@ -290,6 +297,41 @@ class Webservice : ObservableObject{
         
     }
     
+    func updateAdmin(id: String, name: String, password: String, completion: @escaping (Result<Void, NetworkError>) -> Void){
+        
+        
+        guard let url = URL(string: URLCC1 + USERS_ + "admin") else {
+            print(ERROR_MESSAGE_BAD_URL)
+            return
+        }
+        
+        
+       guard let token = getRefreshToken() else {
+                    completion(.failure(.noData))
+                    return
+                }
+
+        
+        let body = updateAdminBody(id: id, name: name, isAdmin: true, password: password)
+
+        let request = createRequest(url: url, body: body, httpMethod: PUT, auth: true, token: token)
+        
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            
+            let httpResponse = response as? HTTPURLResponse
+                
+            if(httpResponse?.statusCode != 200){
+                completion(.failure(.decodingError))
+            }
+            
+            completion(.success(()))
+            
+        }.resume()
+        
+        
+    }
     
     func getUserData(id: String, token: String, completion: @escaping (Result<UserProfile, NetworkError>) -> Void){
 

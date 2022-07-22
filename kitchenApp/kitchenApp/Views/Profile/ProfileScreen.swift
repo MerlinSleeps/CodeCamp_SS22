@@ -16,14 +16,13 @@ struct Profile : Equatable {
         }
 }
 
-
-
 struct ProfileScreen: View {
     
     @ObservedObject var profile = ProfileViewModel()
     
     @State var editProfile = Profile(name: "",password: "")
     @State private var tag: Int? = 0
+    @State var isAdmin = false
     
     var sName: Binding<String> {
            .init(get: {
@@ -176,19 +175,32 @@ struct ProfileScreen: View {
             let id   =   UserDefaults.standard.string(forKey: "userID")!
             let name =  editProfile.name
             let password = editProfile.password
-            Webservice().updateUser(id: id, name: name, password: password) { result in
-                             switch result {
-                             case .success():
-                                 DispatchQueue.main.async {
-                                     profile.userProfile.name =  name
-                                     UserDefaults.standard.setValue(password, forKey: "userPassword")
-                                 }
-                                
-                             case .failure(let error):
-                                 print(error.localizedDescription)
-                             }
-                         }
-        },
+            if (isAdmin) {
+                Webservice().updateAdmin(id: id, name: name, password: password) { result in
+                    switch result {
+                        case .success():
+                        DispatchQueue.main.async {
+                            profile.userProfile.name =  name
+                            UserDefaults.standard.setValue(password, forKey: "userPassword")
+                        }
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+            } else {
+                Webservice().updateUser(id: id, name: name, password: password) { result in
+                    switch result {
+                        case .success():
+                        DispatchQueue.main.async {
+                            profile.userProfile.name =  name
+                            UserDefaults.standard.setValue(password, forKey: "userPassword")
+                        }
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+            }
+            },
             active: {
               
             }

@@ -33,7 +33,7 @@ struct MainScreen: View {
                 .buttonStyle(GeneralButton())
             }
             //Profile
-            NavigationLink(destination: ProfileScreen(), tag: 2, selection: $tag) {
+            NavigationLink(destination: ProfileScreen(isAdmin: false), tag: 2, selection: $tag) {
                 Button("Profile", action: {
                     self.tag = 2
                 })

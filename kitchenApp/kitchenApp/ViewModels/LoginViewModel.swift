@@ -73,7 +73,7 @@ class LoginViewModel: ObservableObject {
         Webservice().login(id: id, password: password) { result in
             switch result {
             case .success(let token):
-                defaults.setValue(false, forKey: "isAdmin")
+                //defaults.setValue(false, forKey: "isAdmin")
                 defaults.setValue(token.token, forKey: "jsonwebtoken")
                 defaults.setValue(token.expiration/1000, forKey: "expiration")
 
