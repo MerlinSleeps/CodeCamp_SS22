@@ -15,7 +15,8 @@ struct BookingView: View {
     @State private var tag: Int? = 0
     
     var orderModel = OrderViewModel()
-    
+    @EnvironmentObject var vm: LoginViewModel
+
     var body: some View {
             VStack {
                 List (self.items) { (item) in
@@ -45,7 +46,7 @@ struct BookingView: View {
             }
             .toolbar {
                 //QR Code Scan
-                NavigationLink(destination: ScanScreen(), tag: 4, selection: $tag) {
+                NavigationLink(destination: ScanScreen().environmentObject(self.vm), tag: 4, selection: $tag) {
                         Button("Scan QR code" ,action: {
                             self.tag = 4
                         })

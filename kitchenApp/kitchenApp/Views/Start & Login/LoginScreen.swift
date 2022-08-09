@@ -11,7 +11,26 @@ let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255
 
 struct LoginScreen : View {
     
-    @StateObject private var loginVM = LoginViewModel()
+    fileprivate func LoginButton() -> some View {
+        Button("Login",action: {
+               Task {
+                   await loginVM.signIn()
+               }
+           })
+           .buttonStyle(GeneralButton())
+        
+       }
+    
+    fileprivate func AdminLoginButton() -> some View {
+            Button("Admin Login",action: {
+                Task {
+                    await loginVM.signInAsAdmin()
+                }
+            }).buttonStyle(GeneralButton())
+    }
+    
+        
+    @EnvironmentObject var loginVM: LoginViewModel
     
     var body: some View {
         
@@ -34,19 +53,8 @@ struct LoginScreen : View {
             
             Spacer()
             
-               NavigationLink(destination: MainScreen(), isActive: $loginVM.isAuthenticated) {
-                Button("Login", action: {
-                    loginVM.login()
-                })
-                .buttonStyle(GeneralButton())
-            }
-            
-                NavigationLink(destination: MainScreenAdmin(), isActive: $loginVM.isAdmin) {
-                    Button("Admin Login", action: {
-                        loginVM.loginIsAdmin()
-                    })
-                    .buttonStyle(GeneralButton())
-                }
+            LoginButton()
+            AdminLoginButton()
             
             Spacer()
             

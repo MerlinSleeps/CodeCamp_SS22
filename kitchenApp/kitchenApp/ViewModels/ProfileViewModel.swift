@@ -16,11 +16,9 @@ class ProfileViewModel: ObservableObject {
     }
     func getUserData() {
         
-        let defaults = UserDefaults.standard
+        let appState = AppState.shared
     
-        guard let id = defaults.string(forKey: "userID") else {
-            return
-        }
+        let id =  appState.id;
         
         guard let token = Webservice().getRefreshToken() else {
             return

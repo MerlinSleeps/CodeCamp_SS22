@@ -8,28 +8,63 @@
 import Foundation
 import JWTDecode
 
+
+enum LoginStateError: Error{
+    case signInError, signOutError
+}
+
+@MainActor
 class LoginViewModel: ObservableObject {
-    
-    @Published var id: String = "a3620095-0598-415f-89d6-f382a6e9d9c8"
-    @Published var password: String = "iOSGroupA"
-    //@Published var id: String = "1234eee"
-    //@Published var password: String = "123123123"
-    //@Published var id: String = ""
-    //@Published var password: String = ""
-    @Published var isAuthenticated: Bool = false    
-    @Published var isAdmin: Bool = false
-    @Published var message: String = ""
+
+    @Published var isLoggedIn = false
+    @Published var isBusy = false
+    @Published var isAdmin = false
+    @Published var message = ""
+    @Published var id: String = ""
+    @Published var password: String = ""
+
+ //   @Published var id: String = "a3620095-0598-415f-89d6-f382a6e9d9c8"
+ //   @Published var password: String = "iOSGroupA"
+
+    var timer: Timer?
 
     
+    func signIn() async -> Result<Bool, LoginStateError>  {
+            isBusy = true
+            Webservice().login(id: id, password: password) { result in
+            switch result {
+            case .success(let token):
+                DispatchQueue.main.async {
+                    self.isLoggedIn = true
+                    self.isAdmin = false
+                    AppState.shared.isLoggedIn = true
+                    AppState.shared.jsonwebtoken = token.token
+                    AppState.shared.expiration = token.expiration
+                    AppState.shared.id = self.id
+                    AppState.shared.password = self.password
+                    self.message = ""
+                }
+             
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.message = error.localizedDescription
+                }
+            }
+        }
+       
+        isBusy = false
+        
+        if(AppState.shared.isLoggedIn){
+            currentUserId = id
+            return .success(true)
+        }
+        return .failure(.signInError)
+    }
     
-    func loginIsAdmin() {
+    
+    func signInAsAdmin() async -> Result<Bool, LoginStateError>  {
         
-        let defaults = UserDefaults.standard
-        
-        defaults.setValue(id, forKey: "userID")
-        defaults.setValue(password, forKey: "userPassword")
-        
-        Webservice().login(id: id, password: password) { result in
+        Webservice().login(id: self.id, password: self.password) { result in
             switch result {
             case .success(let token):
                
@@ -38,64 +73,75 @@ class LoginViewModel: ObservableObject {
                       let jwt  = try decode(jwt: token.token)
                         let claim = jwt.claim(name: "isAdmin")
                         let isAdmin = claim.boolean!
-                        
-                        if(isAdmin){
-                            defaults.setValue(true, forKey: "isAdmin")
-                            defaults.setValue(token.token, forKey: "jsonwebtoken")
-                            defaults.setValue(token.expiration/1000, forKey: "expiration")
-                            self.isAdmin = true
-                            self.message = ""
-                        } else {
-                            self.message = "You are not the administrator"
+                        DispatchQueue.main.async {
+                            if(isAdmin){
+                                self.isAdmin = isAdmin;
+                                self.isLoggedIn = false
+                                AppState.shared.isAdmin = true
+                                AppState.shared.jsonwebtoken = token.token;
+                                AppState.shared.expiration = token.expiration
+                                AppState.shared.id = self.id
+                                AppState.shared.password = self.password
+                                self.message = ""
+                            } else {
+                                self.message = "You are not the administrator"
+                            }
                         }
+                        
                     } catch {
-                        self.message = "oops..something went wrong"
+                        DispatchQueue.main.async {
+                            self.message = "oops..something went wrong"
+                        }
                     }
                 }
+                currentUserId = self.id
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.message = error.localizedDescription
                 }
             }
         }
-        currentUserId = id
-    }
-
         
-    func login() {
-        
-        let defaults = UserDefaults.standard
-        
-        defaults.setValue(id, forKey: "userID")
-        defaults.setValue(password, forKey: "userPassword")
-        
-        Webservice().login(id: id, password: password) { result in
-            switch result {
-            case .success(let token):
-                //defaults.setValue(false, forKey: "isAdmin")
-                defaults.setValue(token.token, forKey: "jsonwebtoken")
-                defaults.setValue(token.expiration/1000, forKey: "expiration")
-
-                DispatchQueue.main.async {
-                    self.isAuthenticated = true
-                    self.message = ""
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.message = error.localizedDescription
-                }
-            }
+        if(AppState.shared.isAdmin){
+            return .success(true)
         }
-        currentUserId = id
+        return .failure(.signInError)
     }
 
+    func signOut() async -> Result<Bool, LoginStateError>  {
+            isBusy = true
+            logoutUser()
+            isBusy = false
+            return .success(true)
+        }
     
-    func signout() {
-        
-        let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: "jsonwebtoken")
-        DispatchQueue.main.async {
-            self.isAuthenticated = false
-        }
+    
+    func logoutUser(){
+        let cid = AppState.shared.id;
+        isLoggedIn = false
+        isBusy = false
+        isAdmin = false;
+        AppState.shared.jsonwebtoken = ""
+        AppState.shared.expiration = -1
+        AppState.shared.isAdmin = false;
+        AppState.shared.isLoggedIn = false;
+        AppState.shared.id = ""
+        AppState.shared.password = ""
+        resetTimer()
+        print ("\(cid) logged out")
+    }
+    
+    @objc func invalidateSession() {
+       logoutUser()
+    }
+    
+    
+     func resetTimer() {
+         timer?.invalidate()
+    }
+    
+    func startTimer(){
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 60 * 60 , target: self, selector: #selector(invalidateSession), userInfo: nil, repeats: false)
     }
 }

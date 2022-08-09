@@ -13,7 +13,7 @@ struct Profile : Equatable {
     
     static func == (lhs: Profile, rhs: Profile) -> Bool {
         return lhs.name == rhs.name && lhs.password == rhs.password
-        }
+    }
 }
 
 struct ProfileScreen: View {
@@ -25,19 +25,19 @@ struct ProfileScreen: View {
     @State var isAdmin = false
     
     var sName: Binding<String> {
-           .init(get: {
-               return editProfile.name
-           }, set: {
-               editProfile.name = $0
-           })
-       }
+        .init(get: {
+            return editProfile.name
+        }, set: {
+            editProfile.name = $0
+        })
+    }
     var sPass: Binding<String> {
-           .init(get: {
-               return editProfile.password
-           }, set: {
-               editProfile.password = $0
-           })
-       }
+        .init(get: {
+            return editProfile.password
+        }, set: {
+            editProfile.password = $0
+        })
+    }
     
     var sId: Binding<String> {
         .init(get: {
@@ -57,9 +57,9 @@ struct ProfileScreen: View {
         })
     }
     
-
+    
     @State var mode: EditMode = .inactive
-
+    
     @State var isCancelled = false
     
     @State var edit = false
@@ -79,8 +79,7 @@ struct ProfileScreen: View {
     
     fileprivate func ProfileView() -> some View {
         @Environment(\.editMode) var editMode
-        let defaults = UserDefaults.standard
-        let pwd = defaults.string(forKey: "userPassword")!
+        let pwd = AppState.shared.password
         return  VStack {
             Form {
                 Section(header: Text("My Info")) {
@@ -108,43 +107,29 @@ struct ProfileScreen: View {
                         Text(self.profile.userProfile.balance, format: .number).foregroundColor(.secondary)
                     }
                 }
-
+                
             }
             
             NavigationLink(destination: HistoryListView(), tag: 1, selection: $tag) {
-                    Button("Transfer History" ,action: {
-                        self.tag = 1
-                    })
-                    .buttonStyle(GeneralButton())
+                Button("Transfer History" ,action: {
+                    self.tag = 1
+                })
+                .buttonStyle(GeneralButton())
             }
-            
         }
-                
         
-//
-//            Button("Sign off?") {
-//                showAlert = true
-//            }
-//            .alert(isPresented: $showAlert) {
-//                Alert (
-//                    title: Text("You are signed off"),
-//                    message: Text("")
-//                )
-//            }
         
-
         .navigationBarTitle(Text("Profile"))
         .navigationBarItems(trailing: CustomEditButton(inactive: {
-     
+            
             
         },active:{
             editProfile.name = profile.userProfile.name
-            editProfile.password = UserDefaults.standard.string(forKey: "userPassword")!
+            editProfile.password = AppState.shared.password
         }))
         .environment(\.editMode, self.$mode)
-
     }
-
+    
     
     fileprivate func editProfileView() -> some View {
         @Environment(\.editMode) var editMode
@@ -170,45 +155,45 @@ struct ProfileScreen: View {
         
         .navigationBarTitle(Text("Edit Profile"))
         .navigationBarItems(trailing: CustomEditButton(
-       
+            
             inactive: {
-            let id   =   UserDefaults.standard.string(forKey: "userID")!
-            let name =  editProfile.name
-            let password = editProfile.password
-            if (isAdmin) {
-                Webservice().updateAdmin(id: id, name: name, password: password) { result in
-                    switch result {
+                let id   =   AppState.shared.id
+                let name =  editProfile.name
+                let password = editProfile.password
+                if (isAdmin) {
+                    Webservice().updateAdmin(id: id, name: name, password: password) { result in
+                        switch result {
                         case .success():
-                        DispatchQueue.main.async {
-                            profile.userProfile.name =  name
-                            UserDefaults.standard.setValue(password, forKey: "userPassword")
-                        }
+                            DispatchQueue.main.async {
+                                profile.userProfile.name =  name
+                                AppState.shared.password = password
+                            }
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
                     }
-            } else {
-                Webservice().updateUser(id: id, name: name, password: password) { result in
-                    switch result {
+                } else {
+                    Webservice().updateUser(id: id, name: name, password: password) { result in
+                        switch result {
                         case .success():
-                        DispatchQueue.main.async {
-                            profile.userProfile.name =  name
-                            UserDefaults.standard.setValue(password, forKey: "userPassword")
-                        }
+                            DispatchQueue.main.async {
+                                profile.userProfile.name =  name
+                                AppState.shared.password = password
+                            }
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
                     }
-            }
+                }
             },
             active: {
-              
+                
             }
         ))
         .navigationBarBackButtonHidden(true)
         .environment(\.editMode, self.$mode)
-     
-}
+        
+    }
     
     struct CustomEditButton: View {
         @Environment(\.editMode) var editMode

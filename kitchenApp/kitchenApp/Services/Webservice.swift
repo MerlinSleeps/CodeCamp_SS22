@@ -206,17 +206,20 @@ class Webservice : ObservableObject{
     
     func getRefreshToken()->String?{
 
-        let defaults = UserDefaults.standard
+        let ap  = AppState.shared
+    
+        if(!ap.isLoggedIn && !ap.isAdmin){
+            return nil
+        }
         
         var needRefresh = false;
         
-        let token = defaults.string(forKey: JWT)
+        let token = ap.jsonwebtoken
         
-        if(token == nil){
+        if(token == ""){
             needRefresh = true
         } else {
-            let expiration : Int = defaults.integer(forKey: EXPIRATION)
-            if(getCurrentMillis() > expiration){
+            if(getCurrentMillis() > ap.expiration){
                 needRefresh = true
             }
         }
@@ -225,24 +228,22 @@ class Webservice : ObservableObject{
             return token
         }
         
-       let id = defaults.string(forKey: USER_ID)!
-       let password = defaults.string(forKey: USER_PASSWORD)!
+        let id = ap.id
+        let password = ap.password
 
         
         Webservice().login(id: id, password: password) { result in
             switch result {
             case .success(let token):
-                defaults.setValue(token.token, forKey: self.JWT)
-                defaults.setValue(token.expiration/1000, forKey: self.TOKEN_REFRESH)
+                ap.jsonwebtoken = token.token
+                ap.expiration = token.expiration
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-        
-        
-        return defaults.string(forKey: JWT)
+                
+        return ap.jsonwebtoken
     }
-    
     
     func getAllUser(completion:@escaping ([User]) -> ()) {
         
