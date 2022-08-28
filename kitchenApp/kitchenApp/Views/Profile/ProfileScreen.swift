@@ -22,7 +22,8 @@ struct ProfileScreen: View {
     
     @State var editProfile = Profile(name: "",password: "")
     @State private var tag: Int? = 0
-    @State var isAdmin = false
+    @State private var isHidden: Bool = true
+    
     
     var sName: Binding<String> {
         .init(get: {
@@ -93,6 +94,10 @@ struct ProfileScreen: View {
                         Text("Password")
                         Spacer()
                         Text(pwd).foregroundColor(.secondary)
+                            .opacity(isHidden ? 0 : 1)
+                        Button(action: { isHidden.toggle()
+                        }, label: { Image (systemName: isHidden ? "eye.slash.fill" : "eye.fill")
+                        })
                     }
                     
                     HStack {
@@ -160,7 +165,7 @@ struct ProfileScreen: View {
                 let id   =   AppState.shared.id
                 let name =  editProfile.name
                 let password = editProfile.password
-                if (isAdmin) {
+                if (AppState.shared.isAdmin) {
                     Webservice().updateAdmin(id: id, name: name, password: password) { result in
                         switch result {
                         case .success():

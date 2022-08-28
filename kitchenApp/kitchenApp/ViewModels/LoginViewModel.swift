@@ -142,6 +142,6 @@ class LoginViewModel: ObservableObject {
     
     func startTimer(){
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 60 * 60 , target: self, selector: #selector(invalidateSession), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 60 * 5 , target: self, selector: #selector(invalidateSession), userInfo: nil, repeats: false)
     }
 }
