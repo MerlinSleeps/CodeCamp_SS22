@@ -36,7 +36,9 @@ struct EditItemView: View {
             Button("Done") {
                 self.showingEdit = true
                 let priceString: String = String(format: "%0.02f", editedItemPrice)
-                alertMessage = "Add " + editedItemName + " " + priceString + "?"
+                let oldMsg: String = "Change " + item.name + " $" + String(item.price)
+                let newMsg = editedItemName + " $" + priceString + "?"
+                alertMessage = oldMsg + " to " + newMsg
             }
                 .alert(isPresented: $showingEdit) {
                     Alert(title: Text("Edit Item"),

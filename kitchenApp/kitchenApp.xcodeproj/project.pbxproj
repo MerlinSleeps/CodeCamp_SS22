@@ -17,6 +17,7 @@
 		73595D01288ACA2A00031AFA /* TimeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73595D00288ACA2A00031AFA /* TimeChart.swift */; };
 		73595D03288AD35200031AFA /* TimeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73595D02288AD35200031AFA /* TimeChartView.swift */; };
 		7397482D288A97230052E07A /* CreateAdminAccoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */; };
+		73C0305A28BD1A8C00DE07B8 /* HistoryItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C0305928BD1A8C00DE07B8 /* HistoryItemRowView.swift */; };
 		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
 		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
 		771880B5288750B80061C3B1 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 771880B4288750B80061C3B1 /* JWTDecode */; };
@@ -89,6 +90,7 @@
 		73595D00288ACA2A00031AFA /* TimeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChart.swift; sourceTree = "<group>"; };
 		73595D02288AD35200031AFA /* TimeChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChartView.swift; sourceTree = "<group>"; };
 		7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdminAccoutScreen.swift; sourceTree = "<group>"; };
+		73C0305928BD1A8C00DE07B8 /* HistoryItemRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItemRowView.swift; sourceTree = "<group>"; };
 		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		77594D60288AB0F700104F06 /* ScanScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanScreen.swift; path = kitchenApp/Views/Scan/ScanScreen.swift; sourceTree = SOURCE_ROOT; };
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				733523B42886988E007C0598 /* HistoryListView.swift */,
+				73C0305928BD1A8C00DE07B8 /* HistoryItemRowView.swift */,
 				733523B52886988E007C0598 /* HistoryRow.swift */,
 			);
 			path = "Transaction History";
@@ -563,6 +566,7 @@
 				D7EC684A2886C24C001C3D08 /* SendMoneyView.swift in Sources */,
 				77AD4A512884599F00134BF7 /* ProfileViewModel.swift in Sources */,
 				771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */,
+				73C0305A28BD1A8C00DE07B8 /* HistoryItemRowView.swift in Sources */,
 				D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */,
 				77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */,
 				D74C36F728776B4000510E18 /* EditItemRow.swift in Sources */,

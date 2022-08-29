@@ -135,74 +135,22 @@ func getMostpopularItems() -> [String] {
     var othersSummeCount: Double = 0.0
     var othersAmountCount = 0
     itemSummeList.sort(by: >)
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[0] ) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
-        } else {
-            othersSummeCount += value
+    var count = 0
+    while (count < 9) {
+        for (key, value) in itemPurchaseSumme {
+            if (value == itemSummeList[count]) {
+                     itemNames.append(key)
+            } else {
+                if (itemSummeList.firstIndex(of: value)! >= 9) {
+                    othersSummeCount += value
+                }
+            }
         }
+        count += 1
     }
     for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[1] ) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[0] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
-        } else {
-            othersSummeCount += value
-        }
-    }
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[2]) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
-        } else {
-            othersSummeCount += value
-        }
-    }
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[3]) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
-        } else {
-            othersSummeCount += value
-        }
-    }
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[4]) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
-        } else {
-            othersSummeCount += value
-        }
-    }
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[5]) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
-        } else {
-            othersSummeCount += value
-        }
-    }
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[6]) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[7] || value == itemSummeList[8]) {
-        } else {
-            othersSummeCount += value
-        }
-    }
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[7]) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[8]) {
-        } else {
-            othersSummeCount += value
-        }
-    }
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[8]) {
-            itemNames.append(key)
-        } else if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7]) {
+        if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
+                 itemNames.append(key)
         } else {
             othersSummeCount += value
         }
