@@ -136,24 +136,17 @@ func getMostpopularItems() -> [String] {
     var othersAmountCount = 0
     itemSummeList.sort(by: >)
     var count = 0
-    while (count < 9) {
+    while (count < 8) {
         for (key, value) in itemPurchaseSumme {
             if (value == itemSummeList[count]) {
-                     itemNames.append(key)
+                itemNames.append(key)
             } else {
-                if (itemSummeList.firstIndex(of: value)! >= 9) {
+                if (itemSummeList.firstIndex(of: value)! >= 8) {
                     othersSummeCount += value
                 }
             }
         }
         count += 1
-    }
-    for (key, value) in itemPurchaseSumme {
-        if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
-                 itemNames.append(key)
-        } else {
-            othersSummeCount += value
-        }
     }
     itemPurchaseSumme["others"] = othersSummeCount
     
@@ -170,13 +163,12 @@ func analysisOfTime() {
     var s = 5
     let timeInterval:TimeInterval = Date().timeIntervalSince1970
     let timeStamp = Int(timeInterval)
-    while (s >= 0) {
+    while (s > 0) {
         let old = timeStamp-myTimeInterval*s
         s -= 1
         let recent = timeStamp-myTimeInterval*s
         for his in histories {
             if (his.timestamp/1000 > old && his.timestamp/1000 <= recent) {
-                print("good")
                 if (amountInTime[String(s)] == nil) {
                     amountInTime[String(s)] = his.amount ?? 0
                 } else {
@@ -188,7 +180,6 @@ func analysisOfTime() {
                     summeInTime[String(s)]! += his.value
                 }
             }
-            print(amountInTime.keys)
         }
     }
 }

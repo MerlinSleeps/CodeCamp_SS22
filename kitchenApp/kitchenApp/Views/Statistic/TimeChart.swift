@@ -22,22 +22,22 @@ class TimeChart: UIViewController {
         
         analysisOfTime()
         var names: [String] = []
-        /*
+        
         // current timeStamp
         let timeInterval:TimeInterval = Date().timeIntervalSince1970
         let timeStamp = Int(timeInterval)
-        */
-        // timeStamp of 2022-07-23 
-        let timeStamp = 1658570400
-        var s = 6
+        
+        var s = 5
         var itemsAmount: [Int] = []
         var itemsSumme: [Int] = []
-        while (s >= 1) {
-            itemsAmount.append(amountInTime[String(s)] ?? 0)
-            itemsSumme.append(Int(summeInTime[String(s)] ?? 0.0))
+        while (s > 0) {
             s -= 1
+            itemsAmount.append(amountInTime[String(s)] ?? 0)
+            itemsSumme.append(-Int(summeInTime[String(s)] ?? 0.0))
             names.append(getDate(timeStamp: timeStamp-myTimeInterval*s))
         }
+        print(amountInTime)
+        print(summeInTime)
         
         
         // Initialize chart
