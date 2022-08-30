@@ -22,8 +22,13 @@ class TimeChart: UIViewController {
         
         analysisOfTime()
         var names: [String] = []
+        /*
+        // current timeStamp
         let timeInterval:TimeInterval = Date().timeIntervalSince1970
         let timeStamp = Int(timeInterval)
+        */
+        // timeStamp of 2022-07-23 
+        let timeStamp = 1658570400
         var s = 6
         var itemsAmount: [Int] = []
         var itemsSumme: [Int] = []
