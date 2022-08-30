@@ -135,9 +135,22 @@ func getMostpopularItems() -> [String] {
     var othersSummeCount: Double = 0.0
     var othersAmountCount = 0
     itemSummeList.sort(by: >)
+    var count = 0
+    while (count < 9) {
+        for (key, value) in itemPurchaseSumme {
+            if (value == itemSummeList[count]) {
+                     itemNames.append(key)
+            } else {
+                if (itemSummeList.firstIndex(of: value)! >= 9) {
+                    othersSummeCount += value
+                }
+            }
+        }
+        count += 1
+    }
     for (key, value) in itemPurchaseSumme {
         if (value == itemSummeList[0] || value == itemSummeList[1] || value == itemSummeList[2] || value == itemSummeList[3] || value == itemSummeList[4] || value == itemSummeList[5] || value == itemSummeList[6] || value == itemSummeList[7] || value == itemSummeList[8]) {
-            itemNames.append(key)
+                 itemNames.append(key)
         } else {
             othersSummeCount += value
         }

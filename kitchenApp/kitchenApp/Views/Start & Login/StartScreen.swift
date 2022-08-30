@@ -16,7 +16,8 @@ struct StartScreen: View {
     
     @State private var animationState: AnimationState = .normal
     @State private var done: Bool = false
-    
+    @StateObject var userStateViewModel = LoginViewModel()
+
     
     func calculate() -> Double {
         
@@ -35,9 +36,8 @@ struct StartScreen: View {
         
         NavigationView {
             ZStack {
-                
-                LoginScreen()
-               
+                ApplicationSwitcher()
+                 .environmentObject(userStateViewModel)
                 VStack {
                     Image("Image-2")
                         .resizable()
@@ -48,8 +48,7 @@ struct StartScreen: View {
                     .opacity(done ? 0: 1)
                 
             }
-            .navigationBarHidden(done ? false: true)
-            
+            .navigationBarHidden(done ? false: true)            
             .onAppear(){
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     withAnimation(.spring()) {

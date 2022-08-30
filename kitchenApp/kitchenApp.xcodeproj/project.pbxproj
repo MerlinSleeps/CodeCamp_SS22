@@ -17,6 +17,7 @@
 		73595D01288ACA2A00031AFA /* TimeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73595D00288ACA2A00031AFA /* TimeChart.swift */; };
 		73595D03288AD35200031AFA /* TimeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73595D02288AD35200031AFA /* TimeChartView.swift */; };
 		7397482D288A97230052E07A /* CreateAdminAccoutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */; };
+		73C0305A28BD1A8C00DE07B8 /* HistoryItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C0305928BD1A8C00DE07B8 /* HistoryItemRowView.swift */; };
 		771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880AF288605630061C3B1 /* SignUpScreen.swift */; };
 		771880B2288616EC0061C3B1 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771880B1288616EC0061C3B1 /* SignUpViewModel.swift */; };
 		771880B5288750B80061C3B1 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 771880B4288750B80061C3B1 /* JWTDecode */; };
@@ -33,6 +34,7 @@
 		77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B54F2C285AAFD500217CD3 /* LoginScreen.swift */; };
 		77C5961B285939B60086C25E /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961A285939B60086C25E /* StartScreen.swift */; };
 		77C5961D285939EE0086C25E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5961C285939EE0086C25E /* ProfileScreen.swift */; };
+		77CF86A428A27E5900AD6E35 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF86A328A27E5900AD6E35 /* AppState.swift */; };
 		D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */; };
 		D731179C28855CEF00FD6997 /* ShowAllUserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */; };
 		D731179F2885924800FD6997 /* MainScreenAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731179D2885924800FD6997 /* MainScreenAdmin.swift */; };
@@ -88,6 +90,7 @@
 		73595D00288ACA2A00031AFA /* TimeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChart.swift; sourceTree = "<group>"; };
 		73595D02288AD35200031AFA /* TimeChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChartView.swift; sourceTree = "<group>"; };
 		7397482C288A97230052E07A /* CreateAdminAccoutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAdminAccoutScreen.swift; sourceTree = "<group>"; };
+		73C0305928BD1A8C00DE07B8 /* HistoryItemRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItemRowView.swift; sourceTree = "<group>"; };
 		771880AF288605630061C3B1 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		771880B1288616EC0061C3B1 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		77594D60288AB0F700104F06 /* ScanScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanScreen.swift; path = kitchenApp/Views/Scan/ScanScreen.swift; sourceTree = SOURCE_ROOT; };
@@ -102,6 +105,7 @@
 		77B54F2C285AAFD500217CD3 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		77C5961A285939B60086C25E /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		77C5961C285939EE0086C25E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		77CF86A328A27E5900AD6E35 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D73117992885522A00FD6997 /* ChargeMoneyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeMoneyScreen.swift; sourceTree = "<group>"; };
 		D731179B28855CEF00FD6997 /* ShowAllUserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllUserScreen.swift; sourceTree = "<group>"; };
 		D731179D2885924800FD6997 /* MainScreenAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenAdmin.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				776A4E622859ECB5009B6FE6 /* User.swift */,
 				77AD4A52288459D500134BF7 /* UserProfile.swift */,
 				73196290288808C4009C051D /* Bar.swift */,
+				77CF86A328A27E5900AD6E35 /* AppState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				733523B42886988E007C0598 /* HistoryListView.swift */,
+				73C0305928BD1A8C00DE07B8 /* HistoryItemRowView.swift */,
 				733523B52886988E007C0598 /* HistoryRow.swift */,
 			);
 			path = "Transaction History";
@@ -540,6 +546,7 @@
 				D7BED2AC288844C000B83D17 /* CoffeeImageView.swift in Sources */,
 				776A4E612859E6D0009B6FE6 /* Webservice.swift in Sources */,
 				D74C36F028776B0A00510E18 /* UpdateItem.swift in Sources */,
+				77CF86A428A27E5900AD6E35 /* AppState.swift in Sources */,
 				73595D03288AD35200031AFA /* TimeChartView.swift in Sources */,
 				73595D01288ACA2A00031AFA /* TimeChart.swift in Sources */,
 				77C5961B285939B60086C25E /* StartScreen.swift in Sources */,
@@ -559,6 +566,7 @@
 				D7EC684A2886C24C001C3D08 /* SendMoneyView.swift in Sources */,
 				77AD4A512884599F00134BF7 /* ProfileViewModel.swift in Sources */,
 				771880B0288605630061C3B1 /* SignUpScreen.swift in Sources */,
+				73C0305A28BD1A8C00DE07B8 /* HistoryItemRowView.swift in Sources */,
 				D731179A2885522A00FD6997 /* ChargeMoneyScreen.swift in Sources */,
 				77B54F2D285AAFD500217CD3 /* LoginScreen.swift in Sources */,
 				D74C36F728776B4000510E18 /* EditItemRow.swift in Sources */,

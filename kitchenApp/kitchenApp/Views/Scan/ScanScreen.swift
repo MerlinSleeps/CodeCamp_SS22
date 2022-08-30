@@ -16,7 +16,8 @@ struct ScanScreen: View {
     @State var showButton: Bool = true
     @State var itemPurchased: Bool = false
     @State var message: String = ""
-    
+    @EnvironmentObject var vm: LoginViewModel
+
     
     var scannerSheet : some View {
         CodeScannerView(
@@ -71,13 +72,14 @@ struct ScanScreen: View {
                     isPresentingScanner = true
                 }
             }
-            
-            NavigationLink(destination: MainScreen(), isActive: $itemPurchased){}
+            if(!vm.isAdmin) {
+            NavigationLink(destination: MainScreen().environmentObject(self.vm), isActive: $itemPurchased){}
+            } else {NavigationLink(destination: MainScreenAdmin().environmentObject(self.vm), isActive: $itemPurchased){}}
             
             Spacer()
             if let item = scannedItem {
                 Button ("Buy", action: {
-                    let userID = UserDefaults.standard.string(forKey: "userID")!
+                    let userID = AppState.shared.id
                     Webservice().purchaseItem(id: userID , itemId: item.id, amount: 1) { result in
                        switch result {
                        case .success():

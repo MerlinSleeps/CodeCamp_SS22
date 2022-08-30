@@ -35,7 +35,7 @@ struct AddNewItem: View {
             Button("Done") {
                 self.showingAdd = true
                 let priceString: String = String(format: "%0.02f", newItemPrice)
-                alertMessage = "Add " + newItemName + " " + priceString + "?"
+                alertMessage = "Add " + newItemName + " $" + priceString + "?"
             }
             .alert(isPresented: $showingAdd) {
                 Alert(title: Text("Add Item"),
