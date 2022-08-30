@@ -14,6 +14,8 @@ struct SignUpScreen : View {
     @StateObject private var signUpVM = SignUpViewModel()
     @State var showAlert = false
     @State var showHint = false
+    @EnvironmentObject var vm: LoginViewModel
+    @State var goToLogin = false
     
     //password RegEx
     let password = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
@@ -42,31 +44,62 @@ struct SignUpScreen : View {
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
-            SecureField("Password (must be at least 8 characters)", text: $signUpVM.password)
+            SecureTextField(text: $signUpVM.password)
                 .textInputAutocapitalization(.never)
                 .padding()
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 70)
             
-            NavigationLink(destination: LoginScreen(), isActive: $signUpVM.success) {
+            NavigationLink(destination: LoginScreen().environmentObject(self.vm), isActive: $goToLogin) {
                 Button("Sign Up", action: {
                     if (password.evaluate(with: signUpVM.password)) {
                         signUpVM.signUp()
-                        showAlert = true
+                        vm.id=signUpVM.id
+                        vm.password=signUpVM.password
                     } else {
                         showHint = true
                     }
-                }).alert(isPresented: $showAlert) {
+                }).alert(isPresented: $signUpVM.success) {
                         Alert (
                             title: Text("You are signed in"),
-                            message: Text("")
+                            message: Text(""),
+                            dismissButton: .default(Text("OK"), action: {
+
+                                DispatchQueue.main.async {
+                                    goToLogin = true
+                                }
+                                
+                            })
+                            
                         )
                     }.buttonStyle(GeneralButton())
             }
         }
+        .navigationViewStyle(.stack)
         .padding()
         
+    }
+}
+
+struct SecureTextField: View {
+    
+    @State var isSecureField: Bool = true
+    @Binding var text: String
+    
+    var body: some View {
+        HStack {
+            if isSecureField {
+                SecureField("Password", text: $text)
+            } else {
+                TextField(text, text: $text)
+            }
+        }.overlay(alignment: .trailing) {
+            Image(systemName: isSecureField ? "eye.slash.fill": "eye.fill")
+                .onTapGesture {
+                    isSecureField.toggle()
+                }
+        }
     }
 }
 

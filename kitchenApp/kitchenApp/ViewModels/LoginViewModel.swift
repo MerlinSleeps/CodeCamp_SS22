@@ -34,15 +34,29 @@ class LoginViewModel: ObservableObject {
             Webservice().login(id: id, password: password) { result in
             switch result {
             case .success(let token):
+                
                 DispatchQueue.main.async {
+                    do{
                     self.isLoggedIn = true
                     self.isAdmin = false
+                        
                     AppState.shared.isLoggedIn = true
                     AppState.shared.jsonwebtoken = token.token
                     AppState.shared.expiration = token.expiration
                     AppState.shared.id = self.id
                     AppState.shared.password = self.password
                     self.message = ""
+                        
+                        let jwt = try decode(jwt: token.token)
+                        let claim = jwt.claim(name: "isAdmin")
+                        let isAdmin = claim.boolean!
+                        AppState.shared.isAdminButLoggedAsUser = isAdmin;
+                        
+                    } catch {
+                        DispatchQueue.main.async {
+                            self.message = "ooops...something went wrong"
+                        }
+                    }
                 }
              
             case .failure(let error):

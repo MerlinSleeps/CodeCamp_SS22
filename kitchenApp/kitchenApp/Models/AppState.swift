@@ -13,6 +13,7 @@ class AppState: ObservableObject {
     
     @Published var isLoggedIn = false
     @Published var isAdmin = false
+    @Published var isAdminButLoggedAsUser = false
     @Published var jsonwebtoken = ""
     @Published var expiration:Int64 = -1
     @Published var id: String = ""

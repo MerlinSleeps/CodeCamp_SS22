@@ -29,6 +29,28 @@ struct LoginScreen : View {
             }).buttonStyle(GeneralButton())
     }
     
+    
+    struct SecureTextField: View {
+        
+        @State var isSecureField: Bool = true
+        @Binding var text: String
+        
+        var body: some View {
+            HStack {
+                if isSecureField {
+                    SecureField("Password", text: $text)
+                } else {
+                    TextField(text, text: $text)
+                }
+            }.overlay(alignment: .trailing) {
+                Image(systemName: isSecureField ? "eye.slash.fill": "eye.fill")
+                    .onTapGesture {
+                        isSecureField.toggle()
+                    }
+            }
+        }
+    }
+    
         
     @EnvironmentObject var loginVM: LoginViewModel
     
@@ -45,7 +67,7 @@ struct LoginScreen : View {
                 .padding()
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
-            SecureField("Password", text: $loginVM.password)
+            SecureTextField(text: $loginVM.password)
                 .textInputAutocapitalization(.never)
                 .padding()
                 .background(lightGreyColor)
@@ -58,7 +80,7 @@ struct LoginScreen : View {
             
             Spacer()
             
-                NavigationLink(destination: SignUpScreen()) {
+            NavigationLink(destination: SignUpScreen().environmentObject(self.loginVM)) {
                         Text("New user? Sign Up")
                 }
         }

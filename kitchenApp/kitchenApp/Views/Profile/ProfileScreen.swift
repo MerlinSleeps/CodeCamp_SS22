@@ -19,11 +19,9 @@ struct Profile : Equatable {
 struct ProfileScreen: View {
     
     @ObservedObject var profile = ProfileViewModel()
-    
     @State var editProfile = Profile(name: "",password: "")
     @State private var tag: Int? = 0
     @State private var isHidden: Bool = true
-    
     
     var sName: Binding<String> {
         .init(get: {
@@ -51,7 +49,7 @@ struct ProfileScreen: View {
     
     var sBalance: Binding<String> {
         .init(get: {
-            let b: String = String(format: "%f", profile.userProfile.balance)
+            let b: String = String(format: "%.1f", profile.userProfile.balance)
             return b
         }, set: {
             print ($0)
@@ -135,6 +133,26 @@ struct ProfileScreen: View {
         .environment(\.editMode, self.$mode)
     }
     
+    struct SecureTextField: View {
+        
+        @State var isSecureField: Bool = true
+        @Binding var text: String
+        
+        var body: some View {
+            HStack {
+                if isSecureField {
+                    SecureField("Password", text: $text)
+                } else {
+                    TextField(text, text: $text)
+                }
+            }.overlay(alignment: .trailing) {
+                Image(systemName: isSecureField ? "eye.slash.fill": "eye.fill")
+                    .onTapGesture {
+                        isSecureField.toggle()
+                    }
+            }
+        }
+    }
     
     fileprivate func editProfileView() -> some View {
         @Environment(\.editMode) var editMode
@@ -144,7 +162,8 @@ struct ProfileScreen: View {
             }
             
             Section(header:Text("Password")) {
-                TextField("Password", text: sPass)
+ //               SecureField("Password", text: sPass)
+                SecureTextField(text: sPass)
             }
             Section(header:Text("User ID")) {
                 TextField("User ID", text: sId)
@@ -165,7 +184,7 @@ struct ProfileScreen: View {
                 let id   =   AppState.shared.id
                 let name =  editProfile.name
                 let password = editProfile.password
-                if (AppState.shared.isAdmin) {
+                if (AppState.shared.isAdmin || AppState.shared.isAdminButLoggedAsUser) {
                     Webservice().updateAdmin(id: id, name: name, password: password) { result in
                         switch result {
                         case .success():

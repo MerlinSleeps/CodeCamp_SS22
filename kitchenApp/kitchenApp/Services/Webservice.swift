@@ -167,7 +167,8 @@ class Webservice : ObservableObject{
             let httpResponse = response as? HTTPURLResponse
                 
             if(httpResponse?.statusCode != 200){
-                completion(.failure(.custom(errorMessage: "ooo...")))
+                print(httpResponse?.statusCode as Any)
+                completion(.failure(.custom(errorMessage: "ooop")))
                 return
             }
     

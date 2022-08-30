@@ -31,6 +31,7 @@ struct ScanScreen: View {
 
                     {
                         do {
+                            message = ""
                             let scItem = try JSONDecoder().decode(ScannedItem.self, from: jsonData)
                           
                             self.scannedItem = scItem
