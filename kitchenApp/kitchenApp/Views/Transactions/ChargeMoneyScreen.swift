@@ -23,7 +23,7 @@ struct ChargeMoneyScreen: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Current Balance")) {
+                Section(header: Text("User")) {
                     Text(user.name)
                 }
                 Section(header:Text("Recharge Amount")) {
