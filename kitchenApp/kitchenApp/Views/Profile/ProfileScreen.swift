@@ -63,6 +63,9 @@ struct ProfileScreen: View {
     
     @State var edit = false
     @State var showAlert = false
+    var password = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
+    var securityHint = "Your password needs to have at least one digit, 8 signs, one lower case and one upper case letter"
+    @State var hint = ""
     
     var body: some View {
         
@@ -109,8 +112,9 @@ struct ProfileScreen: View {
                         Spacer()
                         Text(self.profile.userProfile.balance, format: .number).foregroundColor(.secondary)
                     }
+                   
                 }
-                
+               
             }
             
             NavigationLink(destination: HistoryListView(), tag: 1, selection: $tag) {
@@ -119,7 +123,14 @@ struct ProfileScreen: View {
                 })
                 .buttonStyle(GeneralButton())
             }
-        }
+        } .alert(isPresented:$isCancelled) {
+            Alert(
+                title: Text(securityHint).foregroundColor(.red),
+                dismissButton: .destructive(Text("OK")) {
+                    isCancelled = false
+                }
+            )
+            }
         
         
         .navigationBarTitle(Text("Profile"))
@@ -184,6 +195,12 @@ struct ProfileScreen: View {
                 let id   =   AppState.shared.id
                 let name =  editProfile.name
                 let password = editProfile.password
+                if(self.password.evaluate(with: password)){
+                    isCancelled = false;
+                } else {
+                    isCancelled = true;
+                }
+                if(!isCancelled){
                 if (AppState.shared.isAdmin || AppState.shared.isAdminButLoggedAsUser) {
                     Webservice().updateAdmin(id: id, name: name, password: password) { result in
                         switch result {
@@ -209,6 +226,7 @@ struct ProfileScreen: View {
                         }
                     }
                 }
+               }
             },
             active: {
                 

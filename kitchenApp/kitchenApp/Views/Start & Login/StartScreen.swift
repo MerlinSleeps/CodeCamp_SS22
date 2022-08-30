@@ -39,7 +39,7 @@ struct StartScreen: View {
                 ApplicationSwitcher()
                  .environmentObject(userStateViewModel)
                 VStack {
-                    Image("Image-2")
+                    Image("Image")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaleEffect(calculate())
