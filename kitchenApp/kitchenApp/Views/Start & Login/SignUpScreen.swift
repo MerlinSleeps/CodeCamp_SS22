@@ -53,6 +53,7 @@ struct SignUpScreen : View {
             
             NavigationLink(destination: LoginScreen().environmentObject(self.vm), isActive: $goToLogin) {
                 Button("Sign Up", action: {
+                    showHint = false
                     if (password.evaluate(with: signUpVM.password)) {
                         signUpVM.signUp()
                         vm.id=signUpVM.id
@@ -60,12 +61,12 @@ struct SignUpScreen : View {
                     } else {
                         showHint = true
                     }
-                }).alert(isPresented: $signUpVM.success) {
+                })
+                .alert(isPresented: $signUpVM.success) {
                         Alert (
                             title: Text("You are signed in"),
                             message: Text(""),
                             dismissButton: .default(Text("OK"), action: {
-
                                 DispatchQueue.main.async {
                                     goToLogin = true
                                 }
@@ -75,6 +76,16 @@ struct SignUpScreen : View {
                         )
                     }.buttonStyle(GeneralButton())
             }
+        }
+        .alert(isPresented: $signUpVM.signupFailed)
+        {
+            Alert(title: Text("Please enter different user ID. User with this ID already probably exists"),
+                  dismissButton: .default(Text("OK"), action: {
+                      DispatchQueue.main.async {
+                          signUpVM.signupFailed = false
+                      }
+                  })
+            )
         }
         .navigationViewStyle(.stack)
         .padding()

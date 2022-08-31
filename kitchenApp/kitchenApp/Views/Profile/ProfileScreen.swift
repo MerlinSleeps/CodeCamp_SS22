@@ -173,7 +173,6 @@ struct ProfileScreen: View {
             }
             
             Section(header:Text("Password")) {
- //               SecureField("Password", text: sPass)
                 SecureTextField(text: sPass)
             }
             Section(header:Text("User ID")) {
